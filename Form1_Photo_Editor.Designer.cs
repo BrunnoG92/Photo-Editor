@@ -32,7 +32,8 @@ namespace Photo_Editor
             this.components = new System.ComponentModel.Container();
             this.metroSetControlBox1 = new MetroSet_UI.Controls.MetroSetControlBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.Grp_B_Opções = new System.Windows.Forms.GroupBox();
+            this.Grp_B_Filtros = new System.Windows.Forms.GroupBox();
+            this.Btn_Aplicar_Filtro = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.radioButton4 = new System.Windows.Forms.RadioButton();
@@ -42,36 +43,36 @@ namespace Photo_Editor
             this.Lbl_Imagem01 = new System.Windows.Forms.Label();
             this.Lbl_Imagem02 = new System.Windows.Forms.Label();
             this.Lbl_Imagem03 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.Grp_B_Arit = new System.Windows.Forms.GroupBox();
+            this.Btn_Aplicar_Ar = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.kryptonNumericUpDown1 = new ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown();
             this.radioButton13 = new System.Windows.Forms.RadioButton();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.radioButton5 = new System.Windows.Forms.RadioButton();
-            this.radioButton6 = new System.Windows.Forms.RadioButton();
+            this.Rdo_Negativo = new System.Windows.Forms.RadioButton();
             this.radioButton7 = new System.Windows.Forms.RadioButton();
             this.Rdo_Cinza = new System.Windows.Forms.RadioButton();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.Rdo_XOR = new System.Windows.Forms.GroupBox();
+            this.Btn_Aplica_Bool = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.radioButton9 = new System.Windows.Forms.RadioButton();
             this.radioButton10 = new System.Windows.Forms.RadioButton();
-            this.radioButton11 = new System.Windows.Forms.RadioButton();
-            this.radioButton12 = new System.Windows.Forms.RadioButton();
+            this.Rdo_OR = new System.Windows.Forms.RadioButton();
+            this.Rdo_AND = new System.Windows.Forms.RadioButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.Btn_Imagem02 = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.Btn_Imagem01 = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.Pcb_03 = new System.Windows.Forms.PictureBox();
             this.Pcb_02 = new System.Windows.Forms.PictureBox();
             this.Pcb_01 = new System.Windows.Forms.PictureBox();
-            this.Btn_Iniciar = new ComponentFactory.Krypton.Toolkit.KryptonButton();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.Grp_B_Opções.SuspendLayout();
+            this.Thread_Aritmetica = new System.ComponentModel.BackgroundWorker();
+            this.Grp_B_Filtros.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            this.groupBox1.SuspendLayout();
+            this.Grp_B_Arit.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            this.groupBox2.SuspendLayout();
+            this.Rdo_XOR.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Pcb_03)).BeginInit();
@@ -105,24 +106,42 @@ namespace Photo_Editor
             this.metroSetControlBox1.ThemeAuthor = "Narwin";
             this.metroSetControlBox1.ThemeName = "MetroLite";
             // 
-            // Grp_B_Opções
+            // Grp_B_Filtros
             // 
-            this.Grp_B_Opções.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.Grp_B_Filtros.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.Grp_B_Opções.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
-            this.Grp_B_Opções.Controls.Add(this.pictureBox5);
-            this.Grp_B_Opções.Controls.Add(this.label1);
-            this.Grp_B_Opções.Controls.Add(this.radioButton4);
-            this.Grp_B_Opções.Controls.Add(this.radioButton3);
-            this.Grp_B_Opções.Controls.Add(this.radioButton2);
-            this.Grp_B_Opções.Controls.Add(this.radioButton1);
-            this.Grp_B_Opções.ForeColor = System.Drawing.Color.White;
-            this.Grp_B_Opções.Location = new System.Drawing.Point(64, 333);
-            this.Grp_B_Opções.Name = "Grp_B_Opções";
-            this.Grp_B_Opções.Size = new System.Drawing.Size(351, 236);
-            this.Grp_B_Opções.TabIndex = 1;
-            this.Grp_B_Opções.TabStop = false;
-            this.Grp_B_Opções.Text = "Filtros";
+            this.Grp_B_Filtros.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
+            this.Grp_B_Filtros.Controls.Add(this.Btn_Aplicar_Filtro);
+            this.Grp_B_Filtros.Controls.Add(this.pictureBox5);
+            this.Grp_B_Filtros.Controls.Add(this.label1);
+            this.Grp_B_Filtros.Controls.Add(this.radioButton4);
+            this.Grp_B_Filtros.Controls.Add(this.radioButton3);
+            this.Grp_B_Filtros.Controls.Add(this.radioButton2);
+            this.Grp_B_Filtros.Controls.Add(this.radioButton1);
+            this.Grp_B_Filtros.ForeColor = System.Drawing.Color.White;
+            this.Grp_B_Filtros.Location = new System.Drawing.Point(64, 333);
+            this.Grp_B_Filtros.Name = "Grp_B_Filtros";
+            this.Grp_B_Filtros.Size = new System.Drawing.Size(351, 271);
+            this.Grp_B_Filtros.TabIndex = 1;
+            this.Grp_B_Filtros.TabStop = false;
+            this.Grp_B_Filtros.Text = "Filtros";
+            // 
+            // Btn_Aplicar_Filtro
+            // 
+            this.Btn_Aplicar_Filtro.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.Btn_Aplicar_Filtro.Location = new System.Drawing.Point(97, 239);
+            this.Btn_Aplicar_Filtro.Name = "Btn_Aplicar_Filtro";
+            this.Btn_Aplicar_Filtro.Size = new System.Drawing.Size(100, 26);
+            this.Btn_Aplicar_Filtro.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.Btn_Aplicar_Filtro.StateCommon.Border.Rounding = 10;
+            this.Btn_Aplicar_Filtro.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.Black;
+            this.Btn_Aplicar_Filtro.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.Btn_Aplicar_Filtro.StateDisabled.Back.Color1 = System.Drawing.Color.Gray;
+            this.Btn_Aplicar_Filtro.StateDisabled.Back.Color2 = System.Drawing.Color.Gray;
+            this.Btn_Aplicar_Filtro.TabIndex = 75;
+            this.Btn_Aplicar_Filtro.Values.Text = "APLICAR";
             // 
             // pictureBox5
             // 
@@ -229,27 +248,46 @@ namespace Photo_Editor
             this.Lbl_Imagem03.TabIndex = 9;
             this.Lbl_Imagem03.Text = "Imagem Final";
             // 
-            // groupBox1
+            // Grp_B_Arit
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.Grp_B_Arit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
-            this.groupBox1.Controls.Add(this.pictureBox4);
-            this.groupBox1.Controls.Add(this.kryptonNumericUpDown1);
-            this.groupBox1.Controls.Add(this.radioButton13);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.radioButton5);
-            this.groupBox1.Controls.Add(this.radioButton6);
-            this.groupBox1.Controls.Add(this.radioButton7);
-            this.groupBox1.Controls.Add(this.Rdo_Cinza);
-            this.groupBox1.ForeColor = System.Drawing.Color.White;
-            this.groupBox1.Location = new System.Drawing.Point(438, 333);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(351, 236);
-            this.groupBox1.TabIndex = 5;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Operações Aritméticas";
+            this.Grp_B_Arit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
+            this.Grp_B_Arit.Controls.Add(this.Btn_Aplicar_Ar);
+            this.Grp_B_Arit.Controls.Add(this.pictureBox4);
+            this.Grp_B_Arit.Controls.Add(this.kryptonNumericUpDown1);
+            this.Grp_B_Arit.Controls.Add(this.radioButton13);
+            this.Grp_B_Arit.Controls.Add(this.label4);
+            this.Grp_B_Arit.Controls.Add(this.label2);
+            this.Grp_B_Arit.Controls.Add(this.radioButton5);
+            this.Grp_B_Arit.Controls.Add(this.Rdo_Negativo);
+            this.Grp_B_Arit.Controls.Add(this.radioButton7);
+            this.Grp_B_Arit.Controls.Add(this.Rdo_Cinza);
+            this.Grp_B_Arit.ForeColor = System.Drawing.Color.White;
+            this.Grp_B_Arit.Location = new System.Drawing.Point(438, 333);
+            this.Grp_B_Arit.Name = "Grp_B_Arit";
+            this.Grp_B_Arit.Size = new System.Drawing.Size(351, 271);
+            this.Grp_B_Arit.TabIndex = 5;
+            this.Grp_B_Arit.TabStop = false;
+            this.Grp_B_Arit.Text = "Operações Aritméticas";
+            // 
+            // Btn_Aplicar_Ar
+            // 
+            this.Btn_Aplicar_Ar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.Btn_Aplicar_Ar.Location = new System.Drawing.Point(108, 239);
+            this.Btn_Aplicar_Ar.Name = "Btn_Aplicar_Ar";
+            this.Btn_Aplicar_Ar.Size = new System.Drawing.Size(100, 26);
+            this.Btn_Aplicar_Ar.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.Btn_Aplicar_Ar.StateCommon.Border.Rounding = 10;
+            this.Btn_Aplicar_Ar.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.Black;
+            this.Btn_Aplicar_Ar.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.Btn_Aplicar_Ar.StateDisabled.Back.Color1 = System.Drawing.Color.Gray;
+            this.Btn_Aplicar_Ar.StateDisabled.Back.Color2 = System.Drawing.Color.Gray;
+            this.Btn_Aplicar_Ar.TabIndex = 73;
+            this.Btn_Aplicar_Ar.Values.Text = "APLICAR";
+            this.Btn_Aplicar_Ar.Click += new System.EventHandler(this.Btn_Aplicar_Ar_Click);
             // 
             // pictureBox4
             // 
@@ -317,16 +355,16 @@ namespace Photo_Editor
             this.radioButton5.Text = "Soma";
             this.radioButton5.UseVisualStyleBackColor = true;
             // 
-            // radioButton6
+            // Rdo_Negativo
             // 
-            this.radioButton6.AutoSize = true;
-            this.radioButton6.Location = new System.Drawing.Point(53, 139);
-            this.radioButton6.Name = "radioButton6";
-            this.radioButton6.Size = new System.Drawing.Size(68, 17);
-            this.radioButton6.TabIndex = 2;
-            this.radioButton6.TabStop = true;
-            this.radioButton6.Text = "Negativo";
-            this.radioButton6.UseVisualStyleBackColor = true;
+            this.Rdo_Negativo.AutoSize = true;
+            this.Rdo_Negativo.Location = new System.Drawing.Point(53, 139);
+            this.Rdo_Negativo.Name = "Rdo_Negativo";
+            this.Rdo_Negativo.Size = new System.Drawing.Size(68, 17);
+            this.Rdo_Negativo.TabIndex = 2;
+            this.Rdo_Negativo.TabStop = true;
+            this.Rdo_Negativo.Text = "Negativo";
+            this.Rdo_Negativo.UseVisualStyleBackColor = true;
             // 
             // radioButton7
             // 
@@ -350,24 +388,41 @@ namespace Photo_Editor
             this.Rdo_Cinza.Text = "Escala de Cinza";
             this.Rdo_Cinza.UseVisualStyleBackColor = true;
             // 
-            // groupBox2
+            // Rdo_XOR
             // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.Rdo_XOR.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
-            this.groupBox2.Controls.Add(this.pictureBox6);
-            this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Controls.Add(this.radioButton9);
-            this.groupBox2.Controls.Add(this.radioButton10);
-            this.groupBox2.Controls.Add(this.radioButton11);
-            this.groupBox2.Controls.Add(this.radioButton12);
-            this.groupBox2.ForeColor = System.Drawing.Color.White;
-            this.groupBox2.Location = new System.Drawing.Point(816, 333);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(339, 236);
-            this.groupBox2.TabIndex = 10;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Filtros";
+            this.Rdo_XOR.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
+            this.Rdo_XOR.Controls.Add(this.Btn_Aplica_Bool);
+            this.Rdo_XOR.Controls.Add(this.pictureBox6);
+            this.Rdo_XOR.Controls.Add(this.label3);
+            this.Rdo_XOR.Controls.Add(this.radioButton10);
+            this.Rdo_XOR.Controls.Add(this.Rdo_OR);
+            this.Rdo_XOR.Controls.Add(this.Rdo_AND);
+            this.Rdo_XOR.ForeColor = System.Drawing.Color.White;
+            this.Rdo_XOR.Location = new System.Drawing.Point(816, 333);
+            this.Rdo_XOR.Name = "Rdo_XOR";
+            this.Rdo_XOR.Size = new System.Drawing.Size(339, 271);
+            this.Rdo_XOR.TabIndex = 10;
+            this.Rdo_XOR.TabStop = false;
+            this.Rdo_XOR.Text = "Filtros";
+            // 
+            // Btn_Aplica_Bool
+            // 
+            this.Btn_Aplica_Bool.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.Btn_Aplica_Bool.Location = new System.Drawing.Point(141, 239);
+            this.Btn_Aplica_Bool.Name = "Btn_Aplica_Bool";
+            this.Btn_Aplica_Bool.Size = new System.Drawing.Size(100, 26);
+            this.Btn_Aplica_Bool.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.Btn_Aplica_Bool.StateCommon.Border.Rounding = 10;
+            this.Btn_Aplica_Bool.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.Black;
+            this.Btn_Aplica_Bool.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.Btn_Aplica_Bool.StateDisabled.Back.Color1 = System.Drawing.Color.Gray;
+            this.Btn_Aplica_Bool.StateDisabled.Back.Color2 = System.Drawing.Color.Gray;
+            this.Btn_Aplica_Bool.TabIndex = 74;
+            this.Btn_Aplica_Bool.Values.Text = "APLICAR";
             // 
             // pictureBox6
             // 
@@ -390,49 +445,38 @@ namespace Photo_Editor
             this.label3.Text = "Operações Booleanas";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // radioButton9
-            // 
-            this.radioButton9.AutoSize = true;
-            this.radioButton9.Location = new System.Drawing.Point(96, 147);
-            this.radioButton9.Name = "radioButton9";
-            this.radioButton9.Size = new System.Drawing.Size(65, 17);
-            this.radioButton9.TabIndex = 3;
-            this.radioButton9.TabStop = true;
-            this.radioButton9.Text = "Sharpen";
-            this.radioButton9.UseVisualStyleBackColor = true;
-            // 
             // radioButton10
             // 
             this.radioButton10.AutoSize = true;
             this.radioButton10.Location = new System.Drawing.Point(96, 114);
             this.radioButton10.Name = "radioButton10";
-            this.radioButton10.Size = new System.Drawing.Size(43, 17);
+            this.radioButton10.Size = new System.Drawing.Size(48, 17);
             this.radioButton10.TabIndex = 2;
             this.radioButton10.TabStop = true;
-            this.radioButton10.Text = "Blur";
+            this.radioButton10.Text = "XOR";
             this.radioButton10.UseVisualStyleBackColor = true;
             // 
-            // radioButton11
+            // Rdo_OR
             // 
-            this.radioButton11.AutoSize = true;
-            this.radioButton11.Location = new System.Drawing.Point(96, 82);
-            this.radioButton11.Name = "radioButton11";
-            this.radioButton11.Size = new System.Drawing.Size(99, 17);
-            this.radioButton11.TabIndex = 1;
-            this.radioButton11.TabStop = true;
-            this.radioButton11.Text = "Edge Detection";
-            this.radioButton11.UseVisualStyleBackColor = true;
+            this.Rdo_OR.AutoSize = true;
+            this.Rdo_OR.Location = new System.Drawing.Point(96, 82);
+            this.Rdo_OR.Name = "Rdo_OR";
+            this.Rdo_OR.Size = new System.Drawing.Size(41, 17);
+            this.Rdo_OR.TabIndex = 1;
+            this.Rdo_OR.TabStop = true;
+            this.Rdo_OR.Text = "OR";
+            this.Rdo_OR.UseVisualStyleBackColor = true;
             // 
-            // radioButton12
+            // Rdo_AND
             // 
-            this.radioButton12.AutoSize = true;
-            this.radioButton12.Location = new System.Drawing.Point(96, 50);
-            this.radioButton12.Name = "radioButton12";
-            this.radioButton12.Size = new System.Drawing.Size(65, 17);
-            this.radioButton12.TabIndex = 0;
-            this.radioButton12.TabStop = true;
-            this.radioButton12.Text = "Nenhum";
-            this.radioButton12.UseVisualStyleBackColor = true;
+            this.Rdo_AND.AutoSize = true;
+            this.Rdo_AND.Location = new System.Drawing.Point(96, 50);
+            this.Rdo_AND.Name = "Rdo_AND";
+            this.Rdo_AND.Size = new System.Drawing.Size(48, 17);
+            this.Rdo_AND.TabIndex = 0;
+            this.Rdo_AND.TabStop = true;
+            this.Rdo_AND.Text = "AND";
+            this.Rdo_AND.UseVisualStyleBackColor = true;
             // 
             // panel1
             // 
@@ -442,11 +486,11 @@ namespace Photo_Editor
             this.panel1.Controls.Add(this.Btn_Imagem02);
             this.panel1.Controls.Add(this.Btn_Imagem01);
             this.panel1.Controls.Add(this.Lbl_Imagem03);
-            this.panel1.Controls.Add(this.groupBox1);
+            this.panel1.Controls.Add(this.Grp_B_Arit);
             this.panel1.Controls.Add(this.Lbl_Imagem02);
-            this.panel1.Controls.Add(this.groupBox2);
+            this.panel1.Controls.Add(this.Rdo_XOR);
             this.panel1.Controls.Add(this.Lbl_Imagem01);
-            this.panel1.Controls.Add(this.Grp_B_Opções);
+            this.panel1.Controls.Add(this.Grp_B_Filtros);
             this.panel1.Controls.Add(this.Pcb_03);
             this.panel1.Controls.Add(this.Pcb_02);
             this.panel1.Controls.Add(this.Pcb_01);
@@ -525,21 +569,10 @@ namespace Photo_Editor
             this.Pcb_01.TabIndex = 2;
             this.Pcb_01.TabStop = false;
             // 
-            // Btn_Iniciar
+            // Thread_Aritmetica
             // 
-            this.Btn_Iniciar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.Btn_Iniciar.Location = new System.Drawing.Point(483, 710);
-            this.Btn_Iniciar.Name = "Btn_Iniciar";
-            this.Btn_Iniciar.Size = new System.Drawing.Size(162, 32);
-            this.Btn_Iniciar.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.Btn_Iniciar.StateCommon.Border.Rounding = 10;
-            this.Btn_Iniciar.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.Black;
-            this.Btn_Iniciar.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.Btn_Iniciar.TabIndex = 73;
-            this.Btn_Iniciar.Values.Text = "INICIAR";
-            this.Btn_Iniciar.Click += new System.EventHandler(this.Btn_Iniciar_Click);
+            this.Thread_Aritmetica.DoWork += new System.ComponentModel.DoWorkEventHandler(this.Thread_Aritmetica_DoWork);
+            this.Thread_Aritmetica.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.Thread_Aritmetica_RunWorkerCompleted);
             // 
             // Form1_Photo_Editor
             // 
@@ -548,7 +581,6 @@ namespace Photo_Editor
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
             this.ClientSize = new System.Drawing.Size(1249, 763);
-            this.Controls.Add(this.Btn_Iniciar);
             this.Controls.Add(this.metroSetControlBox1);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -558,14 +590,14 @@ namespace Photo_Editor
             this.Load += new System.EventHandler(this.Form1_Photo_Editor_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_Photo_Editor_MouseDown);
             this.Resize += new System.EventHandler(this.Form1_Photo_Editor_Resize);
-            this.Grp_B_Opções.ResumeLayout(false);
-            this.Grp_B_Opções.PerformLayout();
+            this.Grp_B_Filtros.ResumeLayout(false);
+            this.Grp_B_Filtros.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.Grp_B_Arit.ResumeLayout(false);
+            this.Grp_B_Arit.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.Rdo_XOR.ResumeLayout(false);
+            this.Rdo_XOR.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -581,7 +613,7 @@ namespace Photo_Editor
 
         private MetroSet_UI.Controls.MetroSetControlBox metroSetControlBox1;
         private System.Windows.Forms.ToolTip toolTip1;
-        private System.Windows.Forms.GroupBox Grp_B_Opções;
+        private System.Windows.Forms.GroupBox Grp_B_Filtros;
         private System.Windows.Forms.PictureBox Pcb_01;
         private System.Windows.Forms.PictureBox Pcb_02;
         private System.Windows.Forms.PictureBox Pcb_03;
@@ -593,29 +625,30 @@ namespace Photo_Editor
         private System.Windows.Forms.Label Lbl_Imagem01;
         private System.Windows.Forms.Label Lbl_Imagem02;
         private System.Windows.Forms.Label Lbl_Imagem03;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox Grp_B_Arit;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.RadioButton radioButton5;
-        private System.Windows.Forms.RadioButton radioButton6;
+        private System.Windows.Forms.RadioButton Rdo_Negativo;
         private System.Windows.Forms.RadioButton radioButton7;
         private System.Windows.Forms.RadioButton Rdo_Cinza;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox Rdo_XOR;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.RadioButton radioButton9;
         private System.Windows.Forms.RadioButton radioButton10;
-        private System.Windows.Forms.RadioButton radioButton11;
-        private System.Windows.Forms.RadioButton radioButton12;
+        private System.Windows.Forms.RadioButton Rdo_OR;
+        private System.Windows.Forms.RadioButton Rdo_AND;
         private System.Windows.Forms.RadioButton radioButton13;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel1;
         private ComponentFactory.Krypton.Toolkit.KryptonButton Btn_Imagem01;
         private ComponentFactory.Krypton.Toolkit.KryptonButton Btn_Imagem02;
-        private ComponentFactory.Krypton.Toolkit.KryptonButton Btn_Iniciar;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton Btn_Aplicar_Ar;
         private ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown kryptonNumericUpDown1;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.PictureBox pictureBox6;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.ComponentModel.BackgroundWorker Thread_Aritmetica;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton Btn_Aplicar_Filtro;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton Btn_Aplica_Bool;
     }
 }
 

@@ -24,17 +24,6 @@ namespace Photo_Editor
 
         private void Form1_Photo_Editor_Load(object sender, EventArgs e)
         {
-            //
-            // Inicialização do programa
-            //
-
-            // Chamada da função de arredondamento
-            //
-            // Region = System.Drawing.Region.FromHrgn(Round_Form.CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
-            //
-            //
-
-
 
 
         }
@@ -69,7 +58,7 @@ namespace Photo_Editor
         }
 
         private void Btn_Imagem01_Click(object sender, EventArgs e)
-        {
+        {   // Seleciono a imagem 01
             OpenFileDialog abraFoto1 = new OpenFileDialog();
             abraFoto1.Filter = "Arquivos de Imagens (*.jpg; *.png;*.bmp) | *.jpg; *.png; *.bmp";
             if (abraFoto1.ShowDialog() == DialogResult.OK)
@@ -79,7 +68,7 @@ namespace Photo_Editor
         }
 
         private void Btn_Imagem02_Click(object sender, EventArgs e)
-        {
+        {   // Seleciono a imagem 02
             OpenFileDialog abraFoto2 = new OpenFileDialog();
             abraFoto2.Filter = "Arquivos de Imagens (*.jpg; *.png;*.bmp) | *.jpg; *.png; *.bmp";
             if (abraFoto2.ShowDialog() == DialogResult.OK)
@@ -88,14 +77,42 @@ namespace Photo_Editor
             }
         }
 
-        private void Btn_Iniciar_Click(object sender, EventArgs e)
-        {
-            Bitmap Imagem01 = new Bitmap(Pcb_01.Image);
+
+        private void Thread_Aritmetica_DoWork(object sender, DoWorkEventArgs e)
+        {    
+            // Chama a função de Escala de cinza na classe Operacoes_Aritmeticas 
+            
             if (Rdo_Cinza.Checked)
             {
-                EscalaCinza.ConverteCinza(Imagem01);
-                Pcb_03.Image = Imagem01;
+                Bitmap ImagemCinza = new Bitmap(Pcb_01.Image);
+                Operacoes_Aritmeticas.ConverteCinza(ImagemCinza);
+                Pcb_03.Image = ImagemCinza;
             }
+            else if (Rdo_Negativo.Checked == true)
+            {
+                Bitmap Imagem_Negativo = new Bitmap(Pcb_01.Image);
+                Operacoes_Aritmeticas.Negativo(Imagem_Negativo);
+                Pcb_03.Image = Imagem_Negativo;
+
+            }
+        }
+
+        
+
+        private void Btn_Aplicar_Ar_Click(object sender, EventArgs e)
+        {   // botão aplicar aritmetica chama a thread que faz os calculos aritméticos 
+            Thread_Aritmetica.RunWorkerAsync();
+            Btn_Aplicar_Ar.Enabled = false;
+            Btn_Aplica_Bool.Enabled = false;
+            Btn_Aplicar_Filtro.Enabled = false;
+        }
+
+        private void Thread_Aritmetica_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            Btn_Aplicar_Ar.Enabled = true;
+            Btn_Aplica_Bool.Enabled = true;
+            Btn_Aplicar_Filtro.Enabled = true;
+            MessageBox.Show("Filtro aplicado com sucesso", "Finalizado", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

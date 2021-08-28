@@ -72,7 +72,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Drag Control.cs" />
-    <Compile Include="Classes\EscalaCinza.cs" />
+    <Compile Include="Classes\Operacoes_Aritmeticas.cs" />
     <Compile Include="Form1_Photo_Editor.cs">
       <SubType>Form</SubType>
     </Compile>
