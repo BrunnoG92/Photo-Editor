@@ -14,7 +14,7 @@ namespace Photo_Editor
 {
     public partial class Form1_Photo_Editor : Form
     {
-
+        public static int Limiar;
 
         public Form1_Photo_Editor()
         {
@@ -79,9 +79,9 @@ namespace Photo_Editor
 
 
         private void Thread_Aritmetica_DoWork(object sender, DoWorkEventArgs e)
-        {    
+        {
             // Chama a função de Escala de cinza na classe Operacoes_Aritmeticas 
-            
+
             if (Rdo_Cinza.Checked)
             {
                 Bitmap ImagemCinza = new Bitmap(Pcb_01.Image);
@@ -93,11 +93,35 @@ namespace Photo_Editor
                 Bitmap Imagem_Negativo = new Bitmap(Pcb_01.Image);
                 Operacoes_Aritmeticas.Negativo(Imagem_Negativo);
                 Pcb_03.Image = Imagem_Negativo;
+            }
 
+            else if (Rdo_PretoBranco.Checked == true)
+            {
+                {
+                    Limiar = (int)Num_UpDown_Limiar.Value;
+                    Bitmap ImagemPretoBranco = new Bitmap(Pcb_01.Image);
+                    Operacoes_Aritmeticas.PretoBranco(ImagemPretoBranco);
+                    Pcb_03.Image = ImagemPretoBranco;
+                }
+            }
+            else if (Rdo_Soma.Checked == true)
+            {
+                Bitmap SomaImagem01 = new Bitmap(Pcb_01.Image);
+                Bitmap SomaImagem02 = new Bitmap(Pcb_02.Image);
+              
+                Pcb_03.Image = Imagem_Resultado;
+            }
+            else if (Rdo_Sub.Checked == true)
+            {
+                Bitmap SubImagem01 = new Bitmap(Pcb_01.Image);
+                Bitmap SubImagem02 = new Bitmap(Pcb_02.Image);
+              
+                Pcb_03.Image = Imagem_Resultado;
             }
         }
 
-        
+
+
 
         private void Btn_Aplicar_Ar_Click(object sender, EventArgs e)
         {   // botão aplicar aritmetica chama a thread que faz os calculos aritméticos 

@@ -46,13 +46,13 @@ namespace Photo_Editor
             this.Grp_B_Arit = new System.Windows.Forms.GroupBox();
             this.Btn_Aplicar_Ar = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.kryptonNumericUpDown1 = new ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown();
-            this.radioButton13 = new System.Windows.Forms.RadioButton();
+            this.Num_UpDown_Limiar = new ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown();
+            this.Rdo_Sub = new System.Windows.Forms.RadioButton();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.radioButton5 = new System.Windows.Forms.RadioButton();
+            this.Rdo_Soma = new System.Windows.Forms.RadioButton();
             this.Rdo_Negativo = new System.Windows.Forms.RadioButton();
-            this.radioButton7 = new System.Windows.Forms.RadioButton();
+            this.Rdo_PretoBranco = new System.Windows.Forms.RadioButton();
             this.Rdo_Cinza = new System.Windows.Forms.RadioButton();
             this.Rdo_XOR = new System.Windows.Forms.GroupBox();
             this.Btn_Aplica_Bool = new ComponentFactory.Krypton.Toolkit.KryptonButton();
@@ -255,13 +255,13 @@ namespace Photo_Editor
             this.Grp_B_Arit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
             this.Grp_B_Arit.Controls.Add(this.Btn_Aplicar_Ar);
             this.Grp_B_Arit.Controls.Add(this.pictureBox4);
-            this.Grp_B_Arit.Controls.Add(this.kryptonNumericUpDown1);
-            this.Grp_B_Arit.Controls.Add(this.radioButton13);
+            this.Grp_B_Arit.Controls.Add(this.Num_UpDown_Limiar);
+            this.Grp_B_Arit.Controls.Add(this.Rdo_Sub);
             this.Grp_B_Arit.Controls.Add(this.label4);
             this.Grp_B_Arit.Controls.Add(this.label2);
-            this.Grp_B_Arit.Controls.Add(this.radioButton5);
+            this.Grp_B_Arit.Controls.Add(this.Rdo_Soma);
             this.Grp_B_Arit.Controls.Add(this.Rdo_Negativo);
-            this.Grp_B_Arit.Controls.Add(this.radioButton7);
+            this.Grp_B_Arit.Controls.Add(this.Rdo_PretoBranco);
             this.Grp_B_Arit.Controls.Add(this.Rdo_Cinza);
             this.Grp_B_Arit.ForeColor = System.Drawing.Color.White;
             this.Grp_B_Arit.Location = new System.Drawing.Point(438, 333);
@@ -298,31 +298,31 @@ namespace Photo_Editor
             this.pictureBox4.TabIndex = 5;
             this.pictureBox4.TabStop = false;
             // 
-            // kryptonNumericUpDown1
+            // Num_UpDown_Limiar
             // 
-            this.kryptonNumericUpDown1.Location = new System.Drawing.Point(108, 106);
-            this.kryptonNumericUpDown1.Maximum = new decimal(new int[] {
-            1000,
+            this.Num_UpDown_Limiar.Location = new System.Drawing.Point(108, 106);
+            this.Num_UpDown_Limiar.Maximum = new decimal(new int[] {
+            255,
             0,
             0,
             0});
-            this.kryptonNumericUpDown1.Name = "kryptonNumericUpDown1";
-            this.kryptonNumericUpDown1.Size = new System.Drawing.Size(120, 19);
-            this.kryptonNumericUpDown1.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
-            this.kryptonNumericUpDown1.StateCommon.Content.Color1 = System.Drawing.Color.White;
-            this.kryptonNumericUpDown1.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonNumericUpDown1.TabIndex = 73;
+            this.Num_UpDown_Limiar.Name = "Num_UpDown_Limiar";
+            this.Num_UpDown_Limiar.Size = new System.Drawing.Size(120, 19);
+            this.Num_UpDown_Limiar.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
+            this.Num_UpDown_Limiar.StateCommon.Content.Color1 = System.Drawing.Color.White;
+            this.Num_UpDown_Limiar.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Num_UpDown_Limiar.TabIndex = 73;
             // 
-            // radioButton13
+            // Rdo_Sub
             // 
-            this.radioButton13.AutoSize = true;
-            this.radioButton13.Location = new System.Drawing.Point(53, 199);
-            this.radioButton13.Name = "radioButton13";
-            this.radioButton13.Size = new System.Drawing.Size(74, 17);
-            this.radioButton13.TabIndex = 12;
-            this.radioButton13.TabStop = true;
-            this.radioButton13.Text = "Subtração";
-            this.radioButton13.UseVisualStyleBackColor = true;
+            this.Rdo_Sub.AutoSize = true;
+            this.Rdo_Sub.Location = new System.Drawing.Point(53, 199);
+            this.Rdo_Sub.Name = "Rdo_Sub";
+            this.Rdo_Sub.Size = new System.Drawing.Size(74, 17);
+            this.Rdo_Sub.TabIndex = 12;
+            this.Rdo_Sub.TabStop = true;
+            this.Rdo_Sub.Text = "Subtração";
+            this.Rdo_Sub.UseVisualStyleBackColor = true;
             // 
             // label4
             // 
@@ -344,16 +344,16 @@ namespace Photo_Editor
             this.label2.Text = "Operações Aritméticas";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // radioButton5
+            // Rdo_Soma
             // 
-            this.radioButton5.AutoSize = true;
-            this.radioButton5.Location = new System.Drawing.Point(53, 166);
-            this.radioButton5.Name = "radioButton5";
-            this.radioButton5.Size = new System.Drawing.Size(52, 17);
-            this.radioButton5.TabIndex = 3;
-            this.radioButton5.TabStop = true;
-            this.radioButton5.Text = "Soma";
-            this.radioButton5.UseVisualStyleBackColor = true;
+            this.Rdo_Soma.AutoSize = true;
+            this.Rdo_Soma.Location = new System.Drawing.Point(53, 166);
+            this.Rdo_Soma.Name = "Rdo_Soma";
+            this.Rdo_Soma.Size = new System.Drawing.Size(52, 17);
+            this.Rdo_Soma.TabIndex = 3;
+            this.Rdo_Soma.TabStop = true;
+            this.Rdo_Soma.Text = "Soma";
+            this.Rdo_Soma.UseVisualStyleBackColor = true;
             // 
             // Rdo_Negativo
             // 
@@ -366,16 +366,16 @@ namespace Photo_Editor
             this.Rdo_Negativo.Text = "Negativo";
             this.Rdo_Negativo.UseVisualStyleBackColor = true;
             // 
-            // radioButton7
+            // Rdo_PretoBranco
             // 
-            this.radioButton7.AutoSize = true;
-            this.radioButton7.Location = new System.Drawing.Point(53, 82);
-            this.radioButton7.Name = "radioButton7";
-            this.radioButton7.Size = new System.Drawing.Size(96, 17);
-            this.radioButton7.TabIndex = 1;
-            this.radioButton7.TabStop = true;
-            this.radioButton7.Text = "Preto e Branco";
-            this.radioButton7.UseVisualStyleBackColor = true;
+            this.Rdo_PretoBranco.AutoSize = true;
+            this.Rdo_PretoBranco.Location = new System.Drawing.Point(53, 82);
+            this.Rdo_PretoBranco.Name = "Rdo_PretoBranco";
+            this.Rdo_PretoBranco.Size = new System.Drawing.Size(96, 17);
+            this.Rdo_PretoBranco.TabIndex = 1;
+            this.Rdo_PretoBranco.TabStop = true;
+            this.Rdo_PretoBranco.Text = "Preto e Branco";
+            this.Rdo_PretoBranco.UseVisualStyleBackColor = true;
             // 
             // Rdo_Cinza
             // 
@@ -627,22 +627,22 @@ namespace Photo_Editor
         private System.Windows.Forms.Label Lbl_Imagem03;
         private System.Windows.Forms.GroupBox Grp_B_Arit;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.RadioButton radioButton5;
+        private System.Windows.Forms.RadioButton Rdo_Soma;
         private System.Windows.Forms.RadioButton Rdo_Negativo;
-        private System.Windows.Forms.RadioButton radioButton7;
+        private System.Windows.Forms.RadioButton Rdo_PretoBranco;
         private System.Windows.Forms.RadioButton Rdo_Cinza;
         private System.Windows.Forms.GroupBox Rdo_XOR;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.RadioButton radioButton10;
         private System.Windows.Forms.RadioButton Rdo_OR;
         private System.Windows.Forms.RadioButton Rdo_AND;
-        private System.Windows.Forms.RadioButton radioButton13;
+        private System.Windows.Forms.RadioButton Rdo_Sub;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel1;
         private ComponentFactory.Krypton.Toolkit.KryptonButton Btn_Imagem01;
         private ComponentFactory.Krypton.Toolkit.KryptonButton Btn_Imagem02;
         private ComponentFactory.Krypton.Toolkit.KryptonButton Btn_Aplicar_Ar;
-        private ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown kryptonNumericUpDown1;
+        private ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown Num_UpDown_Limiar;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.PictureBox pictureBox6;
