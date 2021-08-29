@@ -15,17 +15,43 @@ namespace Photo_Editor
     public partial class Form1_Photo_Editor : Form
     {
         public static int Limiar;
+        public static int CorrecaoSelecionado;
+        public static int Imagem_Constante;
 
         public Form1_Photo_Editor()
         {
             InitializeComponent();
 
         }
-
-        private void Form1_Photo_Editor_Load(object sender, EventArgs e)
+        private void Cmbb_Correcao_SelectedIndexChanged(object sender, EventArgs e)
         {
-
-
+            if (Cmbb_Correcao.SelectedIndex == 1)
+            {
+                CorrecaoSelecionado = 0; // Truncamento
+            }
+            else
+            {
+                CorrecaoSelecionado = 1; // Normalização
+            }
+        }
+        private void Cmbb_Imagem_Constante_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //0 - Entre Imagens
+            //1 - Constante
+            if (Cmbb_Imagem_Constante.SelectedIndex == 0)
+            {
+                Imagem_Constante = 0;
+            }
+            else
+            {
+                Imagem_Constante = 1;
+            }
+        }
+        private void Form1_Photo_Editor_Load(object sender, EventArgs e)
+        {   
+           
+           
+            
         }
 
         private void Form1_Photo_Editor_MouseDown(object sender, MouseEventArgs e)
@@ -104,13 +130,7 @@ namespace Photo_Editor
                     Pcb_03.Image = ImagemPretoBranco;
                 }
             }
-            else if (Rdo_Soma.Checked == true)
-            {
-                Bitmap SomaImagem01 = new Bitmap(Pcb_01.Image);
-                Bitmap SomaImagem02 = new Bitmap(Pcb_02.Image);
-
-
-            }
+           
             else if (Rdo_Sub.Checked == true)
             {
                 Bitmap SubImagem01 = new Bitmap(Pcb_01.Image);
@@ -120,14 +140,23 @@ namespace Photo_Editor
             }
             else if (Rdo_Soma.Checked == true)
             {
-                if (Cmbb_Correcao.SelectedIndex == 0) // Se correção é igual 0, faço truncamento
-                {
-                    if (Cmbb_Imagem_Constante.SelectedIndex == 0) // Se selecionado entre imagens
+                
+                
+             
+               
+                    if (Pcb_02.Image == null)// se não selecionar imagem 02
                     {
-
+                        Pcb_03.Image = Operacoes_Aritmeticas.SomaImagem((Bitmap)Pcb_01.Image, (Bitmap)Pcb_01.Image, CorrecaoSelecionado, Imagem_Constante, Convert.ToInt32(Num_UpDown_Soma.Value));  
                     }
-                }
+                    else
+                    {
+                        Pcb_03.Image = Operacoes_Aritmeticas.SomaImagem((Bitmap)Pcb_01.Image, (Bitmap)Pcb_02.Image, CorrecaoSelecionado, Imagem_Constante, Convert.ToInt32(Num_UpDown_Soma.Value));
 
+                      
+                    }
+
+                
+                
             }
         }
 
@@ -149,5 +178,7 @@ namespace Photo_Editor
             Btn_Aplicar_Filtro.Enabled = true;
             MessageBox.Show("Filtro aplicado com sucesso", "Finalizado", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
+        
     }
 }

@@ -11,7 +11,7 @@ namespace Photo_Editor.Classes
 {
     class Operacoes_Aritmeticas
     {
-        public static Bitmap Imagem_R;
+       
         private static void Maior_Menor_Pixel(Bitmap Imagem01, Bitmap Imagem02, int Operacao, ref int Maior, ref int Menor)
         {   // Calculo de pixel em soma entre imagems
             // Valor = 0 Adição entre imagens
@@ -203,7 +203,7 @@ namespace Photo_Editor.Classes
             return Imagem;
         }
 
-        public Bitmap SomaImagem(Bitmap Imagem01, Bitmap Imagem02, int Correcao, int Constante_Imagem, int Valor_Constante)
+        public static Bitmap SomaImagem(Bitmap Imagem01, Bitmap Imagem02, int Correcao, int Constante_Imagem, int Valor_Constante)
         {
             int r = 0;
             int g = 0;
@@ -214,49 +214,69 @@ namespace Photo_Editor.Classes
             Color CorImagem01;
             Color CorImagem02;
             Color CorFinal;
+            Bitmap Imagem01_Temp = new Bitmap(Imagem01);
+            Bitmap Imagem02_Temp = new Bitmap(Imagem02);
+            FastBitmap fastBitmap01 = new FastBitmap(Imagem01);
 
 
             if (Correcao == 1)  // Normalização de pixeis 
             {
                 if (Constante_Imagem == 0)  // Se é operação com imagem ou constante, 0 é imagem 1 é com constante
                 {
-                    Maior_Menor_Pixel(Imagem01, Imagem02, 1, ref Maior, ref Menor); // Calculo o pixel se operção entre imagens
+                    Maior_Menor_Pixel(Imagem01_Temp, Imagem02_Temp, 1, ref Maior, ref Menor); // Calculo o pixel se operção entre imagens
                 }
                 else
                 {
-                    Maior_Menor_Pixel(Imagem01, Constante_Imagem, 2, ref Maior, ref Menor);// Calculo o pixel se operção com constantes
+                    Maior_Menor_Pixel(Imagem01_Temp, Constante_Imagem, 2, ref Maior, ref Menor);// Calculo o pixel se operção com constantes
                 }
             }
-            if (Constante_Imagem == 0) // Se opereção entre imagens
-            {
-                using (var fastBitmap01 = Imagem01.FastLock())
-                using (var fastBitmap02 = Imagem02.FastLock())
+                fastBitmap01.Lock();
+                if (Constante_Imagem == 0) // Se opereção entre imagens
+                {
+
                     // Operação entre imagens
-                    for (x = 0; x < Imagem01.Width; x++)
+                    for (x = 0; x < Imagem01_Temp.Width; x++)
                     {
-                        for (y = 0; y < Imagem01.Height; y++)
+                        for (y = 0; y < Imagem01_Temp.Height; y++)
                         {
-                            CorImagem01 = fastBitmap01.GetPixel(x, y);
-                            CorImagem02 = fastBitmap02.GetPixel(x, y);
+                            CorImagem01 = Imagem01_Temp.GetPixel(x, y);
+                            CorImagem02 = Imagem02_Temp.GetPixel(x, y);
                             r = CalcularSoma(CorImagem01.R + CorImagem02.R, Correcao, Maior, Menor);
-                            r = CalcularSoma(CorImagem01.G + CorImagem02.G, Correcao, Maior, Menor);
-                            r = CalcularSoma(CorImagem01.B + CorImagem02.B, Correcao, Maior, Menor);
+                            g = CalcularSoma(CorImagem01.G + CorImagem02.G, Correcao, Maior, Menor);
+                            b = CalcularSoma(CorImagem01.B + CorImagem02.B, Correcao, Maior, Menor);
                             CorFinal = Color.FromArgb(CorImagem01.A, r, g, b);
                             fastBitmap01.SetPixel(x, y, CorFinal);
                         }
                     }
-            }
-            else if (Constante_Imagem == 1) // se operação com constante
-            {
-                for (x =0; x < Imagem01.Width; x++)
-                {
-                    for (y =0;  y < Imagem01.Height; y++)
-                    {   
-                        // PAREI AQUI, OPERAÇÃO COM CONSTANTE, LINHA 374 DO OUTRO CÓDIGO
-                        CorImagem01 = fast
-                    }
                 }
-            }
+                else if (Constante_Imagem == 1) // se operação com constante
+                {
+
+
+                    for (x = 0; x < Imagem01_Temp.Width; x++)
+                    {
+                        for (y = 0; y < Imagem01_Temp.Height; y++)
+                        {
+                           
+                            CorImagem01 = Imagem01_Temp.GetPixel(x, y);
+                            CorImagem02 = Imagem02_Temp.GetPixel(x, y);
+                            r = CalcularSoma(CorImagem01.R + Valor_Constante, Correcao, Maior, Menor);
+                            g = CalcularSoma(CorImagem01.G + Valor_Constante, Correcao, Maior, Menor);
+                            b = CalcularSoma(CorImagem01.B + Valor_Constante, Correcao, Maior, Menor);
+                            CorFinal = Color.FromArgb(CorImagem01.A, r, g, b);
+                            fastBitmap01.SetPixel(x, y, CorFinal);
+                        }
+                    }
+                   
+
+                }
+                
+            
+            Imagem01_Temp.Dispose();
+            fastBitmap01.Unlock();
+            return Imagem01;
         }
     }
 }
+
+

@@ -641,6 +641,7 @@ namespace Photo_Editor
             this.Cmbb_Correcao.Size = new System.Drawing.Size(107, 21);
             this.Cmbb_Correcao.TabIndex = 75;
             this.toolTip1.SetToolTip(this.Cmbb_Correcao, "Seleciona o tipo de correção a ser aplicada em caso de estouro do pixel");
+            this.Cmbb_Correcao.SelectedIndexChanged += new System.EventHandler(this.Cmbb_Correcao_SelectedIndexChanged);
             // 
             // Cmbb_Imagem_Constante
             // 
@@ -654,6 +655,7 @@ namespace Photo_Editor
             this.Cmbb_Imagem_Constante.Size = new System.Drawing.Size(107, 21);
             this.Cmbb_Imagem_Constante.TabIndex = 78;
             this.toolTip1.SetToolTip(this.Cmbb_Imagem_Constante, "Seleciona se a operação será feita em constante ou entre imagens");
+            this.Cmbb_Imagem_Constante.SelectedIndexChanged += new System.EventHandler(this.Cmbb_Imagem_Constante_SelectedIndexChanged);
             // 
             // label6
             // 
