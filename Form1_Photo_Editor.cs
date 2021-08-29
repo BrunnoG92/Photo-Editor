@@ -108,15 +108,26 @@ namespace Photo_Editor
             {
                 Bitmap SomaImagem01 = new Bitmap(Pcb_01.Image);
                 Bitmap SomaImagem02 = new Bitmap(Pcb_02.Image);
-              
-                Pcb_03.Image = Imagem_Resultado;
+
+
             }
             else if (Rdo_Sub.Checked == true)
             {
                 Bitmap SubImagem01 = new Bitmap(Pcb_01.Image);
                 Bitmap SubImagem02 = new Bitmap(Pcb_02.Image);
-              
-                Pcb_03.Image = Imagem_Resultado;
+
+
+            }
+            else if (Rdo_Soma.Checked == true)
+            {
+                if (Cmbb_Correcao.SelectedIndex == 0) // Se correção é igual 0, faço truncamento
+                {
+                    if (Cmbb_Imagem_Constante.SelectedIndex == 0) // Se selecionado entre imagens
+                    {
+
+                    }
+                }
+
             }
         }
 

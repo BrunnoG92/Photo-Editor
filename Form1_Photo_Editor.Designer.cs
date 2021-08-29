@@ -44,9 +44,11 @@ namespace Photo_Editor
             this.Lbl_Imagem02 = new System.Windows.Forms.Label();
             this.Lbl_Imagem03 = new System.Windows.Forms.Label();
             this.Grp_B_Arit = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.Num_UpDown_Sub = new ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown();
+            this.Num_UpDown_Soma = new ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown();
             this.Btn_Aplicar_Ar = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.Num_UpDown_Limiar = new ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown();
             this.Rdo_Sub = new System.Windows.Forms.RadioButton();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -68,6 +70,11 @@ namespace Photo_Editor
             this.Pcb_02 = new System.Windows.Forms.PictureBox();
             this.Pcb_01 = new System.Windows.Forms.PictureBox();
             this.Thread_Aritmetica = new System.ComponentModel.BackgroundWorker();
+            this.Num_UpDown_Limiar = new ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown();
+            this.Cmbb_Correcao = new System.Windows.Forms.ComboBox();
+            this.toolTip2 = new System.Windows.Forms.ToolTip(this.components);
+            this.Cmbb_Imagem_Constante = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.Grp_B_Filtros.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.Grp_B_Arit.SuspendLayout();
@@ -119,9 +126,9 @@ namespace Photo_Editor
             this.Grp_B_Filtros.Controls.Add(this.radioButton2);
             this.Grp_B_Filtros.Controls.Add(this.radioButton1);
             this.Grp_B_Filtros.ForeColor = System.Drawing.Color.White;
-            this.Grp_B_Filtros.Location = new System.Drawing.Point(64, 333);
+            this.Grp_B_Filtros.Location = new System.Drawing.Point(64, 314);
             this.Grp_B_Filtros.Name = "Grp_B_Filtros";
-            this.Grp_B_Filtros.Size = new System.Drawing.Size(351, 271);
+            this.Grp_B_Filtros.Size = new System.Drawing.Size(351, 311);
             this.Grp_B_Filtros.TabIndex = 1;
             this.Grp_B_Filtros.TabStop = false;
             this.Grp_B_Filtros.Text = "Filtros";
@@ -129,7 +136,7 @@ namespace Photo_Editor
             // Btn_Aplicar_Filtro
             // 
             this.Btn_Aplicar_Filtro.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.Btn_Aplicar_Filtro.Location = new System.Drawing.Point(97, 239);
+            this.Btn_Aplicar_Filtro.Location = new System.Drawing.Point(97, 279);
             this.Btn_Aplicar_Filtro.Name = "Btn_Aplicar_Filtro";
             this.Btn_Aplicar_Filtro.Size = new System.Drawing.Size(100, 26);
             this.Btn_Aplicar_Filtro.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
@@ -253,6 +260,12 @@ namespace Photo_Editor
             this.Grp_B_Arit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Grp_B_Arit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
+            this.Grp_B_Arit.Controls.Add(this.Cmbb_Imagem_Constante);
+            this.Grp_B_Arit.Controls.Add(this.label6);
+            this.Grp_B_Arit.Controls.Add(this.Cmbb_Correcao);
+            this.Grp_B_Arit.Controls.Add(this.label5);
+            this.Grp_B_Arit.Controls.Add(this.Num_UpDown_Sub);
+            this.Grp_B_Arit.Controls.Add(this.Num_UpDown_Soma);
             this.Grp_B_Arit.Controls.Add(this.Btn_Aplicar_Ar);
             this.Grp_B_Arit.Controls.Add(this.pictureBox4);
             this.Grp_B_Arit.Controls.Add(this.Num_UpDown_Limiar);
@@ -264,17 +277,58 @@ namespace Photo_Editor
             this.Grp_B_Arit.Controls.Add(this.Rdo_PretoBranco);
             this.Grp_B_Arit.Controls.Add(this.Rdo_Cinza);
             this.Grp_B_Arit.ForeColor = System.Drawing.Color.White;
-            this.Grp_B_Arit.Location = new System.Drawing.Point(438, 333);
+            this.Grp_B_Arit.Location = new System.Drawing.Point(438, 314);
             this.Grp_B_Arit.Name = "Grp_B_Arit";
-            this.Grp_B_Arit.Size = new System.Drawing.Size(351, 271);
+            this.Grp_B_Arit.Size = new System.Drawing.Size(351, 311);
             this.Grp_B_Arit.TabIndex = 5;
             this.Grp_B_Arit.TabStop = false;
             this.Grp_B_Arit.Text = "Operações Aritméticas";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(32, 46);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(89, 13);
+            this.label5.TabIndex = 77;
+            this.label5.Text = "Tipo de Correção";
+            // 
+            // Num_UpDown_Sub
+            // 
+            this.Num_UpDown_Sub.Location = new System.Drawing.Point(131, 245);
+            this.Num_UpDown_Sub.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.Num_UpDown_Sub.Name = "Num_UpDown_Sub";
+            this.Num_UpDown_Sub.Size = new System.Drawing.Size(120, 19);
+            this.Num_UpDown_Sub.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
+            this.Num_UpDown_Sub.StateCommon.Content.Color1 = System.Drawing.Color.White;
+            this.Num_UpDown_Sub.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Num_UpDown_Sub.TabIndex = 75;
+            this.Num_UpDown_Sub.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // Num_UpDown_Soma
+            // 
+            this.Num_UpDown_Soma.Location = new System.Drawing.Point(131, 212);
+            this.Num_UpDown_Soma.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.Num_UpDown_Soma.Name = "Num_UpDown_Soma";
+            this.Num_UpDown_Soma.Size = new System.Drawing.Size(120, 19);
+            this.Num_UpDown_Soma.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
+            this.Num_UpDown_Soma.StateCommon.Content.Color1 = System.Drawing.Color.White;
+            this.Num_UpDown_Soma.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Num_UpDown_Soma.TabIndex = 74;
+            this.Num_UpDown_Soma.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // Btn_Aplicar_Ar
             // 
             this.Btn_Aplicar_Ar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.Btn_Aplicar_Ar.Location = new System.Drawing.Point(108, 239);
+            this.Btn_Aplicar_Ar.Location = new System.Drawing.Point(108, 279);
             this.Btn_Aplicar_Ar.Name = "Btn_Aplicar_Ar";
             this.Btn_Aplicar_Ar.Size = new System.Drawing.Size(100, 26);
             this.Btn_Aplicar_Ar.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
@@ -292,31 +346,16 @@ namespace Photo_Editor
             // pictureBox4
             // 
             this.pictureBox4.Image = global::Photo_Editor.Properties.Resources.icons8_sem_imagem_80;
-            this.pictureBox4.Location = new System.Drawing.Point(247, 39);
+            this.pictureBox4.Location = new System.Drawing.Point(259, 59);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(97, 84);
+            this.pictureBox4.Size = new System.Drawing.Size(85, 86);
             this.pictureBox4.TabIndex = 5;
             this.pictureBox4.TabStop = false;
-            // 
-            // Num_UpDown_Limiar
-            // 
-            this.Num_UpDown_Limiar.Location = new System.Drawing.Point(108, 106);
-            this.Num_UpDown_Limiar.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
-            this.Num_UpDown_Limiar.Name = "Num_UpDown_Limiar";
-            this.Num_UpDown_Limiar.Size = new System.Drawing.Size(120, 19);
-            this.Num_UpDown_Limiar.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
-            this.Num_UpDown_Limiar.StateCommon.Content.Color1 = System.Drawing.Color.White;
-            this.Num_UpDown_Limiar.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Num_UpDown_Limiar.TabIndex = 73;
             // 
             // Rdo_Sub
             // 
             this.Rdo_Sub.AutoSize = true;
-            this.Rdo_Sub.Location = new System.Drawing.Point(53, 199);
+            this.Rdo_Sub.Location = new System.Drawing.Point(51, 245);
             this.Rdo_Sub.Name = "Rdo_Sub";
             this.Rdo_Sub.Size = new System.Drawing.Size(74, 17);
             this.Rdo_Sub.TabIndex = 12;
@@ -327,7 +366,7 @@ namespace Photo_Editor
             // label4
             // 
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(53, 107);
+            this.label4.Location = new System.Drawing.Point(51, 153);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(49, 18);
             this.label4.TabIndex = 11;
@@ -347,7 +386,7 @@ namespace Photo_Editor
             // Rdo_Soma
             // 
             this.Rdo_Soma.AutoSize = true;
-            this.Rdo_Soma.Location = new System.Drawing.Point(53, 166);
+            this.Rdo_Soma.Location = new System.Drawing.Point(51, 212);
             this.Rdo_Soma.Name = "Rdo_Soma";
             this.Rdo_Soma.Size = new System.Drawing.Size(52, 17);
             this.Rdo_Soma.TabIndex = 3;
@@ -358,7 +397,7 @@ namespace Photo_Editor
             // Rdo_Negativo
             // 
             this.Rdo_Negativo.AutoSize = true;
-            this.Rdo_Negativo.Location = new System.Drawing.Point(53, 139);
+            this.Rdo_Negativo.Location = new System.Drawing.Point(51, 185);
             this.Rdo_Negativo.Name = "Rdo_Negativo";
             this.Rdo_Negativo.Size = new System.Drawing.Size(68, 17);
             this.Rdo_Negativo.TabIndex = 2;
@@ -369,7 +408,7 @@ namespace Photo_Editor
             // Rdo_PretoBranco
             // 
             this.Rdo_PretoBranco.AutoSize = true;
-            this.Rdo_PretoBranco.Location = new System.Drawing.Point(53, 82);
+            this.Rdo_PretoBranco.Location = new System.Drawing.Point(51, 128);
             this.Rdo_PretoBranco.Name = "Rdo_PretoBranco";
             this.Rdo_PretoBranco.Size = new System.Drawing.Size(96, 17);
             this.Rdo_PretoBranco.TabIndex = 1;
@@ -380,7 +419,7 @@ namespace Photo_Editor
             // Rdo_Cinza
             // 
             this.Rdo_Cinza.AutoSize = true;
-            this.Rdo_Cinza.Location = new System.Drawing.Point(53, 50);
+            this.Rdo_Cinza.Location = new System.Drawing.Point(51, 105);
             this.Rdo_Cinza.Name = "Rdo_Cinza";
             this.Rdo_Cinza.Size = new System.Drawing.Size(101, 17);
             this.Rdo_Cinza.TabIndex = 0;
@@ -400,9 +439,9 @@ namespace Photo_Editor
             this.Rdo_XOR.Controls.Add(this.Rdo_OR);
             this.Rdo_XOR.Controls.Add(this.Rdo_AND);
             this.Rdo_XOR.ForeColor = System.Drawing.Color.White;
-            this.Rdo_XOR.Location = new System.Drawing.Point(816, 333);
+            this.Rdo_XOR.Location = new System.Drawing.Point(816, 314);
             this.Rdo_XOR.Name = "Rdo_XOR";
-            this.Rdo_XOR.Size = new System.Drawing.Size(339, 271);
+            this.Rdo_XOR.Size = new System.Drawing.Size(339, 311);
             this.Rdo_XOR.TabIndex = 10;
             this.Rdo_XOR.TabStop = false;
             this.Rdo_XOR.Text = "Filtros";
@@ -410,7 +449,7 @@ namespace Photo_Editor
             // Btn_Aplica_Bool
             // 
             this.Btn_Aplica_Bool.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.Btn_Aplica_Bool.Location = new System.Drawing.Point(141, 239);
+            this.Btn_Aplica_Bool.Location = new System.Drawing.Point(141, 279);
             this.Btn_Aplica_Bool.Name = "Btn_Aplica_Bool";
             this.Btn_Aplica_Bool.Size = new System.Drawing.Size(100, 26);
             this.Btn_Aplica_Bool.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
@@ -574,6 +613,57 @@ namespace Photo_Editor
             this.Thread_Aritmetica.DoWork += new System.ComponentModel.DoWorkEventHandler(this.Thread_Aritmetica_DoWork);
             this.Thread_Aritmetica.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.Thread_Aritmetica_RunWorkerCompleted);
             // 
+            // Num_UpDown_Limiar
+            // 
+            this.Num_UpDown_Limiar.Location = new System.Drawing.Point(131, 151);
+            this.Num_UpDown_Limiar.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.Num_UpDown_Limiar.Name = "Num_UpDown_Limiar";
+            this.Num_UpDown_Limiar.Size = new System.Drawing.Size(120, 19);
+            this.Num_UpDown_Limiar.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
+            this.Num_UpDown_Limiar.StateCommon.Content.Color1 = System.Drawing.Color.White;
+            this.Num_UpDown_Limiar.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Num_UpDown_Limiar.TabIndex = 73;
+            this.Num_UpDown_Limiar.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // Cmbb_Correcao
+            // 
+            this.Cmbb_Correcao.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Cmbb_Correcao.FormattingEnabled = true;
+            this.Cmbb_Correcao.Items.AddRange(new object[] {
+            "Truncar 0 - 255",
+            "Média"});
+            this.Cmbb_Correcao.Location = new System.Drawing.Point(132, 43);
+            this.Cmbb_Correcao.Name = "Cmbb_Correcao";
+            this.Cmbb_Correcao.Size = new System.Drawing.Size(107, 21);
+            this.Cmbb_Correcao.TabIndex = 75;
+            this.toolTip1.SetToolTip(this.Cmbb_Correcao, "Seleciona o tipo de correção a ser aplicada em caso de estouro do pixel");
+            // 
+            // Cmbb_Imagem_Constante
+            // 
+            this.Cmbb_Imagem_Constante.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Cmbb_Imagem_Constante.FormattingEnabled = true;
+            this.Cmbb_Imagem_Constante.Items.AddRange(new object[] {
+            "0 - Entre Imagens",
+            "1 - Constante"});
+            this.Cmbb_Imagem_Constante.Location = new System.Drawing.Point(132, 70);
+            this.Cmbb_Imagem_Constante.Name = "Cmbb_Imagem_Constante";
+            this.Cmbb_Imagem_Constante.Size = new System.Drawing.Size(107, 21);
+            this.Cmbb_Imagem_Constante.TabIndex = 78;
+            this.toolTip1.SetToolTip(this.Cmbb_Imagem_Constante, "Seleciona se a operação será feita em constante ou entre imagens");
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(32, 73);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(97, 13);
+            this.label6.TabIndex = 79;
+            this.label6.Text = "Imagem/Constante";
+            // 
             // Form1_Photo_Editor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -642,13 +732,20 @@ namespace Photo_Editor
         private ComponentFactory.Krypton.Toolkit.KryptonButton Btn_Imagem01;
         private ComponentFactory.Krypton.Toolkit.KryptonButton Btn_Imagem02;
         private ComponentFactory.Krypton.Toolkit.KryptonButton Btn_Aplicar_Ar;
-        private ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown Num_UpDown_Limiar;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.PictureBox pictureBox6;
         private System.ComponentModel.BackgroundWorker Thread_Aritmetica;
         private ComponentFactory.Krypton.Toolkit.KryptonButton Btn_Aplicar_Filtro;
         private ComponentFactory.Krypton.Toolkit.KryptonButton Btn_Aplica_Bool;
+        private ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown Num_UpDown_Soma;
+        private ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown Num_UpDown_Sub;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ComboBox Cmbb_Correcao;
+        private ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown Num_UpDown_Limiar;
+        private System.Windows.Forms.ToolTip toolTip2;
+        private System.Windows.Forms.ComboBox Cmbb_Imagem_Constante;
+        private System.Windows.Forms.Label label6;
     }
 }
 
