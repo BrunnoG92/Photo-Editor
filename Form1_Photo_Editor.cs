@@ -25,13 +25,13 @@ namespace Photo_Editor
         }
         private void Cmbb_Correcao_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (Cmbb_Correcao.SelectedIndex == 1)
+            if (Cmbb_Correcao.SelectedIndex == 0)
             {
                 CorrecaoSelecionado = 0; // Truncamento
             }
             else
             {
-                CorrecaoSelecionado = 1; // Normalização
+                CorrecaoSelecionado = 1; // Normalização/Média
             }
         }
         private void Cmbb_Imagem_Constante_SelectedIndexChanged(object sender, EventArgs e)
@@ -146,11 +146,11 @@ namespace Photo_Editor
                
                     if (Pcb_02.Image == null)// se não selecionar imagem 02
                     {
-                        Pcb_03.Image = Operacoes_Aritmeticas.SomaImagem((Bitmap)Pcb_01.Image, (Bitmap)Pcb_01.Image, CorrecaoSelecionado, Imagem_Constante, Convert.ToInt32(Num_UpDown_Soma.Value));  
+                        Pcb_03.Image = Operacoes_Aritmeticas.ConverteSoma((Bitmap)Pcb_01.Image, (Bitmap)Pcb_01.Image, CorrecaoSelecionado, Imagem_Constante, Convert.ToInt32(Num_UpDown_Soma.Value));  
                     }
                     else
                     {
-                        Pcb_03.Image = Operacoes_Aritmeticas.SomaImagem((Bitmap)Pcb_01.Image, (Bitmap)Pcb_02.Image, CorrecaoSelecionado, Imagem_Constante, Convert.ToInt32(Num_UpDown_Soma.Value));
+                        Pcb_03.Image = Operacoes_Aritmeticas.ConverteSoma((Bitmap)Pcb_01.Image, (Bitmap)Pcb_02.Image, CorrecaoSelecionado, Imagem_Constante, Convert.ToInt32(Num_UpDown_Soma.Value));
 
                       
                     }

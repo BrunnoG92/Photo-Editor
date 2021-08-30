@@ -5,143 +5,227 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Windows.Forms;
 
 namespace Photo_Editor.Classes
 {
     class Operacoes_Aritmeticas
     {
-       
-        private static void Maior_Menor_Pixel(Bitmap Imagem01, Bitmap Imagem02, int Operacao, ref int Maior, ref int Menor)
-        {   // Calculo de pixel em soma entre imagems
-            // Valor = 0 Adição entre imagens
-            // Valor = N Adição com constantes
-            // Operador 1 = Adição entre imagens
-            // Operador 2 = Adição com constante
-            // Operador 3 = Subtração entre imagens
-            Color CorImagem01;
-            Color CorImagem02;
-            int x, y;
-            CorImagem01 = Imagem01.GetPixel(0, 0);
-            Maior = CorImagem01.R;
-            Menor = CorImagem01.R;
+
+        private static void Maior_Menor_Pixel(Bitmap Imagem01_Temp, Bitmap Imagem02_Temp, int Tipo_Operacao, ref int Maior, ref int Menor)
+        {
+            Color cor, cor2;
             double r, g, b;
-            if (Operacao == 1) // Se adição entre imagems
+
+            cor = Imagem01_Temp.GetPixel(0, 0);
+            Maior = cor.R;
+            Menor = cor.R;
+
+            if (Tipo_Operacao == 0) // Adição entre imagens
             {
-                using (var fastBitmap01 = Imagem01.FastLock())
+                for (int x = 0; x < Imagem01_Temp.Width; x++)
                 {
-                    using (var fastBitmap02 = Imagem02.FastLock())
+                    for (int y = 0; y < Imagem01_Temp.Height; y++)
                     {
-                        for (x = 0; x < Imagem01.Width; x++)
-                        {
-                            for (y = 0; y < Imagem01.Height; y++)
-                            {
-                                CorImagem01 = fastBitmap01.GetPixel(x, y);
-                                CorImagem02 = fastBitmap02.GetPixel(x, y);
-                                r = CorImagem01.R + CorImagem02.R;
-                                g = CorImagem01.G + CorImagem02.G;
-                                b = CorImagem01.B + CorImagem02.B;
-                                if (r > Maior)
-                                {
-                                    Maior = Convert.ToInt32(r);
-                                }
-                                else if (g > Maior)
-                                {
-                                    Maior = Convert.ToInt32(g);
-                                }
-                                else if (b > Maior)
-                                {
-                                    Maior = Convert.ToInt32(b);
-                                }
-                                else if (r < Menor)
-                                {
-                                    Maior = Convert.ToInt32(r);
-                                }
-                                else if (g < Menor)
-                                {
-                                    Maior = Convert.ToInt32(g);
-                                }
-                                else if (b < Menor)
-                                {
-                                    Maior = Convert.ToInt32(b);
-                                }
-                            }
-                        }
+                        cor = Imagem01_Temp.GetPixel(x, y);
+                        cor2 = Imagem02_Temp.GetPixel(x, y);
+                        r = cor.R + cor2.R;
+                        g = cor.G + cor2.G;
+                        b = cor.B + cor2.B;
+
+                        if (r > Maior)
+                            Maior = Convert.ToInt32(r);
+                        else if (g > Maior)
+                            Maior = Convert.ToInt32(g);
+                        else if (b > Maior)
+                            Maior = Convert.ToInt32(b);
+                        else if (r < Menor)
+                            Menor = Convert.ToInt32(r);
+                        else if (g < Menor)
+                            Menor = Convert.ToInt32(g);
+                        else if (b < Menor)
+                            Menor = Convert.ToInt32(b);
+                    }
+                }
+            }
+
+        }
+        private static void Maior_Menor_Pixel(Bitmap Imagem01_Temp, int Valor_Constante, int Tipo_Operacao, ref int Maior, ref int Menor)
+        {
+            Color cor;
+            double r, g, b;
+
+            cor = Imagem01_Temp.GetPixel(0, 0);
+            Maior = cor.R;
+            Menor = cor.R;
+
+
+
+
+            if (Tipo_Operacao == 1) // Adição com constantes
+            {
+                for (int x = 0; x < Imagem01_Temp.Width; x++)
+                {
+                    for (int y = 0; y < Imagem01_Temp.Height; y++)
+                    {
+                        cor = Imagem01_Temp.GetPixel(x, y);
+                        r = cor.R + Valor_Constante;
+                        g = cor.G + Valor_Constante;
+                        b = cor.B + Valor_Constante;
+
+                        if (r > Maior)
+                            Maior = (int)r;
+                        else if (g > Maior)
+                            Maior = (int)g;
+                        else if (b > Maior)
+                            Maior = (int)b;
+                        else if (r < Menor)
+                            Menor = (int)r;
+                        else if (g < Menor)
+                            Menor = (int)g;
+                        else if (b < Menor)
+                            Menor = (int)b;
+                    }
+                }
+            }
+
+        }
+        private static void Maior_Menor_Pixel(Bitmap bitmaptemp, int op, ref int Maior, ref int Menor)
+        {
+            Color cor;
+            int r, g, b;
+
+            cor = bitmaptemp.GetPixel(0, 0);
+            Maior = cor.R;
+            Menor = cor.R;
+
+            if (op == 5)
+            {
+                for (int x = 0; x < bitmaptemp.Width; x++)
+                {
+                    for (int y = 0; y < bitmaptemp.Height; y++)
+                    {
+                        cor = bitmaptemp.GetPixel(x, y);
+                        r = cor.R;
+                        g = cor.G;
+                        b = cor.B;
+
+                        if (r > Maior)
+                            Maior = r;
+                        else if (g > Maior)
+                            Maior = g;
+                        else if (b > Maior)
+                            Maior = b;
+                        else if (r < Menor)
+                            Menor = r;
+                        else if (g < Menor)
+                            Menor = g;
+                        else if (b < Menor)
+                            Menor = b;
                     }
                 }
             }
         }
-        private static int CalcularSoma(int Cor, int Correcao, int Maior, int Menor)
+
+
+        public static int Calcula_Soma(int Cor, int Tipo_Correcao, int Maior, int Menor)
         {
-            float flutuante1, flutuante2, flutante3, resultado;
-            if (Correcao == 0)  // se trucamento
+            float virgula, virgula2, resultado, virgula3;
+            //CORREÇÃO "0" INDICA TRUNCAMENTO 0-255
+            if (Tipo_Correcao == 0)
             {
                 if (Cor > 255)
-                {
                     return 255;
-                }
+
                 if (Cor < 0)
-                {
                     return 0;
-                }
+
                 return Cor;
             }
-            else // Se normalização
+            //CORREÇÃO "1" INDICA NORMALIZAÇÃO
+            else
             {
-                flutuante1 = (Maior - Menor);
-                flutuante2 = 255 / flutuante1;
-                flutante3 = (Cor - Menor);
-                resultado = flutuante2 * flutante3;
+                virgula = (Maior - Menor);
+                virgula2 = 255 / virgula;
+                virgula3 = (Cor - Menor);
+                resultado = virgula2 * virgula3;
                 return Convert.ToInt32(resultado);
             }
-        }
-        private static void Maior_Menor_Pixel(Bitmap Imagem, int Valor, int Operacao, ref int Maior, ref int Menor)
-        {   // calculo de valor de pixel em soma com constante
-            Color CorImagem;
-            CorImagem = Imagem.GetPixel(0, 0);
-            double r, g, b;
-            int x, y;
-            Maior = CorImagem.R;
-            Menor = CorImagem.R;
-            if (Operacao == 2) // Se adição com constante
-                using (var fastBitmap = Imagem.FastLock())
-                {
-                    for (x = 0; x < Imagem.Width; x++)
-                    {
-                        for (y = 0; y < Imagem.Height; y++)
-                        {
-                            CorImagem = fastBitmap.GetPixel(x, y);
-                            r = CorImagem.R * (Valor * 0.01);
-                            g = CorImagem.G * (Valor * 0.01);
-                            b = CorImagem.B * (Valor * 0.01);
-                            if (r > Maior)
-                            {
-                                Maior = Convert.ToInt32(r);
-                            }
-                            else if (g > Maior)
-                            {
-                                Maior = Convert.ToInt32(g);
-                            }
-                            else if (b > Maior)
-                            {
-                                Maior = Convert.ToInt32(b);
-                            }
-                            else if (r < Menor)
-                            {
-                                Maior = Convert.ToInt32(r);
-                            }
-                            else if (g < Menor)
-                            {
-                                Maior = Convert.ToInt32(g);
-                            }
-                            else if (b < Menor)
-                            {
-                                Maior = Convert.ToInt32(b);
-                            }
-                        }
 
+        }
+
+        public static Bitmap ConverteSoma(Image image1, Image image2, int Tipo_Correcao, int Imagem_Constante, int valorConstante)
+        {
+            
+                Bitmap bitmap1 = new Bitmap(image1);
+                Bitmap bitmap2 = new Bitmap(image2);
+
+                FastBitmap fastBitmap1 = new FastBitmap(bitmap1);
+
+                Bitmap bitmaptemp1 = new Bitmap(image1);
+                Bitmap bitmaptemp2 = new Bitmap(image2);
+
+                Color cor1, cor2, color;
+                int r, g, b, Maior = 0, Menor = 0;
+
+                //VERIFICA O TIPO DE CORREÇÃO, CASO FOR 1 ELE PRECISARÁ DOS VALORES DE MAX E MIN FUTURAMENTE, ENTÃO ESTES VALORES SÃO ENCONTRADOS AQUI NO INÍCIO.
+                if (Tipo_Correcao == 1)
+                {
+                    if (Imagem_Constante == 0)
+                        Maior_Menor_Pixel(bitmaptemp1, bitmaptemp2, 0, ref Maior, ref Menor);//O MÉTODO QUE ENCONTRARÁ MAX E MIN CASO A OPERAÇÃO SEJA ENTRE DUAS IMAGENS
+                    else
+                        Maior_Menor_Pixel(bitmaptemp1, valorConstante, 1, ref Maior, ref Menor);//O MÉTODO QUE ENCONTRARÁ MAX E MIN CASO A OPERAÇÃO SEJA COM UM VALOR CONSTANTE
+                   
+                }
+
+                fastBitmap1.Lock();
+
+                if (Imagem_Constante == 0)
+                {
+                    //ARGUMENTOS PARA OPERAÇÃO ENTRE IMAGENS
+                    for (int x = 0; x < bitmap1.Width; x++)
+                    {
+                        for (int y = 0; y < bitmap1.Height; y++)
+                        {
+                            cor1 = bitmaptemp1.GetPixel(x, y);
+                            cor2 = bitmaptemp2.GetPixel(x, y);
+
+                            r = Calcula_Soma(cor1.R + cor2.R, Tipo_Correcao, Maior, Menor);
+                            g = Calcula_Soma(cor1.G + cor2.G, Tipo_Correcao, Maior, Menor);
+                            b = Calcula_Soma(cor1.B + cor2.B, Tipo_Correcao, Maior, Menor);
+
+                            color = Color.FromArgb(cor1.A, r, g, b);
+
+                            fastBitmap1.SetPixel(x, y, color);
+                        }
                     }
                 }
+                else if (Imagem_Constante == 1)
+                {
+                    //ARGUMENTOS PARA OPERAÇÃO COM UM VALOR CONSTANTE
+                    for (int x = 0; x < bitmap1.Width; x++)
+                    {
+                        for (int y = 0; y < bitmap1.Height; y++)
+                        {
+                            cor1 = bitmaptemp1.GetPixel(x, y);
+                            cor2 = bitmaptemp2.GetPixel(x, y);
+
+                            r = Calcula_Soma(cor1.R + valorConstante, Tipo_Correcao, Maior, Menor);
+                            g = Calcula_Soma(cor1.G + valorConstante, Tipo_Correcao, Maior, Menor);
+                            b = Calcula_Soma(cor1.B + valorConstante, Tipo_Correcao, Maior, Menor);
+
+                            color = Color.FromArgb(cor1.A, r, g, b);
+
+                            fastBitmap1.SetPixel(x, y, color);
+                        }
+                    }
+                }
+
+                bitmaptemp1.Dispose();
+                fastBitmap1.Unlock();
+                return bitmap1;
+            
+           
         }
 
         public static Bitmap ConverteCinza(Bitmap Imagem)
@@ -203,79 +287,7 @@ namespace Photo_Editor.Classes
             return Imagem;
         }
 
-        public static Bitmap SomaImagem(Bitmap Imagem01, Bitmap Imagem02, int Correcao, int Constante_Imagem, int Valor_Constante)
-        {
-            int r = 0;
-            int g = 0;
-            int b = 0;
-            int Maior = 0;
-            int Menor = 0;
-            int x, y;
-            Color CorImagem01;
-            Color CorImagem02;
-            Color CorFinal;
-            Bitmap Imagem01_Temp = new Bitmap(Imagem01);
-            Bitmap Imagem02_Temp = new Bitmap(Imagem02);
-            FastBitmap fastBitmap01 = new FastBitmap(Imagem01);
 
-
-            if (Correcao == 1)  // Normalização de pixeis 
-            {
-                if (Constante_Imagem == 0)  // Se é operação com imagem ou constante, 0 é imagem 1 é com constante
-                {
-                    Maior_Menor_Pixel(Imagem01_Temp, Imagem02_Temp, 1, ref Maior, ref Menor); // Calculo o pixel se operção entre imagens
-                }
-                else
-                {
-                    Maior_Menor_Pixel(Imagem01_Temp, Constante_Imagem, 2, ref Maior, ref Menor);// Calculo o pixel se operção com constantes
-                }
-            }
-                fastBitmap01.Lock();
-                if (Constante_Imagem == 0) // Se opereção entre imagens
-                {
-
-                    // Operação entre imagens
-                    for (x = 0; x < Imagem01_Temp.Width; x++)
-                    {
-                        for (y = 0; y < Imagem01_Temp.Height; y++)
-                        {
-                            CorImagem01 = Imagem01_Temp.GetPixel(x, y);
-                            CorImagem02 = Imagem02_Temp.GetPixel(x, y);
-                            r = CalcularSoma(CorImagem01.R + CorImagem02.R, Correcao, Maior, Menor);
-                            g = CalcularSoma(CorImagem01.G + CorImagem02.G, Correcao, Maior, Menor);
-                            b = CalcularSoma(CorImagem01.B + CorImagem02.B, Correcao, Maior, Menor);
-                            CorFinal = Color.FromArgb(CorImagem01.A, r, g, b);
-                            fastBitmap01.SetPixel(x, y, CorFinal);
-                        }
-                    }
-                }
-                else if (Constante_Imagem == 1) // se operação com constante
-                {
-
-
-                    for (x = 0; x < Imagem01_Temp.Width; x++)
-                    {
-                        for (y = 0; y < Imagem01_Temp.Height; y++)
-                        {
-                           
-                            CorImagem01 = Imagem01_Temp.GetPixel(x, y);
-                            CorImagem02 = Imagem02_Temp.GetPixel(x, y);
-                            r = CalcularSoma(CorImagem01.R + Valor_Constante, Correcao, Maior, Menor);
-                            g = CalcularSoma(CorImagem01.G + Valor_Constante, Correcao, Maior, Menor);
-                            b = CalcularSoma(CorImagem01.B + Valor_Constante, Correcao, Maior, Menor);
-                            CorFinal = Color.FromArgb(CorImagem01.A, r, g, b);
-                            fastBitmap01.SetPixel(x, y, CorFinal);
-                        }
-                    }
-                   
-
-                }
-                
-            
-            Imagem01_Temp.Dispose();
-            fastBitmap01.Unlock();
-            return Imagem01;
-        }
     }
 }
 
