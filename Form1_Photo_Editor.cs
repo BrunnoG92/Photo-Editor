@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -36,22 +38,23 @@ namespace Photo_Editor
         }
         private void Cmbb_Imagem_Constante_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //0 - Entre Imagens
-            //1 - Constante
+
+
             if (Cmbb_Imagem_Constante.SelectedIndex == 0)
             {
-                Imagem_Constante = 0;
+                Imagem_Constante = 0;  //0 - Entre Imagens
             }
             else
             {
-                Imagem_Constante = 1;
+                Imagem_Constante = 1;  //1 - Constante
             }
         }
+
         private void Form1_Photo_Editor_Load(object sender, EventArgs e)
-        {   
-           
-           
-            
+        {
+
+
+
         }
 
         private void Form1_Photo_Editor_MouseDown(object sender, MouseEventArgs e)
@@ -130,38 +133,36 @@ namespace Photo_Editor
                     Pcb_03.Image = ImagemPretoBranco;
                 }
             }
-           
-            else if (Rdo_Sub.Checked == true)
-            {
-                Bitmap SubImagem01 = new Bitmap(Pcb_01.Image);
-                Bitmap SubImagem02 = new Bitmap(Pcb_02.Image);
 
 
-            }
             else if (Rdo_Soma.Checked == true)
             {
-                
-                
-             
-               
-                    if (Pcb_02.Image == null)// se não selecionar imagem 02
-                    {
-                        Pcb_03.Image = Operacoes_Aritmeticas.ConverteSoma((Bitmap)Pcb_01.Image, (Bitmap)Pcb_01.Image, CorrecaoSelecionado, Imagem_Constante, Convert.ToInt32(Num_UpDown_Soma.Value));  
-                    }
-                    else
-                    {
-                        Pcb_03.Image = Operacoes_Aritmeticas.ConverteSoma((Bitmap)Pcb_01.Image, (Bitmap)Pcb_02.Image, CorrecaoSelecionado, Imagem_Constante, Convert.ToInt32(Num_UpDown_Soma.Value));
+                if (Pcb_02.Image == null)// se não selecionar imagem 02
+                {
+                    Pcb_03.Image = Operacoes_Aritmeticas.ConverteSoma((Bitmap)Pcb_01.Image, (Bitmap)Pcb_01.Image, CorrecaoSelecionado, Imagem_Constante, Convert.ToInt32(Num_UpDown_Soma.Value));
+                }
+                else
+                {
+                    Pcb_03.Image = Operacoes_Aritmeticas.ConverteSoma((Bitmap)Pcb_01.Image, (Bitmap)Pcb_02.Image, CorrecaoSelecionado, Imagem_Constante, Convert.ToInt32(Num_UpDown_Soma.Value));
 
-                      
-                    }
+                }
 
-                
-                
+            }
+            else if (Rdo_Sub.Checked == true)
+            {
+
+                if (Pcb_02.Image == null)// se imagem 02 não fo r selecionada
+                {
+                    Pcb_03.Image = Operacoes_Aritmeticas.ConverteSubtracao(Pcb_01.Image, Pcb_01.Image, CorrecaoSelecionado, Imagem_Constante, (int)Num_UpDown_Sub.Value);
+
+                }
+                else
+                {
+                    Pcb_03.Image = Operacoes_Aritmeticas.ConverteSubtracao(Pcb_01.Image, Pcb_02.Image, CorrecaoSelecionado, Imagem_Constante, (int)Num_UpDown_Sub.Value);
+
+                }
             }
         }
-
-
-
 
         private void Btn_Aplicar_Ar_Click(object sender, EventArgs e)
         {   // botão aplicar aritmetica chama a thread que faz os calculos aritméticos 
@@ -179,6 +180,29 @@ namespace Photo_Editor
             MessageBox.Show("Filtro aplicado com sucesso", "Finalizado", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        
+        private void Btn_Salvar_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog Salva_Foto = new SaveFileDialog();
+            Salva_Foto.Filter = "Images|*.png;*.bmp;*.jpg";
+            ImageFormat format = ImageFormat.Png;
+            if (Salva_Foto.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                string ext = System.IO.Path.GetExtension(Salva_Foto.FileName);
+                switch (ext)
+                {
+                    case ".jpg":
+                        format = ImageFormat.Jpeg;
+                        break;
+                    case ".bmp":
+                        format = ImageFormat.Bmp;
+                        break;
+                    case ".png":
+                        format = ImageFormat.Png;
+                        break;
+
+                }
+                Pcb_03.Image.Save(Salva_Foto.FileName, format);
+            }
+        }
     }
 }

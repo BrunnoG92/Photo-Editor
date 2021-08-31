@@ -32,6 +32,8 @@ namespace Photo_Editor
             this.components = new System.ComponentModel.Container();
             this.metroSetControlBox1 = new MetroSet_UI.Controls.MetroSetControlBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.Cmbb_Correcao = new System.Windows.Forms.ComboBox();
+            this.Cmbb_Imagem_Constante = new System.Windows.Forms.ComboBox();
             this.Grp_B_Filtros = new System.Windows.Forms.GroupBox();
             this.Btn_Aplicar_Filtro = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
@@ -44,11 +46,13 @@ namespace Photo_Editor
             this.Lbl_Imagem02 = new System.Windows.Forms.Label();
             this.Lbl_Imagem03 = new System.Windows.Forms.Label();
             this.Grp_B_Arit = new System.Windows.Forms.GroupBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.Num_UpDown_Sub = new ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown();
             this.Num_UpDown_Soma = new ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown();
             this.Btn_Aplicar_Ar = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.Num_UpDown_Limiar = new ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown();
             this.Rdo_Sub = new System.Windows.Forms.RadioButton();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -70,11 +74,11 @@ namespace Photo_Editor
             this.Pcb_02 = new System.Windows.Forms.PictureBox();
             this.Pcb_01 = new System.Windows.Forms.PictureBox();
             this.Thread_Aritmetica = new System.ComponentModel.BackgroundWorker();
-            this.Num_UpDown_Limiar = new ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown();
-            this.Cmbb_Correcao = new System.Windows.Forms.ComboBox();
-            this.toolTip2 = new System.Windows.Forms.ToolTip(this.components);
-            this.Cmbb_Imagem_Constante = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
+            this.Btn_Salvar = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.kryptonNumericUpDown1 = new ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown();
+            this.radioButton5 = new System.Windows.Forms.RadioButton();
+            this.kryptonNumericUpDown2 = new ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown();
+            this.radioButton6 = new System.Windows.Forms.RadioButton();
             this.Grp_B_Filtros.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.Grp_B_Arit.SuspendLayout();
@@ -113,6 +117,34 @@ namespace Photo_Editor
             this.metroSetControlBox1.ThemeAuthor = "Narwin";
             this.metroSetControlBox1.ThemeName = "MetroLite";
             // 
+            // Cmbb_Correcao
+            // 
+            this.Cmbb_Correcao.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Cmbb_Correcao.FormattingEnabled = true;
+            this.Cmbb_Correcao.Items.AddRange(new object[] {
+            "Truncar 0 - 255",
+            "Média"});
+            this.Cmbb_Correcao.Location = new System.Drawing.Point(132, 43);
+            this.Cmbb_Correcao.Name = "Cmbb_Correcao";
+            this.Cmbb_Correcao.Size = new System.Drawing.Size(107, 21);
+            this.Cmbb_Correcao.TabIndex = 75;
+            this.toolTip1.SetToolTip(this.Cmbb_Correcao, "Seleciona o tipo de correção a ser aplicada em caso de estouro do pixel");
+            this.Cmbb_Correcao.SelectedIndexChanged += new System.EventHandler(this.Cmbb_Correcao_SelectedIndexChanged);
+            // 
+            // Cmbb_Imagem_Constante
+            // 
+            this.Cmbb_Imagem_Constante.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Cmbb_Imagem_Constante.FormattingEnabled = true;
+            this.Cmbb_Imagem_Constante.Items.AddRange(new object[] {
+            "0 - Entre Imagens",
+            "1 - Constante"});
+            this.Cmbb_Imagem_Constante.Location = new System.Drawing.Point(132, 70);
+            this.Cmbb_Imagem_Constante.Name = "Cmbb_Imagem_Constante";
+            this.Cmbb_Imagem_Constante.Size = new System.Drawing.Size(107, 21);
+            this.Cmbb_Imagem_Constante.TabIndex = 78;
+            this.toolTip1.SetToolTip(this.Cmbb_Imagem_Constante, "Seleciona se a operação será feita em constante ou entre imagens");
+            this.Cmbb_Imagem_Constante.SelectedIndexChanged += new System.EventHandler(this.Cmbb_Imagem_Constante_SelectedIndexChanged);
+            // 
             // Grp_B_Filtros
             // 
             this.Grp_B_Filtros.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -128,7 +160,7 @@ namespace Photo_Editor
             this.Grp_B_Filtros.ForeColor = System.Drawing.Color.White;
             this.Grp_B_Filtros.Location = new System.Drawing.Point(64, 314);
             this.Grp_B_Filtros.Name = "Grp_B_Filtros";
-            this.Grp_B_Filtros.Size = new System.Drawing.Size(351, 311);
+            this.Grp_B_Filtros.Size = new System.Drawing.Size(351, 360);
             this.Grp_B_Filtros.TabIndex = 1;
             this.Grp_B_Filtros.TabStop = false;
             this.Grp_B_Filtros.Text = "Filtros";
@@ -136,7 +168,7 @@ namespace Photo_Editor
             // Btn_Aplicar_Filtro
             // 
             this.Btn_Aplicar_Filtro.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.Btn_Aplicar_Filtro.Location = new System.Drawing.Point(97, 279);
+            this.Btn_Aplicar_Filtro.Location = new System.Drawing.Point(97, 328);
             this.Btn_Aplicar_Filtro.Name = "Btn_Aplicar_Filtro";
             this.Btn_Aplicar_Filtro.Size = new System.Drawing.Size(100, 26);
             this.Btn_Aplicar_Filtro.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
@@ -260,6 +292,10 @@ namespace Photo_Editor
             this.Grp_B_Arit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Grp_B_Arit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
+            this.Grp_B_Arit.Controls.Add(this.kryptonNumericUpDown2);
+            this.Grp_B_Arit.Controls.Add(this.radioButton6);
+            this.Grp_B_Arit.Controls.Add(this.kryptonNumericUpDown1);
+            this.Grp_B_Arit.Controls.Add(this.radioButton5);
             this.Grp_B_Arit.Controls.Add(this.Cmbb_Imagem_Constante);
             this.Grp_B_Arit.Controls.Add(this.label6);
             this.Grp_B_Arit.Controls.Add(this.Cmbb_Correcao);
@@ -279,10 +315,19 @@ namespace Photo_Editor
             this.Grp_B_Arit.ForeColor = System.Drawing.Color.White;
             this.Grp_B_Arit.Location = new System.Drawing.Point(438, 314);
             this.Grp_B_Arit.Name = "Grp_B_Arit";
-            this.Grp_B_Arit.Size = new System.Drawing.Size(351, 311);
+            this.Grp_B_Arit.Size = new System.Drawing.Size(351, 360);
             this.Grp_B_Arit.TabIndex = 5;
             this.Grp_B_Arit.TabStop = false;
             this.Grp_B_Arit.Text = "Operações Aritméticas";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(32, 73);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(97, 13);
+            this.label6.TabIndex = 79;
+            this.label6.Text = "Imagem/Constante";
             // 
             // label5
             // 
@@ -295,7 +340,7 @@ namespace Photo_Editor
             // 
             // Num_UpDown_Sub
             // 
-            this.Num_UpDown_Sub.Location = new System.Drawing.Point(131, 245);
+            this.Num_UpDown_Sub.Location = new System.Drawing.Point(145, 237);
             this.Num_UpDown_Sub.Maximum = new decimal(new int[] {
             255,
             0,
@@ -311,7 +356,7 @@ namespace Photo_Editor
             // 
             // Num_UpDown_Soma
             // 
-            this.Num_UpDown_Soma.Location = new System.Drawing.Point(131, 212);
+            this.Num_UpDown_Soma.Location = new System.Drawing.Point(145, 212);
             this.Num_UpDown_Soma.Maximum = new decimal(new int[] {
             255,
             0,
@@ -327,8 +372,7 @@ namespace Photo_Editor
             // 
             // Btn_Aplicar_Ar
             // 
-            this.Btn_Aplicar_Ar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.Btn_Aplicar_Ar.Location = new System.Drawing.Point(108, 279);
+            this.Btn_Aplicar_Ar.Location = new System.Drawing.Point(145, 328);
             this.Btn_Aplicar_Ar.Name = "Btn_Aplicar_Ar";
             this.Btn_Aplicar_Ar.Size = new System.Drawing.Size(100, 26);
             this.Btn_Aplicar_Ar.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
@@ -352,10 +396,26 @@ namespace Photo_Editor
             this.pictureBox4.TabIndex = 5;
             this.pictureBox4.TabStop = false;
             // 
+            // Num_UpDown_Limiar
+            // 
+            this.Num_UpDown_Limiar.Location = new System.Drawing.Point(145, 187);
+            this.Num_UpDown_Limiar.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.Num_UpDown_Limiar.Name = "Num_UpDown_Limiar";
+            this.Num_UpDown_Limiar.Size = new System.Drawing.Size(120, 19);
+            this.Num_UpDown_Limiar.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
+            this.Num_UpDown_Limiar.StateCommon.Content.Color1 = System.Drawing.Color.White;
+            this.Num_UpDown_Limiar.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Num_UpDown_Limiar.TabIndex = 73;
+            this.Num_UpDown_Limiar.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // Rdo_Sub
             // 
             this.Rdo_Sub.AutoSize = true;
-            this.Rdo_Sub.Location = new System.Drawing.Point(51, 245);
+            this.Rdo_Sub.Location = new System.Drawing.Point(51, 235);
             this.Rdo_Sub.Name = "Rdo_Sub";
             this.Rdo_Sub.Size = new System.Drawing.Size(74, 17);
             this.Rdo_Sub.TabIndex = 12;
@@ -366,7 +426,7 @@ namespace Photo_Editor
             // label4
             // 
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(51, 153);
+            this.label4.Location = new System.Drawing.Point(54, 187);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(49, 18);
             this.label4.TabIndex = 11;
@@ -397,7 +457,7 @@ namespace Photo_Editor
             // Rdo_Negativo
             // 
             this.Rdo_Negativo.AutoSize = true;
-            this.Rdo_Negativo.Location = new System.Drawing.Point(51, 185);
+            this.Rdo_Negativo.Location = new System.Drawing.Point(51, 114);
             this.Rdo_Negativo.Name = "Rdo_Negativo";
             this.Rdo_Negativo.Size = new System.Drawing.Size(68, 17);
             this.Rdo_Negativo.TabIndex = 2;
@@ -408,7 +468,7 @@ namespace Photo_Editor
             // Rdo_PretoBranco
             // 
             this.Rdo_PretoBranco.AutoSize = true;
-            this.Rdo_PretoBranco.Location = new System.Drawing.Point(51, 128);
+            this.Rdo_PretoBranco.Location = new System.Drawing.Point(51, 164);
             this.Rdo_PretoBranco.Name = "Rdo_PretoBranco";
             this.Rdo_PretoBranco.Size = new System.Drawing.Size(96, 17);
             this.Rdo_PretoBranco.TabIndex = 1;
@@ -419,7 +479,7 @@ namespace Photo_Editor
             // Rdo_Cinza
             // 
             this.Rdo_Cinza.AutoSize = true;
-            this.Rdo_Cinza.Location = new System.Drawing.Point(51, 105);
+            this.Rdo_Cinza.Location = new System.Drawing.Point(51, 139);
             this.Rdo_Cinza.Name = "Rdo_Cinza";
             this.Rdo_Cinza.Size = new System.Drawing.Size(101, 17);
             this.Rdo_Cinza.TabIndex = 0;
@@ -441,7 +501,7 @@ namespace Photo_Editor
             this.Rdo_XOR.ForeColor = System.Drawing.Color.White;
             this.Rdo_XOR.Location = new System.Drawing.Point(816, 314);
             this.Rdo_XOR.Name = "Rdo_XOR";
-            this.Rdo_XOR.Size = new System.Drawing.Size(339, 311);
+            this.Rdo_XOR.Size = new System.Drawing.Size(351, 360);
             this.Rdo_XOR.TabIndex = 10;
             this.Rdo_XOR.TabStop = false;
             this.Rdo_XOR.Text = "Filtros";
@@ -449,7 +509,7 @@ namespace Photo_Editor
             // Btn_Aplica_Bool
             // 
             this.Btn_Aplica_Bool.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.Btn_Aplica_Bool.Location = new System.Drawing.Point(141, 279);
+            this.Btn_Aplica_Bool.Location = new System.Drawing.Point(147, 328);
             this.Btn_Aplica_Bool.Name = "Btn_Aplica_Bool";
             this.Btn_Aplica_Bool.Size = new System.Drawing.Size(100, 26);
             this.Btn_Aplica_Bool.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
@@ -479,7 +539,7 @@ namespace Photo_Editor
             this.label3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(3, 16);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(333, 20);
+            this.label3.Size = new System.Drawing.Size(345, 20);
             this.label3.TabIndex = 4;
             this.label3.Text = "Operações Booleanas";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -522,6 +582,7 @@ namespace Photo_Editor
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.panel1.AutoSize = true;
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(28)))), ((int)(((byte)(31)))));
+            this.panel1.Controls.Add(this.Btn_Salvar);
             this.panel1.Controls.Add(this.Btn_Imagem02);
             this.panel1.Controls.Add(this.Btn_Imagem01);
             this.panel1.Controls.Add(this.Lbl_Imagem03);
@@ -535,7 +596,7 @@ namespace Photo_Editor
             this.panel1.Controls.Add(this.Pcb_01);
             this.panel1.Location = new System.Drawing.Point(22, 31);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1196, 655);
+            this.panel1.Size = new System.Drawing.Size(1196, 706);
             this.panel1.TabIndex = 11;
             // 
             // Btn_Imagem02
@@ -579,7 +640,7 @@ namespace Photo_Editor
             this.Pcb_03.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Pcb_03.Location = new System.Drawing.Point(816, 28);
             this.Pcb_03.Name = "Pcb_03";
-            this.Pcb_03.Size = new System.Drawing.Size(332, 236);
+            this.Pcb_03.Size = new System.Drawing.Size(348, 236);
             this.Pcb_03.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.Pcb_03.TabIndex = 4;
             this.Pcb_03.TabStop = false;
@@ -591,7 +652,7 @@ namespace Photo_Editor
             this.Pcb_02.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Pcb_02.Location = new System.Drawing.Point(438, 28);
             this.Pcb_02.Name = "Pcb_02";
-            this.Pcb_02.Size = new System.Drawing.Size(344, 236);
+            this.Pcb_02.Size = new System.Drawing.Size(351, 236);
             this.Pcb_02.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.Pcb_02.TabIndex = 3;
             this.Pcb_02.TabStop = false;
@@ -603,7 +664,7 @@ namespace Photo_Editor
             this.Pcb_01.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.Pcb_01.Location = new System.Drawing.Point(64, 28);
             this.Pcb_01.Name = "Pcb_01";
-            this.Pcb_01.Size = new System.Drawing.Size(344, 236);
+            this.Pcb_01.Size = new System.Drawing.Size(351, 236);
             this.Pcb_01.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.Pcb_01.TabIndex = 2;
             this.Pcb_01.TabStop = false;
@@ -613,58 +674,76 @@ namespace Photo_Editor
             this.Thread_Aritmetica.DoWork += new System.ComponentModel.DoWorkEventHandler(this.Thread_Aritmetica_DoWork);
             this.Thread_Aritmetica.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.Thread_Aritmetica_RunWorkerCompleted);
             // 
-            // Num_UpDown_Limiar
+            // Btn_Salvar
             // 
-            this.Num_UpDown_Limiar.Location = new System.Drawing.Point(131, 151);
-            this.Num_UpDown_Limiar.Maximum = new decimal(new int[] {
+            this.Btn_Salvar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Btn_Salvar.Location = new System.Drawing.Point(897, 270);
+            this.Btn_Salvar.Name = "Btn_Salvar";
+            this.Btn_Salvar.Size = new System.Drawing.Size(160, 25);
+            this.Btn_Salvar.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.Btn_Salvar.StateCommon.Border.Rounding = 10;
+            this.Btn_Salvar.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.Black;
+            this.Btn_Salvar.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.Btn_Salvar.TabIndex = 73;
+            this.Btn_Salvar.Values.Text = "SALVAR ";
+            this.Btn_Salvar.Click += new System.EventHandler(this.Btn_Salvar_Click);
+            // 
+            // kryptonNumericUpDown1
+            // 
+            this.kryptonNumericUpDown1.Location = new System.Drawing.Point(145, 262);
+            this.kryptonNumericUpDown1.Maximum = new decimal(new int[] {
             255,
             0,
             0,
             0});
-            this.Num_UpDown_Limiar.Name = "Num_UpDown_Limiar";
-            this.Num_UpDown_Limiar.Size = new System.Drawing.Size(120, 19);
-            this.Num_UpDown_Limiar.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
-            this.Num_UpDown_Limiar.StateCommon.Content.Color1 = System.Drawing.Color.White;
-            this.Num_UpDown_Limiar.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Num_UpDown_Limiar.TabIndex = 73;
-            this.Num_UpDown_Limiar.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.kryptonNumericUpDown1.Name = "kryptonNumericUpDown1";
+            this.kryptonNumericUpDown1.Size = new System.Drawing.Size(120, 19);
+            this.kryptonNumericUpDown1.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
+            this.kryptonNumericUpDown1.StateCommon.Content.Color1 = System.Drawing.Color.White;
+            this.kryptonNumericUpDown1.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonNumericUpDown1.TabIndex = 81;
+            this.kryptonNumericUpDown1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // Cmbb_Correcao
+            // radioButton5
             // 
-            this.Cmbb_Correcao.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Cmbb_Correcao.FormattingEnabled = true;
-            this.Cmbb_Correcao.Items.AddRange(new object[] {
-            "Truncar 0 - 255",
-            "Média"});
-            this.Cmbb_Correcao.Location = new System.Drawing.Point(132, 43);
-            this.Cmbb_Correcao.Name = "Cmbb_Correcao";
-            this.Cmbb_Correcao.Size = new System.Drawing.Size(107, 21);
-            this.Cmbb_Correcao.TabIndex = 75;
-            this.toolTip1.SetToolTip(this.Cmbb_Correcao, "Seleciona o tipo de correção a ser aplicada em caso de estouro do pixel");
-            this.Cmbb_Correcao.SelectedIndexChanged += new System.EventHandler(this.Cmbb_Correcao_SelectedIndexChanged);
+            this.radioButton5.AutoSize = true;
+            this.radioButton5.Location = new System.Drawing.Point(52, 258);
+            this.radioButton5.Name = "radioButton5";
+            this.radioButton5.Size = new System.Drawing.Size(87, 17);
+            this.radioButton5.TabIndex = 80;
+            this.radioButton5.TabStop = true;
+            this.radioButton5.Text = "Multiplicação";
+            this.radioButton5.UseVisualStyleBackColor = true;
             // 
-            // Cmbb_Imagem_Constante
+            // kryptonNumericUpDown2
             // 
-            this.Cmbb_Imagem_Constante.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Cmbb_Imagem_Constante.FormattingEnabled = true;
-            this.Cmbb_Imagem_Constante.Items.AddRange(new object[] {
-            "0 - Entre Imagens",
-            "1 - Constante"});
-            this.Cmbb_Imagem_Constante.Location = new System.Drawing.Point(132, 70);
-            this.Cmbb_Imagem_Constante.Name = "Cmbb_Imagem_Constante";
-            this.Cmbb_Imagem_Constante.Size = new System.Drawing.Size(107, 21);
-            this.Cmbb_Imagem_Constante.TabIndex = 78;
-            this.toolTip1.SetToolTip(this.Cmbb_Imagem_Constante, "Seleciona se a operação será feita em constante ou entre imagens");
-            this.Cmbb_Imagem_Constante.SelectedIndexChanged += new System.EventHandler(this.Cmbb_Imagem_Constante_SelectedIndexChanged);
+            this.kryptonNumericUpDown2.Location = new System.Drawing.Point(145, 287);
+            this.kryptonNumericUpDown2.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.kryptonNumericUpDown2.Name = "kryptonNumericUpDown2";
+            this.kryptonNumericUpDown2.Size = new System.Drawing.Size(120, 19);
+            this.kryptonNumericUpDown2.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
+            this.kryptonNumericUpDown2.StateCommon.Content.Color1 = System.Drawing.Color.White;
+            this.kryptonNumericUpDown2.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonNumericUpDown2.TabIndex = 83;
+            this.kryptonNumericUpDown2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // label6
+            // radioButton6
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(32, 73);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(97, 13);
-            this.label6.TabIndex = 79;
-            this.label6.Text = "Imagem/Constante";
+            this.radioButton6.AutoSize = true;
+            this.radioButton6.Location = new System.Drawing.Point(52, 287);
+            this.radioButton6.Name = "radioButton6";
+            this.radioButton6.Size = new System.Drawing.Size(60, 17);
+            this.radioButton6.TabIndex = 82;
+            this.radioButton6.TabStop = true;
+            this.radioButton6.Text = "Divisão";
+            this.radioButton6.UseVisualStyleBackColor = true;
             // 
             // Form1_Photo_Editor
             // 
@@ -745,9 +824,13 @@ namespace Photo_Editor
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox Cmbb_Correcao;
         private ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown Num_UpDown_Limiar;
-        private System.Windows.Forms.ToolTip toolTip2;
         private System.Windows.Forms.ComboBox Cmbb_Imagem_Constante;
         private System.Windows.Forms.Label label6;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton Btn_Salvar;
+        private ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown kryptonNumericUpDown2;
+        private System.Windows.Forms.RadioButton radioButton6;
+        private ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown kryptonNumericUpDown1;
+        private System.Windows.Forms.RadioButton radioButton5;
     }
 }
 
