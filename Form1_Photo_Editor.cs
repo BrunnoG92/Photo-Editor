@@ -19,6 +19,7 @@ namespace Photo_Editor
         public static int Limiar;
         public static int CorrecaoSelecionado;
         public static int Imagem_Constante;
+        public static int Operacao_Selecionada;
         public int Borda_Selecionada;
         public int Linha_Selecionada;
         public int Laplaciano;
@@ -141,7 +142,7 @@ namespace Photo_Editor
             }
 
 
-            else if (Rdo_Soma.Checked == true)
+            else if (Operacao_Selecionada == 0) // Se soma selecionado
             {
                 if (Pcb_02.Image == null)// se não selecionar imagem 02
                 {
@@ -155,42 +156,42 @@ namespace Photo_Editor
                 }
 
             }
-            else if (Rdo_Sub.Checked == true)
+            else if (Operacao_Selecionada == 1) // Se subtração selecionada
             {
 
                 if (Pcb_02.Image == null)// se imagem 02 não fo r selecionada
                 {
-                    Pcb_03.Image = Operacoes_Aritmeticas.ConverteSubtracao(Pcb_01.Image, Pcb_01.Image, CorrecaoSelecionado, Imagem_Constante, (int)Num_UpDown_Sub.Value);
+                    Pcb_03.Image = Operacoes_Aritmeticas.ConverteSubtracao(Pcb_01.Image, Pcb_01.Image, CorrecaoSelecionado, Imagem_Constante, (int)Num_UpDown_ValorOp.Value);
 
                 }
                 else
                 {
-                    Pcb_03.Image = Operacoes_Aritmeticas.ConverteSubtracao(Pcb_01.Image, Pcb_02.Image, CorrecaoSelecionado, Imagem_Constante, (int)Num_UpDown_Sub.Value);
+                    Pcb_03.Image = Operacoes_Aritmeticas.ConverteSubtracao(Pcb_01.Image, Pcb_02.Image, CorrecaoSelecionado, Imagem_Constante, (int)Num_UpDown_ValorOp.Value);
 
                 }
             }
-            else if (Rdo_Multiplicacao.Checked == true)
+            else if (Operacao_Selecionada == 2) // Multiplicação Selecionada
             {
                 if (Pcb_02.Image == null)// se imagem 02 não for selecionada
                 {
-                    Pcb_03.Image = Operacoes_Aritmeticas.ConverteMultiplicacao(Pcb_01.Image, Pcb_01.Image, (int)Num_UpDown_Mult.Value, CorrecaoSelecionado, Imagem_Constante);
+                    Pcb_03.Image = Operacoes_Aritmeticas.ConverteMultiplicacao(Pcb_01.Image, Pcb_01.Image, (int)Num_UpDown_ValorOp.Value, CorrecaoSelecionado, Imagem_Constante);
                 }
                 else
                 {
-                    Pcb_03.Image = Operacoes_Aritmeticas.ConverteMultiplicacao(Pcb_01.Image, Pcb_02.Image, (int)Num_UpDown_Mult.Value, CorrecaoSelecionado, Imagem_Constante);
+                    Pcb_03.Image = Operacoes_Aritmeticas.ConverteMultiplicacao(Pcb_01.Image, Pcb_02.Image, (int)Num_UpDown_ValorOp.Value, CorrecaoSelecionado, Imagem_Constante);
 
                 }
             }
-            else if (Rdo_Divisao.Checked == true)
+            else if (Operacao_Selecionada == 3) // Se divisão selecionada
             { 
                 if (Pcb_02.Image == null) //se não tiver uma segunda imagem selecionada
                 {
-                    Pcb_03.Image = Operacoes_Aritmeticas.ConverteDivisao(Pcb_01.Image, Pcb_01.Image, (int)Num_UpDown_Div.Value, CorrecaoSelecionado, Imagem_Constante);
+                    Pcb_03.Image = Operacoes_Aritmeticas.ConverteDivisao(Pcb_01.Image, Pcb_01.Image, (int)Num_UpDown_ValorOp.Value, CorrecaoSelecionado, Imagem_Constante);
 
                 }
                 else 
                 {
-                    Pcb_03.Image = Operacoes_Aritmeticas.ConverteDivisao(Pcb_01.Image, Pcb_02.Image, (int)Num_UpDown_Div.Value, CorrecaoSelecionado, Imagem_Constante);
+                    Pcb_03.Image = Operacoes_Aritmeticas.ConverteDivisao(Pcb_01.Image, Pcb_02.Image, (int)Num_UpDown_ValorOp.Value, CorrecaoSelecionado, Imagem_Constante);
 
                 }
             }
@@ -198,6 +199,7 @@ namespace Photo_Editor
 
         private void Btn_Aplicar_Ar_Click(object sender, EventArgs e)
         {   // botão aplicar aritmetica chama a thread que faz os calculos aritméticos 
+            Operacao_Selecionada = Cmbb_Operacoes.SelectedIndex;
             Thread_Aritmetica.RunWorkerAsync();
             Btn_Aplicar_Ar.Enabled = false;
             Btn_Aplica_Bool.Enabled = false;

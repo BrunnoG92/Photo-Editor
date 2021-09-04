@@ -11,6 +11,7 @@ namespace Photo_Editor.Classes
 {
     class Operacoes_Aritmeticas
     {
+       
         // Funções para calculo dos valores de Pixel. 03 Sobrecargas
         private static void Maior_Menor_Pixel(Bitmap Imagem01_Temp, Bitmap Imagem02_Temp, int Tipo_Operacao, ref int Maior, ref int Menor)
         {
@@ -802,7 +803,7 @@ namespace Photo_Editor.Classes
                     for (y = 0; y < Imagem.Height; y++)
                     {
                         Color CorPixel = fastBitmap.GetPixel(x, y);
-                        Color NovaCor = Color.FromArgb(255 - CorPixel.R, 255 - CorPixel.R, 255 - CorPixel.R);
+                        Color NovaCor = Color.FromArgb(255 - CorPixel.R, 255 - CorPixel.G, 255 - CorPixel.B);
                         fastBitmap.SetPixel(x, y, NovaCor);
                     }
 

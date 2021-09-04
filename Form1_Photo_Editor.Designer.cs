@@ -54,23 +54,13 @@ namespace Photo_Editor
             this.Lbl_Imagem02 = new System.Windows.Forms.Label();
             this.Lbl_Imagem03 = new System.Windows.Forms.Label();
             this.Grp_B_Arit = new System.Windows.Forms.GroupBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.Num_UpDown_Div = new ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown();
-            this.Rdo_Divisao = new System.Windows.Forms.RadioButton();
-            this.Num_UpDown_Mult = new ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown();
-            this.Rdo_Multiplicacao = new System.Windows.Forms.RadioButton();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.Num_UpDown_Sub = new ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown();
-            this.Num_UpDown_Soma = new ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown();
             this.Btn_Aplicar_Ar = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.Num_UpDown_Limiar = new ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown();
-            this.Rdo_Sub = new System.Windows.Forms.RadioButton();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.Rdo_Soma = new System.Windows.Forms.RadioButton();
             this.Rdo_Negativo = new System.Windows.Forms.RadioButton();
             this.Rdo_PretoBranco = new System.Windows.Forms.RadioButton();
             this.Rdo_Cinza = new System.Windows.Forms.RadioButton();
@@ -91,6 +81,10 @@ namespace Photo_Editor
             this.Thread_Aritmetica = new System.ComponentModel.BackgroundWorker();
             this.Thread_Booleana = new System.ComponentModel.BackgroundWorker();
             this.Thread_Filtros = new System.ComponentModel.BackgroundWorker();
+            this.Cmbb_Operacoes = new System.Windows.Forms.ComboBox();
+            this.Lbl_Operacoes = new System.Windows.Forms.Label();
+            this.Num_UpDown_ValorOp = new ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown();
+            this.label9 = new System.Windows.Forms.Label();
             this.Grp_B_Filtros.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.Grp_B_Arit.SuspendLayout();
@@ -444,25 +438,19 @@ namespace Photo_Editor
             this.Grp_B_Arit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Grp_B_Arit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
-            this.Grp_B_Arit.Controls.Add(this.label8);
-            this.Grp_B_Arit.Controls.Add(this.label7);
-            this.Grp_B_Arit.Controls.Add(this.Num_UpDown_Div);
-            this.Grp_B_Arit.Controls.Add(this.Rdo_Divisao);
-            this.Grp_B_Arit.Controls.Add(this.Num_UpDown_Mult);
-            this.Grp_B_Arit.Controls.Add(this.Rdo_Multiplicacao);
+            this.Grp_B_Arit.Controls.Add(this.label9);
+            this.Grp_B_Arit.Controls.Add(this.Num_UpDown_ValorOp);
+            this.Grp_B_Arit.Controls.Add(this.Cmbb_Operacoes);
+            this.Grp_B_Arit.Controls.Add(this.Lbl_Operacoes);
             this.Grp_B_Arit.Controls.Add(this.Cmbb_Imagem_Constante);
             this.Grp_B_Arit.Controls.Add(this.label6);
             this.Grp_B_Arit.Controls.Add(this.Cmbb_Correcao);
             this.Grp_B_Arit.Controls.Add(this.label5);
-            this.Grp_B_Arit.Controls.Add(this.Num_UpDown_Sub);
-            this.Grp_B_Arit.Controls.Add(this.Num_UpDown_Soma);
             this.Grp_B_Arit.Controls.Add(this.Btn_Aplicar_Ar);
             this.Grp_B_Arit.Controls.Add(this.pictureBox4);
             this.Grp_B_Arit.Controls.Add(this.Num_UpDown_Limiar);
-            this.Grp_B_Arit.Controls.Add(this.Rdo_Sub);
             this.Grp_B_Arit.Controls.Add(this.label4);
             this.Grp_B_Arit.Controls.Add(this.label2);
-            this.Grp_B_Arit.Controls.Add(this.Rdo_Soma);
             this.Grp_B_Arit.Controls.Add(this.Rdo_Negativo);
             this.Grp_B_Arit.Controls.Add(this.Rdo_PretoBranco);
             this.Grp_B_Arit.Controls.Add(this.Rdo_Cinza);
@@ -473,80 +461,6 @@ namespace Photo_Editor
             this.Grp_B_Arit.TabIndex = 5;
             this.Grp_B_Arit.TabStop = false;
             this.Grp_B_Arit.Text = "Operações Aritméticas";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(271, 289);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(19, 17);
-            this.label8.TabIndex = 85;
-            this.label8.Text = "%";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(271, 268);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(19, 17);
-            this.label7.TabIndex = 84;
-            this.label7.Text = "%";
-            // 
-            // Num_UpDown_Div
-            // 
-            this.Num_UpDown_Div.Location = new System.Drawing.Point(145, 287);
-            this.Num_UpDown_Div.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
-            this.Num_UpDown_Div.Name = "Num_UpDown_Div";
-            this.Num_UpDown_Div.Size = new System.Drawing.Size(120, 19);
-            this.Num_UpDown_Div.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
-            this.Num_UpDown_Div.StateCommon.Content.Color1 = System.Drawing.Color.White;
-            this.Num_UpDown_Div.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Num_UpDown_Div.TabIndex = 83;
-            this.Num_UpDown_Div.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // Rdo_Divisao
-            // 
-            this.Rdo_Divisao.AutoSize = true;
-            this.Rdo_Divisao.Location = new System.Drawing.Point(52, 287);
-            this.Rdo_Divisao.Name = "Rdo_Divisao";
-            this.Rdo_Divisao.Size = new System.Drawing.Size(60, 17);
-            this.Rdo_Divisao.TabIndex = 82;
-            this.Rdo_Divisao.TabStop = true;
-            this.Rdo_Divisao.Text = "Divisão";
-            this.Rdo_Divisao.UseVisualStyleBackColor = true;
-            // 
-            // Num_UpDown_Mult
-            // 
-            this.Num_UpDown_Mult.Location = new System.Drawing.Point(145, 262);
-            this.Num_UpDown_Mult.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
-            this.Num_UpDown_Mult.Name = "Num_UpDown_Mult";
-            this.Num_UpDown_Mult.Size = new System.Drawing.Size(120, 19);
-            this.Num_UpDown_Mult.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
-            this.Num_UpDown_Mult.StateCommon.Content.Color1 = System.Drawing.Color.White;
-            this.Num_UpDown_Mult.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Num_UpDown_Mult.TabIndex = 81;
-            this.Num_UpDown_Mult.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // Rdo_Multiplicacao
-            // 
-            this.Rdo_Multiplicacao.AutoSize = true;
-            this.Rdo_Multiplicacao.Location = new System.Drawing.Point(52, 258);
-            this.Rdo_Multiplicacao.Name = "Rdo_Multiplicacao";
-            this.Rdo_Multiplicacao.Size = new System.Drawing.Size(87, 17);
-            this.Rdo_Multiplicacao.TabIndex = 80;
-            this.Rdo_Multiplicacao.TabStop = true;
-            this.Rdo_Multiplicacao.Text = "Multiplicação";
-            this.Rdo_Multiplicacao.UseVisualStyleBackColor = true;
             // 
             // label6
             // 
@@ -566,41 +480,9 @@ namespace Photo_Editor
             this.label5.TabIndex = 77;
             this.label5.Text = "Tipo de Correção";
             // 
-            // Num_UpDown_Sub
-            // 
-            this.Num_UpDown_Sub.Location = new System.Drawing.Point(145, 237);
-            this.Num_UpDown_Sub.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
-            this.Num_UpDown_Sub.Name = "Num_UpDown_Sub";
-            this.Num_UpDown_Sub.Size = new System.Drawing.Size(120, 19);
-            this.Num_UpDown_Sub.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
-            this.Num_UpDown_Sub.StateCommon.Content.Color1 = System.Drawing.Color.White;
-            this.Num_UpDown_Sub.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Num_UpDown_Sub.TabIndex = 75;
-            this.Num_UpDown_Sub.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // Num_UpDown_Soma
-            // 
-            this.Num_UpDown_Soma.Location = new System.Drawing.Point(145, 212);
-            this.Num_UpDown_Soma.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
-            this.Num_UpDown_Soma.Name = "Num_UpDown_Soma";
-            this.Num_UpDown_Soma.Size = new System.Drawing.Size(120, 19);
-            this.Num_UpDown_Soma.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
-            this.Num_UpDown_Soma.StateCommon.Content.Color1 = System.Drawing.Color.White;
-            this.Num_UpDown_Soma.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Num_UpDown_Soma.TabIndex = 74;
-            this.Num_UpDown_Soma.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // Btn_Aplicar_Ar
             // 
-            this.Btn_Aplicar_Ar.Location = new System.Drawing.Point(145, 328);
+            this.Btn_Aplicar_Ar.Location = new System.Drawing.Point(139, 328);
             this.Btn_Aplicar_Ar.Name = "Btn_Aplicar_Ar";
             this.Btn_Aplicar_Ar.Size = new System.Drawing.Size(100, 26);
             this.Btn_Aplicar_Ar.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
@@ -612,7 +494,7 @@ namespace Photo_Editor
             this.Btn_Aplicar_Ar.StateDisabled.Back.Color1 = System.Drawing.Color.Gray;
             this.Btn_Aplicar_Ar.StateDisabled.Back.Color2 = System.Drawing.Color.Gray;
             this.Btn_Aplicar_Ar.TabIndex = 73;
-            this.Btn_Aplicar_Ar.Values.Text = "APLICAR";
+            this.Btn_Aplicar_Ar.Values.Text = "CALCULAR";
             this.Btn_Aplicar_Ar.Click += new System.EventHandler(this.Btn_Aplicar_Ar_Click);
             // 
             // pictureBox4
@@ -626,7 +508,7 @@ namespace Photo_Editor
             // 
             // Num_UpDown_Limiar
             // 
-            this.Num_UpDown_Limiar.Location = new System.Drawing.Point(145, 187);
+            this.Num_UpDown_Limiar.Location = new System.Drawing.Point(141, 199);
             this.Num_UpDown_Limiar.Maximum = new decimal(new int[] {
             255,
             0,
@@ -640,21 +522,10 @@ namespace Photo_Editor
             this.Num_UpDown_Limiar.TabIndex = 73;
             this.Num_UpDown_Limiar.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // Rdo_Sub
-            // 
-            this.Rdo_Sub.AutoSize = true;
-            this.Rdo_Sub.Location = new System.Drawing.Point(51, 235);
-            this.Rdo_Sub.Name = "Rdo_Sub";
-            this.Rdo_Sub.Size = new System.Drawing.Size(74, 17);
-            this.Rdo_Sub.TabIndex = 12;
-            this.Rdo_Sub.TabStop = true;
-            this.Rdo_Sub.Text = "Subtração";
-            this.Rdo_Sub.UseVisualStyleBackColor = true;
-            // 
             // label4
             // 
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(54, 187);
+            this.label4.Location = new System.Drawing.Point(50, 199);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(49, 18);
             this.label4.TabIndex = 11;
@@ -670,17 +541,6 @@ namespace Photo_Editor
             this.label2.TabIndex = 4;
             this.label2.Text = "Operações Aritméticas";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // Rdo_Soma
-            // 
-            this.Rdo_Soma.AutoSize = true;
-            this.Rdo_Soma.Location = new System.Drawing.Point(51, 212);
-            this.Rdo_Soma.Name = "Rdo_Soma";
-            this.Rdo_Soma.Size = new System.Drawing.Size(52, 17);
-            this.Rdo_Soma.TabIndex = 3;
-            this.Rdo_Soma.TabStop = true;
-            this.Rdo_Soma.Text = "Soma";
-            this.Rdo_Soma.UseVisualStyleBackColor = true;
             // 
             // Rdo_Negativo
             // 
@@ -825,7 +685,7 @@ namespace Photo_Editor
             this.panel1.Controls.Add(this.Pcb_01);
             this.panel1.Location = new System.Drawing.Point(22, 31);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1196, 706);
+            this.panel1.Size = new System.Drawing.Size(1196, 808);
             this.panel1.TabIndex = 11;
             // 
             // Btn_Salvar
@@ -932,13 +792,62 @@ namespace Photo_Editor
             this.Thread_Filtros.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.Thread_Filtros_ProgressChanged);
             this.Thread_Filtros.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.Thread_Filtros_RunWorkerCompleted);
             // 
+            // Cmbb_Operacoes
+            // 
+            this.Cmbb_Operacoes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Cmbb_Operacoes.FormattingEnabled = true;
+            this.Cmbb_Operacoes.Items.AddRange(new object[] {
+            "Soma",
+            "Subtração",
+            "Multiplicação",
+            "Divisão"});
+            this.Cmbb_Operacoes.Location = new System.Drawing.Point(147, 242);
+            this.Cmbb_Operacoes.Name = "Cmbb_Operacoes";
+            this.Cmbb_Operacoes.Size = new System.Drawing.Size(107, 21);
+            this.Cmbb_Operacoes.TabIndex = 86;
+            this.toolTip1.SetToolTip(this.Cmbb_Operacoes, "Seleciona a operação a ser realizada");
+            // 
+            // Lbl_Operacoes
+            // 
+            this.Lbl_Operacoes.AutoSize = true;
+            this.Lbl_Operacoes.Location = new System.Drawing.Point(25, 245);
+            this.Lbl_Operacoes.Name = "Lbl_Operacoes";
+            this.Lbl_Operacoes.Size = new System.Drawing.Size(116, 13);
+            this.Lbl_Operacoes.TabIndex = 87;
+            this.Lbl_Operacoes.Text = "Operações Aritméticas ";
+            // 
+            // Num_UpDown_ValorOp
+            // 
+            this.Num_UpDown_ValorOp.Location = new System.Drawing.Point(141, 269);
+            this.Num_UpDown_ValorOp.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.Num_UpDown_ValorOp.Name = "Num_UpDown_ValorOp";
+            this.Num_UpDown_ValorOp.Size = new System.Drawing.Size(120, 19);
+            this.Num_UpDown_ValorOp.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
+            this.Num_UpDown_ValorOp.StateCommon.Content.Color1 = System.Drawing.Color.White;
+            this.Num_UpDown_ValorOp.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Num_UpDown_ValorOp.TabIndex = 88;
+            this.Num_UpDown_ValorOp.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(29, 275);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(85, 13);
+            this.label9.TabIndex = 89;
+            this.label9.Text = "Valor Constante:";
+            // 
             // Form1_Photo_Editor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
-            this.ClientSize = new System.Drawing.Size(1249, 763);
+            this.ClientSize = new System.Drawing.Size(1249, 865);
             this.Controls.Add(this.metroSetControlBox1);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -985,7 +894,6 @@ namespace Photo_Editor
         private System.Windows.Forms.Label Lbl_Imagem03;
         private System.Windows.Forms.GroupBox Grp_B_Arit;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.RadioButton Rdo_Soma;
         private System.Windows.Forms.RadioButton Rdo_Negativo;
         private System.Windows.Forms.RadioButton Rdo_PretoBranco;
         private System.Windows.Forms.RadioButton Rdo_Cinza;
@@ -994,7 +902,6 @@ namespace Photo_Editor
         private System.Windows.Forms.RadioButton Rdo_XOR;
         private System.Windows.Forms.RadioButton Rdo_OR;
         private System.Windows.Forms.RadioButton Rdo_AND;
-        private System.Windows.Forms.RadioButton Rdo_Sub;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel1;
         private ComponentFactory.Krypton.Toolkit.KryptonButton Btn_Imagem01;
@@ -1006,18 +913,12 @@ namespace Photo_Editor
         private System.ComponentModel.BackgroundWorker Thread_Aritmetica;
         private ComponentFactory.Krypton.Toolkit.KryptonButton Btn_Aplicar_Filtro;
         private ComponentFactory.Krypton.Toolkit.KryptonButton Btn_Aplica_Bool;
-        private ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown Num_UpDown_Soma;
-        private ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown Num_UpDown_Sub;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox Cmbb_Correcao;
         private ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown Num_UpDown_Limiar;
         private System.Windows.Forms.ComboBox Cmbb_Imagem_Constante;
         private System.Windows.Forms.Label label6;
         private ComponentFactory.Krypton.Toolkit.KryptonButton Btn_Salvar;
-        private ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown Num_UpDown_Div;
-        private System.Windows.Forms.RadioButton Rdo_Divisao;
-        private ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown Num_UpDown_Mult;
-        private System.Windows.Forms.RadioButton Rdo_Multiplicacao;
         private System.Windows.Forms.ComboBox Cmb_Bordas;
         private ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown Num_UpDown_Alta;
         private System.Windows.Forms.CheckBox Chkb_Blur_Pesos;
@@ -1025,11 +926,13 @@ namespace Photo_Editor
         private ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown Num_UpDown_Laplace;
         private System.Windows.Forms.RadioButton Rdo_PassaAlta;
         private System.Windows.Forms.RadioButton Rdo_Laplace;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
         private System.ComponentModel.BackgroundWorker Thread_Booleana;
         private System.ComponentModel.BackgroundWorker Thread_Filtros;
         private System.Windows.Forms.ComboBox Cmb_Linhas;
+        private ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown Num_UpDown_ValorOp;
+        private System.Windows.Forms.ComboBox Cmbb_Operacoes;
+        private System.Windows.Forms.Label Lbl_Operacoes;
+        private System.Windows.Forms.Label label9;
     }
 }
 
