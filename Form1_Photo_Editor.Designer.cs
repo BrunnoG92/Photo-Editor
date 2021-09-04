@@ -38,17 +38,17 @@ namespace Photo_Editor
             this.Cmb_Linhas = new System.Windows.Forms.ComboBox();
             this.Grp_B_Filtros = new System.Windows.Forms.GroupBox();
             this.Num_UpDown_Alta = new ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown();
-            this.Chkb_Blur = new System.Windows.Forms.CheckBox();
+            this.Chkb_Blur_Pesos = new System.Windows.Forms.CheckBox();
             this.Num_UpDown_Blur = new ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown();
             this.Num_UpDown_Laplace = new ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown();
-            this.radioButton8 = new System.Windows.Forms.RadioButton();
+            this.Rdo_PassaAlta = new System.Windows.Forms.RadioButton();
             this.Rdo_Laplace = new System.Windows.Forms.RadioButton();
             this.Btn_Aplicar_Filtro = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
+            this.Rdo_Linhas = new System.Windows.Forms.RadioButton();
             this.Rdo_Blur = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.Rdo_Bordas = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.Lbl_Imagem01 = new System.Windows.Forms.Label();
             this.Lbl_Imagem02 = new System.Windows.Forms.Label();
@@ -199,17 +199,17 @@ namespace Photo_Editor
             this.Grp_B_Filtros.Controls.Add(this.Cmb_Linhas);
             this.Grp_B_Filtros.Controls.Add(this.Cmb_Bordas);
             this.Grp_B_Filtros.Controls.Add(this.Num_UpDown_Alta);
-            this.Grp_B_Filtros.Controls.Add(this.Chkb_Blur);
+            this.Grp_B_Filtros.Controls.Add(this.Chkb_Blur_Pesos);
             this.Grp_B_Filtros.Controls.Add(this.Num_UpDown_Blur);
             this.Grp_B_Filtros.Controls.Add(this.Num_UpDown_Laplace);
-            this.Grp_B_Filtros.Controls.Add(this.radioButton8);
+            this.Grp_B_Filtros.Controls.Add(this.Rdo_PassaAlta);
             this.Grp_B_Filtros.Controls.Add(this.Rdo_Laplace);
             this.Grp_B_Filtros.Controls.Add(this.Btn_Aplicar_Filtro);
             this.Grp_B_Filtros.Controls.Add(this.pictureBox5);
             this.Grp_B_Filtros.Controls.Add(this.label1);
-            this.Grp_B_Filtros.Controls.Add(this.radioButton4);
+            this.Grp_B_Filtros.Controls.Add(this.Rdo_Linhas);
             this.Grp_B_Filtros.Controls.Add(this.Rdo_Blur);
-            this.Grp_B_Filtros.Controls.Add(this.radioButton2);
+            this.Grp_B_Filtros.Controls.Add(this.Rdo_Bordas);
             this.Grp_B_Filtros.Controls.Add(this.radioButton1);
             this.Grp_B_Filtros.ForeColor = System.Drawing.Color.White;
             this.Grp_B_Filtros.Location = new System.Drawing.Point(64, 314);
@@ -240,15 +240,15 @@ namespace Photo_Editor
             0,
             0});
             // 
-            // Chkb_Blur
+            // Chkb_Blur_Pesos
             // 
-            this.Chkb_Blur.AutoSize = true;
-            this.Chkb_Blur.Location = new System.Drawing.Point(44, 258);
-            this.Chkb_Blur.Name = "Chkb_Blur";
-            this.Chkb_Blur.Size = new System.Drawing.Size(106, 17);
-            this.Chkb_Blur.TabIndex = 88;
-            this.Chkb_Blur.Text = "Pesos Diferentes";
-            this.Chkb_Blur.UseVisualStyleBackColor = true;
+            this.Chkb_Blur_Pesos.AutoSize = true;
+            this.Chkb_Blur_Pesos.Location = new System.Drawing.Point(44, 258);
+            this.Chkb_Blur_Pesos.Name = "Chkb_Blur_Pesos";
+            this.Chkb_Blur_Pesos.Size = new System.Drawing.Size(106, 17);
+            this.Chkb_Blur_Pesos.TabIndex = 88;
+            this.Chkb_Blur_Pesos.Text = "Pesos Diferentes";
+            this.Chkb_Blur_Pesos.UseVisualStyleBackColor = true;
             // 
             // Num_UpDown_Blur
             // 
@@ -292,17 +292,17 @@ namespace Photo_Editor
             0,
             0});
             // 
-            // radioButton8
+            // Rdo_PassaAlta
             // 
-            this.radioButton8.AutoSize = true;
-            this.radioButton8.ForeColor = System.Drawing.Color.White;
-            this.radioButton8.Location = new System.Drawing.Point(30, 287);
-            this.radioButton8.Name = "radioButton8";
-            this.radioButton8.Size = new System.Drawing.Size(75, 17);
-            this.radioButton8.TabIndex = 77;
-            this.radioButton8.TabStop = true;
-            this.radioButton8.Text = "Passa Alta";
-            this.radioButton8.UseVisualStyleBackColor = true;
+            this.Rdo_PassaAlta.AutoSize = true;
+            this.Rdo_PassaAlta.ForeColor = System.Drawing.Color.White;
+            this.Rdo_PassaAlta.Location = new System.Drawing.Point(30, 287);
+            this.Rdo_PassaAlta.Name = "Rdo_PassaAlta";
+            this.Rdo_PassaAlta.Size = new System.Drawing.Size(75, 17);
+            this.Rdo_PassaAlta.TabIndex = 77;
+            this.Rdo_PassaAlta.TabStop = true;
+            this.Rdo_PassaAlta.Text = "Passa Alta";
+            this.Rdo_PassaAlta.UseVisualStyleBackColor = true;
             // 
             // Rdo_Laplace
             // 
@@ -355,17 +355,17 @@ namespace Photo_Editor
             this.label1.Text = "Filtros";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // radioButton4
+            // Rdo_Linhas
             // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.ForeColor = System.Drawing.Color.White;
-            this.radioButton4.Location = new System.Drawing.Point(28, 128);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(121, 17);
-            this.radioButton4.TabIndex = 3;
-            this.radioButton4.TabStop = true;
-            this.radioButton4.Text = "Detecção de Linhas";
-            this.radioButton4.UseVisualStyleBackColor = true;
+            this.Rdo_Linhas.AutoSize = true;
+            this.Rdo_Linhas.ForeColor = System.Drawing.Color.White;
+            this.Rdo_Linhas.Location = new System.Drawing.Point(28, 128);
+            this.Rdo_Linhas.Name = "Rdo_Linhas";
+            this.Rdo_Linhas.Size = new System.Drawing.Size(121, 17);
+            this.Rdo_Linhas.TabIndex = 3;
+            this.Rdo_Linhas.TabStop = true;
+            this.Rdo_Linhas.Text = "Detecção de Linhas";
+            this.Rdo_Linhas.UseVisualStyleBackColor = true;
             // 
             // Rdo_Blur
             // 
@@ -379,17 +379,17 @@ namespace Photo_Editor
             this.Rdo_Blur.Text = "Blur";
             this.Rdo_Blur.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // Rdo_Bordas
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.ForeColor = System.Drawing.Color.White;
-            this.radioButton2.Location = new System.Drawing.Point(26, 78);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(123, 17);
-            this.radioButton2.TabIndex = 1;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Detecção de Bordas";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.Rdo_Bordas.AutoSize = true;
+            this.Rdo_Bordas.ForeColor = System.Drawing.Color.White;
+            this.Rdo_Bordas.Location = new System.Drawing.Point(26, 78);
+            this.Rdo_Bordas.Name = "Rdo_Bordas";
+            this.Rdo_Bordas.Size = new System.Drawing.Size(123, 17);
+            this.Rdo_Bordas.TabIndex = 1;
+            this.Rdo_Bordas.TabStop = true;
+            this.Rdo_Bordas.Text = "Detecção de Bordas";
+            this.Rdo_Bordas.UseVisualStyleBackColor = true;
             // 
             // radioButton1
             // 
@@ -976,9 +976,9 @@ namespace Photo_Editor
         private System.Windows.Forms.PictureBox Pcb_02;
         private System.Windows.Forms.PictureBox Pcb_03;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.RadioButton radioButton4;
+        private System.Windows.Forms.RadioButton Rdo_Linhas;
         private System.Windows.Forms.RadioButton Rdo_Blur;
-        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton Rdo_Bordas;
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.Label Lbl_Imagem01;
         private System.Windows.Forms.Label Lbl_Imagem02;
@@ -1020,10 +1020,10 @@ namespace Photo_Editor
         private System.Windows.Forms.RadioButton Rdo_Multiplicacao;
         private System.Windows.Forms.ComboBox Cmb_Bordas;
         private ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown Num_UpDown_Alta;
-        private System.Windows.Forms.CheckBox Chkb_Blur;
+        private System.Windows.Forms.CheckBox Chkb_Blur_Pesos;
         private ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown Num_UpDown_Blur;
         private ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown Num_UpDown_Laplace;
-        private System.Windows.Forms.RadioButton radioButton8;
+        private System.Windows.Forms.RadioButton Rdo_PassaAlta;
         private System.Windows.Forms.RadioButton Rdo_Laplace;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
