@@ -75,11 +75,11 @@ namespace Photo_Editor
             this.Rdo_Negativo = new System.Windows.Forms.RadioButton();
             this.Rdo_PretoBranco = new System.Windows.Forms.RadioButton();
             this.Rdo_Cinza = new System.Windows.Forms.RadioButton();
-            this.Rdo_XOR = new System.Windows.Forms.GroupBox();
+            this.Grp_B_Bool = new System.Windows.Forms.GroupBox();
             this.Btn_Aplica_Bool = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.radioButton10 = new System.Windows.Forms.RadioButton();
+            this.Rdo_XOR = new System.Windows.Forms.RadioButton();
             this.Rdo_OR = new System.Windows.Forms.RadioButton();
             this.Rdo_AND = new System.Windows.Forms.RadioButton();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -90,11 +90,12 @@ namespace Photo_Editor
             this.Pcb_02 = new System.Windows.Forms.PictureBox();
             this.Pcb_01 = new System.Windows.Forms.PictureBox();
             this.Thread_Aritmetica = new System.ComponentModel.BackgroundWorker();
+            this.Thread_Booleana = new System.ComponentModel.BackgroundWorker();
             this.Grp_B_Filtros.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.Grp_B_Arit.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            this.Rdo_XOR.SuspendLayout();
+            this.Grp_B_Bool.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Pcb_03)).BeginInit();
@@ -716,24 +717,24 @@ namespace Photo_Editor
             this.Rdo_Cinza.Text = "Escala de Cinza";
             this.Rdo_Cinza.UseVisualStyleBackColor = true;
             // 
-            // Rdo_XOR
+            // Grp_B_Bool
             // 
-            this.Rdo_XOR.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.Grp_B_Bool.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.Rdo_XOR.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
-            this.Rdo_XOR.Controls.Add(this.Btn_Aplica_Bool);
-            this.Rdo_XOR.Controls.Add(this.pictureBox6);
-            this.Rdo_XOR.Controls.Add(this.label3);
-            this.Rdo_XOR.Controls.Add(this.radioButton10);
-            this.Rdo_XOR.Controls.Add(this.Rdo_OR);
-            this.Rdo_XOR.Controls.Add(this.Rdo_AND);
-            this.Rdo_XOR.ForeColor = System.Drawing.Color.White;
-            this.Rdo_XOR.Location = new System.Drawing.Point(816, 314);
-            this.Rdo_XOR.Name = "Rdo_XOR";
-            this.Rdo_XOR.Size = new System.Drawing.Size(351, 360);
-            this.Rdo_XOR.TabIndex = 10;
-            this.Rdo_XOR.TabStop = false;
-            this.Rdo_XOR.Text = "Filtros";
+            this.Grp_B_Bool.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
+            this.Grp_B_Bool.Controls.Add(this.Btn_Aplica_Bool);
+            this.Grp_B_Bool.Controls.Add(this.pictureBox6);
+            this.Grp_B_Bool.Controls.Add(this.label3);
+            this.Grp_B_Bool.Controls.Add(this.Rdo_XOR);
+            this.Grp_B_Bool.Controls.Add(this.Rdo_OR);
+            this.Grp_B_Bool.Controls.Add(this.Rdo_AND);
+            this.Grp_B_Bool.ForeColor = System.Drawing.Color.White;
+            this.Grp_B_Bool.Location = new System.Drawing.Point(816, 314);
+            this.Grp_B_Bool.Name = "Grp_B_Bool";
+            this.Grp_B_Bool.Size = new System.Drawing.Size(351, 360);
+            this.Grp_B_Bool.TabIndex = 10;
+            this.Grp_B_Bool.TabStop = false;
+            this.Grp_B_Bool.Text = "Filtros";
             // 
             // Btn_Aplica_Bool
             // 
@@ -751,6 +752,7 @@ namespace Photo_Editor
             this.Btn_Aplica_Bool.StateDisabled.Back.Color2 = System.Drawing.Color.Gray;
             this.Btn_Aplica_Bool.TabIndex = 74;
             this.Btn_Aplica_Bool.Values.Text = "APLICAR";
+            this.Btn_Aplica_Bool.Click += new System.EventHandler(this.Btn_Aplica_Bool_Click);
             // 
             // pictureBox6
             // 
@@ -773,16 +775,16 @@ namespace Photo_Editor
             this.label3.Text = "Operações Booleanas";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // radioButton10
+            // Rdo_XOR
             // 
-            this.radioButton10.AutoSize = true;
-            this.radioButton10.Location = new System.Drawing.Point(96, 114);
-            this.radioButton10.Name = "radioButton10";
-            this.radioButton10.Size = new System.Drawing.Size(48, 17);
-            this.radioButton10.TabIndex = 2;
-            this.radioButton10.TabStop = true;
-            this.radioButton10.Text = "XOR";
-            this.radioButton10.UseVisualStyleBackColor = true;
+            this.Rdo_XOR.AutoSize = true;
+            this.Rdo_XOR.Location = new System.Drawing.Point(96, 114);
+            this.Rdo_XOR.Name = "Rdo_XOR";
+            this.Rdo_XOR.Size = new System.Drawing.Size(48, 17);
+            this.Rdo_XOR.TabIndex = 2;
+            this.Rdo_XOR.TabStop = true;
+            this.Rdo_XOR.Text = "XOR";
+            this.Rdo_XOR.UseVisualStyleBackColor = true;
             // 
             // Rdo_OR
             // 
@@ -817,7 +819,7 @@ namespace Photo_Editor
             this.panel1.Controls.Add(this.Lbl_Imagem03);
             this.panel1.Controls.Add(this.Grp_B_Arit);
             this.panel1.Controls.Add(this.Lbl_Imagem02);
-            this.panel1.Controls.Add(this.Rdo_XOR);
+            this.panel1.Controls.Add(this.Grp_B_Bool);
             this.panel1.Controls.Add(this.Lbl_Imagem01);
             this.panel1.Controls.Add(this.Grp_B_Filtros);
             this.panel1.Controls.Add(this.Pcb_03);
@@ -920,6 +922,11 @@ namespace Photo_Editor
             this.Thread_Aritmetica.DoWork += new System.ComponentModel.DoWorkEventHandler(this.Thread_Aritmetica_DoWork);
             this.Thread_Aritmetica.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.Thread_Aritmetica_RunWorkerCompleted);
             // 
+            // Thread_Booleana
+            // 
+            this.Thread_Booleana.DoWork += new System.ComponentModel.DoWorkEventHandler(this.Thread_Booleana_DoWork);
+            this.Thread_Booleana.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.Thread_Booleana_RunWorkerCompleted);
+            // 
             // Form1_Photo_Editor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -942,8 +949,8 @@ namespace Photo_Editor
             this.Grp_B_Arit.ResumeLayout(false);
             this.Grp_B_Arit.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            this.Rdo_XOR.ResumeLayout(false);
-            this.Rdo_XOR.PerformLayout();
+            this.Grp_B_Bool.ResumeLayout(false);
+            this.Grp_B_Bool.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -977,9 +984,9 @@ namespace Photo_Editor
         private System.Windows.Forms.RadioButton Rdo_Negativo;
         private System.Windows.Forms.RadioButton Rdo_PretoBranco;
         private System.Windows.Forms.RadioButton Rdo_Cinza;
-        private System.Windows.Forms.GroupBox Rdo_XOR;
+        private System.Windows.Forms.GroupBox Grp_B_Bool;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.RadioButton radioButton10;
+        private System.Windows.Forms.RadioButton Rdo_XOR;
         private System.Windows.Forms.RadioButton Rdo_OR;
         private System.Windows.Forms.RadioButton Rdo_AND;
         private System.Windows.Forms.RadioButton Rdo_Sub;
@@ -1017,6 +1024,7 @@ namespace Photo_Editor
         private System.Windows.Forms.RadioButton radioButton7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
+        private System.ComponentModel.BackgroundWorker Thread_Booleana;
     }
 }
 

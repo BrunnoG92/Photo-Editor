@@ -230,5 +230,30 @@ namespace Photo_Editor
                 Pcb_03.Image.Save(Salva_Foto.FileName, format);
             }
         }
+
+        private void Thread_Booleana_DoWork(object sender, DoWorkEventArgs e)
+        {
+            if (Rdo_AND.Checked == true)
+            {
+                Pcb_03.Image = Operacoes_Booleanas.ConverteParaAND(Pcb_01.Image, Pcb_02.Image);
+            }
+            else if (Rdo_OR.Checked == true)
+            {
+                Pcb_03.Image = Operacoes_Booleanas.ConverteParaOR(Pcb_01.Image, Pcb_02.Image);
+            }
+            else if (Rdo_XOR.Checked == true)
+            {
+                Pcb_03.Image = Operacoes_Booleanas.ConverteParaXOR(Pcb_01.Image, Pcb_02.Image);
+            }
+        }
+        private void Btn_Aplica_Bool_Click(object sender, EventArgs e)
+        {
+            Thread_Booleana.RunWorkerAsync();
+        }
+
+        private void Thread_Booleana_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            MessageBox.Show("Filtro Aplicado com sucesso", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
     }
 }
