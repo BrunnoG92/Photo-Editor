@@ -140,6 +140,7 @@ namespace Photo_Editor
                 if (Pcb_02.Image == null)// se não selecionar imagem 02
                 {
                     Pcb_03.Image = Operacoes_Aritmeticas.ConverteSoma((Bitmap)Pcb_01.Image, (Bitmap)Pcb_01.Image, CorrecaoSelecionado, Imagem_Constante, Convert.ToInt32(Num_UpDown_Soma.Value));
+
                 }
                 else
                 {
@@ -159,6 +160,31 @@ namespace Photo_Editor
                 else
                 {
                     Pcb_03.Image = Operacoes_Aritmeticas.ConverteSubtracao(Pcb_01.Image, Pcb_02.Image, CorrecaoSelecionado, Imagem_Constante, (int)Num_UpDown_Sub.Value);
+
+                }
+            }
+            else if (Rdo_Multiplicacao.Checked == true)
+            {
+                if (Pcb_02.Image == null)// se imagem 02 não for selecionada
+                {
+                    Pcb_03.Image = Operacoes_Aritmeticas.ConverteMultiplicacao(Pcb_01.Image, Pcb_01.Image, (int)Num_UpDown_Mult.Value, CorrecaoSelecionado, Imagem_Constante);
+                }
+                else
+                {
+                    Pcb_03.Image = Operacoes_Aritmeticas.ConverteMultiplicacao(Pcb_01.Image, Pcb_02.Image, (int)Num_UpDown_Mult.Value, CorrecaoSelecionado, Imagem_Constante);
+
+                }
+            }
+            else if (Rdo_Divisao.Checked == true)
+            { 
+                if (Pcb_02.Image == null) //se não tiver uma segunda imagem selecionada
+                {
+                    Pcb_03.Image = Operacoes_Aritmeticas.ConverteDivisao(Pcb_01.Image, Pcb_01.Image, (int)Num_UpDown_Div.Value, CorrecaoSelecionado, Imagem_Constante);
+
+                }
+                else 
+                {
+                    Pcb_03.Image = Operacoes_Aritmeticas.ConverteDivisao(Pcb_01.Image, Pcb_02.Image, (int)Num_UpDown_Div.Value, CorrecaoSelecionado, Imagem_Constante);
 
                 }
             }
