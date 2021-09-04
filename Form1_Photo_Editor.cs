@@ -19,6 +19,8 @@ namespace Photo_Editor
         public static int Limiar;
         public static int CorrecaoSelecionado;
         public static int Imagem_Constante;
+        public int Borda_Selecionada;
+
 
         public Form1_Photo_Editor()
         {
@@ -257,64 +259,88 @@ namespace Photo_Editor
         }
           
         private void Thread_Filtros_DoWork(object sender, DoWorkEventArgs e)
-        {   
-            
-            if (Cmb_Bordas.SelectedIndex == 0)
+        {
+          
+            if (Borda_Selecionada == 0)
             {
-               
+                Thread_Filtros.ReportProgress(10);
                 Filtro_Paramentros Parametros_Filtros = new Filtro_Paramentros(3, Operacoes_Filtros.RobertsVertical, 1);
                 Pcb_03.Image = Operacoes_Filtros.Colocar_Filtro(Pcb_01.Image, Parametros_Filtros);
+                
             }
-            else if (Cmb_Bordas.SelectedIndex == 1)
+            else if (Borda_Selecionada == 1)
             {
-               
+                Thread_Filtros.ReportProgress(20);
                 Filtro_Paramentros Parametros_Filtros = new Filtro_Paramentros(3, Operacoes_Filtros.RobertsHorizontal, 1);
                 Pcb_03.Image = Operacoes_Filtros.Colocar_Filtro(Pcb_01.Image, Parametros_Filtros);
             }
-            else if (Cmb_Bordas.SelectedIndex == 2)
+            else if (Borda_Selecionada == 2)
             {
+                Thread_Filtros.ReportProgress(30);
                 float mod = 4;
                 mod = 1 / mod;
                 Filtro_Paramentros Parametros_Filtros = new Filtro_Paramentros(3, Operacoes_Filtros.SobelVertical, mod);
                 Pcb_03.Image = Operacoes_Filtros.Colocar_Filtro(Pcb_01.Image, Parametros_Filtros);
             }
-            else if (Cmb_Bordas.SelectedIndex == 3)
+            else if (Borda_Selecionada == 3)
             {
+                Thread_Filtros.ReportProgress(40);
                 float mod = 4;
                 mod = 1 / mod;
                 Filtro_Paramentros Parametros_Filtros = new Filtro_Paramentros(3, Operacoes_Filtros.SobelHorizontal, mod);
                 Pcb_03.Image = Operacoes_Filtros.Colocar_Filtro(Pcb_01.Image, Parametros_Filtros);
             }
-            else if (Cmb_Bordas.SelectedIndex == 4)
+            else if (Borda_Selecionada == 4)
             {
+                Thread_Filtros.ReportProgress(50);
                 float mod = 3;
                 mod = 1 / mod;
                 Filtro_Paramentros Parametros_Filtros = new Filtro_Paramentros(3, Operacoes_Filtros.PrewittVertical, mod);
                 Pcb_03.Image = Operacoes_Filtros.Colocar_Filtro(Pcb_01.Image, Parametros_Filtros);
             }
-            else if (Cmb_Bordas.SelectedIndex == 5)
+            else if (Borda_Selecionada == 5)
             {
+                Thread_Filtros.ReportProgress(60);
                 float mod = 3;
                 mod = 1 / mod;
                 Filtro_Paramentros Parametros_Filtros = new Filtro_Paramentros(3, Operacoes_Filtros.PrewittHorizontal, mod);
                 Pcb_03.Image = Operacoes_Filtros.Colocar_Filtro(Pcb_01.Image, Parametros_Filtros);
             }
-            else if (Cmb_Bordas.SelectedIndex == 6)
+            else if (Borda_Selecionada == 6)
             {
+                Thread_Filtros.ReportProgress(70);
                 double raiz = Math.Sqrt(2);
                 float mod = 2 + (float)raiz;
                 mod = 1 / mod;
                 Filtro_Paramentros Parametros_Filtros = new Filtro_Paramentros(3, Operacoes_Filtros.FreiChenVertical, mod);
                 Pcb_03.Image = Operacoes_Filtros.Colocar_Filtro(Pcb_01.Image, Parametros_Filtros);
             }
-            else if (Cmb_Bordas.SelectedIndex == 7)
+            else if (Borda_Selecionada == 7)
             {
+                Thread_Filtros.ReportProgress(90);
                 double raiz = Math.Sqrt(2);
                 float mod = 2 + (float)raiz;
                 mod = 1 / mod;
                 Filtro_Paramentros Parametros_Filtros = new Filtro_Paramentros(3, Operacoes_Filtros.FreiChenHorizontal, mod);
                 Pcb_03.Image = Operacoes_Filtros.Colocar_Filtro(Pcb_01.Image, Parametros_Filtros);
             }
+        }
+
+        private void Btn_Aplicar_Filtro_Click(object sender, EventArgs e)
+        {
+            Borda_Selecionada = Cmb_Bordas.SelectedIndex;
+            Thread_Filtros.RunWorkerAsync();
+        }
+
+        private void Thread_Filtros_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            
+            Btn_Aplicar_Filtro.Enabled = false;
+        }
+
+        private void Thread_Filtros_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            Btn_Aplicar_Filtro.Enabled = true;
         }
     }
 }

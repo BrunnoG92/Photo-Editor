@@ -336,6 +336,7 @@ namespace Photo_Editor
             this.Btn_Aplicar_Filtro.StateDisabled.Back.Color2 = System.Drawing.Color.Gray;
             this.Btn_Aplicar_Filtro.TabIndex = 75;
             this.Btn_Aplicar_Filtro.Values.Text = "APLICAR";
+            this.Btn_Aplicar_Filtro.Click += new System.EventHandler(this.Btn_Aplicar_Filtro_Click);
             // 
             // pictureBox5
             // 
@@ -930,7 +931,10 @@ namespace Photo_Editor
             // 
             // Thread_Filtros
             // 
+            this.Thread_Filtros.WorkerReportsProgress = true;
             this.Thread_Filtros.DoWork += new System.ComponentModel.DoWorkEventHandler(this.Thread_Filtros_DoWork);
+            this.Thread_Filtros.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.Thread_Filtros_ProgressChanged);
+            this.Thread_Filtros.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.Thread_Filtros_RunWorkerCompleted);
             // 
             // Form1_Photo_Editor
             // 
