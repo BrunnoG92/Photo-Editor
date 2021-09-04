@@ -35,20 +35,19 @@ namespace Photo_Editor
             this.Cmbb_Correcao = new System.Windows.Forms.ComboBox();
             this.Cmbb_Imagem_Constante = new System.Windows.Forms.ComboBox();
             this.Cmb_Bordas = new System.Windows.Forms.ComboBox();
+            this.Cmb_Linhas = new System.Windows.Forms.ComboBox();
             this.Grp_B_Filtros = new System.Windows.Forms.GroupBox();
-            this.kryptonNumericUpDown7 = new ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.kryptonNumericUpDown6 = new ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown();
-            this.kryptonNumericUpDown5 = new ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown();
-            this.kryptonNumericUpDown4 = new ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown();
-            this.kryptonNumericUpDown3 = new ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown();
+            this.Num_UpDown_Alta = new ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown();
+            this.Chkb_Blur = new System.Windows.Forms.CheckBox();
+            this.Num_UpDown_Blur = new ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown();
+            this.Num_UpDown_Laplace = new ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown();
             this.radioButton8 = new System.Windows.Forms.RadioButton();
-            this.radioButton7 = new System.Windows.Forms.RadioButton();
+            this.Rdo_Laplace = new System.Windows.Forms.RadioButton();
             this.Btn_Aplicar_Filtro = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.radioButton4 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.Rdo_Blur = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.Lbl_Imagem01 = new System.Windows.Forms.Label();
@@ -177,25 +176,39 @@ namespace Photo_Editor
             this.Cmb_Bordas.TabIndex = 84;
             this.toolTip1.SetToolTip(this.Cmb_Bordas, "Seleciona a máscara do filtro");
             // 
+            // Cmb_Linhas
+            // 
+            this.Cmb_Linhas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Cmb_Linhas.FormattingEnabled = true;
+            this.Cmb_Linhas.Items.AddRange(new object[] {
+            "Horizontal",
+            "Vertical",
+            "Diagonal Superior",
+            "Diagonal Inferior"});
+            this.Cmb_Linhas.Location = new System.Drawing.Point(29, 151);
+            this.Cmb_Linhas.Name = "Cmb_Linhas";
+            this.Cmb_Linhas.Size = new System.Drawing.Size(120, 21);
+            this.Cmb_Linhas.TabIndex = 90;
+            this.toolTip1.SetToolTip(this.Cmb_Linhas, "Seleciona a máscara do filtro");
+            // 
             // Grp_B_Filtros
             // 
             this.Grp_B_Filtros.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Grp_B_Filtros.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
+            this.Grp_B_Filtros.Controls.Add(this.Cmb_Linhas);
             this.Grp_B_Filtros.Controls.Add(this.Cmb_Bordas);
-            this.Grp_B_Filtros.Controls.Add(this.kryptonNumericUpDown7);
-            this.Grp_B_Filtros.Controls.Add(this.checkBox1);
-            this.Grp_B_Filtros.Controls.Add(this.kryptonNumericUpDown6);
-            this.Grp_B_Filtros.Controls.Add(this.kryptonNumericUpDown5);
-            this.Grp_B_Filtros.Controls.Add(this.kryptonNumericUpDown4);
-            this.Grp_B_Filtros.Controls.Add(this.kryptonNumericUpDown3);
+            this.Grp_B_Filtros.Controls.Add(this.Num_UpDown_Alta);
+            this.Grp_B_Filtros.Controls.Add(this.Chkb_Blur);
+            this.Grp_B_Filtros.Controls.Add(this.Num_UpDown_Blur);
+            this.Grp_B_Filtros.Controls.Add(this.Num_UpDown_Laplace);
             this.Grp_B_Filtros.Controls.Add(this.radioButton8);
-            this.Grp_B_Filtros.Controls.Add(this.radioButton7);
+            this.Grp_B_Filtros.Controls.Add(this.Rdo_Laplace);
             this.Grp_B_Filtros.Controls.Add(this.Btn_Aplicar_Filtro);
             this.Grp_B_Filtros.Controls.Add(this.pictureBox5);
             this.Grp_B_Filtros.Controls.Add(this.label1);
             this.Grp_B_Filtros.Controls.Add(this.radioButton4);
-            this.Grp_B_Filtros.Controls.Add(this.radioButton3);
+            this.Grp_B_Filtros.Controls.Add(this.Rdo_Blur);
             this.Grp_B_Filtros.Controls.Add(this.radioButton2);
             this.Grp_B_Filtros.Controls.Add(this.radioButton1);
             this.Grp_B_Filtros.ForeColor = System.Drawing.Color.White;
@@ -206,101 +219,84 @@ namespace Photo_Editor
             this.Grp_B_Filtros.TabStop = false;
             this.Grp_B_Filtros.Text = "Filtros";
             // 
-            // kryptonNumericUpDown7
+            // Num_UpDown_Alta
             // 
-            this.kryptonNumericUpDown7.Location = new System.Drawing.Point(155, 262);
-            this.kryptonNumericUpDown7.Maximum = new decimal(new int[] {
+            this.Num_UpDown_Alta.Location = new System.Drawing.Point(157, 285);
+            this.Num_UpDown_Alta.Maximum = new decimal(new int[] {
             255,
             0,
             0,
             0});
-            this.kryptonNumericUpDown7.Name = "kryptonNumericUpDown7";
-            this.kryptonNumericUpDown7.Size = new System.Drawing.Size(84, 19);
-            this.kryptonNumericUpDown7.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
-            this.kryptonNumericUpDown7.StateCommon.Content.Color1 = System.Drawing.Color.White;
-            this.kryptonNumericUpDown7.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonNumericUpDown7.TabIndex = 89;
-            this.kryptonNumericUpDown7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Num_UpDown_Alta.Name = "Num_UpDown_Alta";
+            this.Num_UpDown_Alta.Size = new System.Drawing.Size(51, 19);
+            this.Num_UpDown_Alta.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
+            this.Num_UpDown_Alta.StateCommon.Content.Color1 = System.Drawing.Color.White;
+            this.Num_UpDown_Alta.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Num_UpDown_Alta.TabIndex = 89;
+            this.Num_UpDown_Alta.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Num_UpDown_Alta.Value = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
             // 
-            // checkBox1
+            // Chkb_Blur
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(56, 235);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(106, 17);
-            this.checkBox1.TabIndex = 88;
-            this.checkBox1.Text = "Pesos Diferentes";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.Chkb_Blur.AutoSize = true;
+            this.Chkb_Blur.Location = new System.Drawing.Point(44, 258);
+            this.Chkb_Blur.Name = "Chkb_Blur";
+            this.Chkb_Blur.Size = new System.Drawing.Size(106, 17);
+            this.Chkb_Blur.TabIndex = 88;
+            this.Chkb_Blur.Text = "Pesos Diferentes";
+            this.Chkb_Blur.UseVisualStyleBackColor = true;
             // 
-            // kryptonNumericUpDown6
+            // Num_UpDown_Blur
             // 
-            this.kryptonNumericUpDown6.Location = new System.Drawing.Point(155, 201);
-            this.kryptonNumericUpDown6.Maximum = new decimal(new int[] {
+            this.Num_UpDown_Blur.Location = new System.Drawing.Point(157, 224);
+            this.Num_UpDown_Blur.Maximum = new decimal(new int[] {
             255,
             0,
             0,
             0});
-            this.kryptonNumericUpDown6.Name = "kryptonNumericUpDown6";
-            this.kryptonNumericUpDown6.Size = new System.Drawing.Size(84, 19);
-            this.kryptonNumericUpDown6.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
-            this.kryptonNumericUpDown6.StateCommon.Content.Color1 = System.Drawing.Color.White;
-            this.kryptonNumericUpDown6.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonNumericUpDown6.TabIndex = 87;
-            this.kryptonNumericUpDown6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Num_UpDown_Blur.Name = "Num_UpDown_Blur";
+            this.Num_UpDown_Blur.Size = new System.Drawing.Size(51, 19);
+            this.Num_UpDown_Blur.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
+            this.Num_UpDown_Blur.StateCommon.Content.Color1 = System.Drawing.Color.White;
+            this.Num_UpDown_Blur.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Num_UpDown_Blur.TabIndex = 87;
+            this.Num_UpDown_Blur.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Num_UpDown_Blur.Value = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
             // 
-            // kryptonNumericUpDown5
+            // Num_UpDown_Laplace
             // 
-            this.kryptonNumericUpDown5.Location = new System.Drawing.Point(155, 162);
-            this.kryptonNumericUpDown5.Maximum = new decimal(new int[] {
+            this.Num_UpDown_Laplace.Location = new System.Drawing.Point(157, 186);
+            this.Num_UpDown_Laplace.Maximum = new decimal(new int[] {
             255,
             0,
             0,
             0});
-            this.kryptonNumericUpDown5.Name = "kryptonNumericUpDown5";
-            this.kryptonNumericUpDown5.Size = new System.Drawing.Size(84, 19);
-            this.kryptonNumericUpDown5.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
-            this.kryptonNumericUpDown5.StateCommon.Content.Color1 = System.Drawing.Color.White;
-            this.kryptonNumericUpDown5.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonNumericUpDown5.TabIndex = 86;
-            this.kryptonNumericUpDown5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // kryptonNumericUpDown4
-            // 
-            this.kryptonNumericUpDown4.Location = new System.Drawing.Point(155, 128);
-            this.kryptonNumericUpDown4.Maximum = new decimal(new int[] {
-            255,
+            this.Num_UpDown_Laplace.Name = "Num_UpDown_Laplace";
+            this.Num_UpDown_Laplace.Size = new System.Drawing.Size(51, 19);
+            this.Num_UpDown_Laplace.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
+            this.Num_UpDown_Laplace.StateCommon.Content.Color1 = System.Drawing.Color.White;
+            this.Num_UpDown_Laplace.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Num_UpDown_Laplace.TabIndex = 86;
+            this.Num_UpDown_Laplace.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Num_UpDown_Laplace.Value = new decimal(new int[] {
+            3,
             0,
             0,
             0});
-            this.kryptonNumericUpDown4.Name = "kryptonNumericUpDown4";
-            this.kryptonNumericUpDown4.Size = new System.Drawing.Size(84, 19);
-            this.kryptonNumericUpDown4.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
-            this.kryptonNumericUpDown4.StateCommon.Content.Color1 = System.Drawing.Color.White;
-            this.kryptonNumericUpDown4.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonNumericUpDown4.TabIndex = 85;
-            this.kryptonNumericUpDown4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // kryptonNumericUpDown3
-            // 
-            this.kryptonNumericUpDown3.Location = new System.Drawing.Point(157, 76);
-            this.kryptonNumericUpDown3.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
-            this.kryptonNumericUpDown3.Name = "kryptonNumericUpDown3";
-            this.kryptonNumericUpDown3.Size = new System.Drawing.Size(84, 19);
-            this.kryptonNumericUpDown3.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
-            this.kryptonNumericUpDown3.StateCommon.Content.Color1 = System.Drawing.Color.White;
-            this.kryptonNumericUpDown3.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonNumericUpDown3.TabIndex = 84;
-            this.kryptonNumericUpDown3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // radioButton8
             // 
             this.radioButton8.AutoSize = true;
             this.radioButton8.ForeColor = System.Drawing.Color.White;
-            this.radioButton8.Location = new System.Drawing.Point(30, 262);
+            this.radioButton8.Location = new System.Drawing.Point(30, 287);
             this.radioButton8.Name = "radioButton8";
             this.radioButton8.Size = new System.Drawing.Size(75, 17);
             this.radioButton8.TabIndex = 77;
@@ -308,17 +304,17 @@ namespace Photo_Editor
             this.radioButton8.Text = "Passa Alta";
             this.radioButton8.UseVisualStyleBackColor = true;
             // 
-            // radioButton7
+            // Rdo_Laplace
             // 
-            this.radioButton7.AutoSize = true;
-            this.radioButton7.ForeColor = System.Drawing.Color.White;
-            this.radioButton7.Location = new System.Drawing.Point(30, 164);
-            this.radioButton7.Name = "radioButton7";
-            this.radioButton7.Size = new System.Drawing.Size(77, 17);
-            this.radioButton7.TabIndex = 76;
-            this.radioButton7.TabStop = true;
-            this.radioButton7.Text = "Laplaciano";
-            this.radioButton7.UseVisualStyleBackColor = true;
+            this.Rdo_Laplace.AutoSize = true;
+            this.Rdo_Laplace.ForeColor = System.Drawing.Color.White;
+            this.Rdo_Laplace.Location = new System.Drawing.Point(30, 189);
+            this.Rdo_Laplace.Name = "Rdo_Laplace";
+            this.Rdo_Laplace.Size = new System.Drawing.Size(77, 17);
+            this.Rdo_Laplace.TabIndex = 76;
+            this.Rdo_Laplace.TabStop = true;
+            this.Rdo_Laplace.Text = "Laplaciano";
+            this.Rdo_Laplace.UseVisualStyleBackColor = true;
             // 
             // Btn_Aplicar_Filtro
             // 
@@ -341,7 +337,7 @@ namespace Photo_Editor
             // pictureBox5
             // 
             this.pictureBox5.Image = global::Photo_Editor.Properties.Resources.icons8_editar_imagem_80;
-            this.pictureBox5.Location = new System.Drawing.Point(247, 39);
+            this.pictureBox5.Location = new System.Drawing.Point(248, 36);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(97, 84);
             this.pictureBox5.TabIndex = 74;
@@ -371,17 +367,17 @@ namespace Photo_Editor
             this.radioButton4.Text = "Detecção de Linhas";
             this.radioButton4.UseVisualStyleBackColor = true;
             // 
-            // radioButton3
+            // Rdo_Blur
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.ForeColor = System.Drawing.Color.White;
-            this.radioButton3.Location = new System.Drawing.Point(30, 201);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(43, 17);
-            this.radioButton3.TabIndex = 2;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "Blur";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.Rdo_Blur.AutoSize = true;
+            this.Rdo_Blur.ForeColor = System.Drawing.Color.White;
+            this.Rdo_Blur.Location = new System.Drawing.Point(30, 226);
+            this.Rdo_Blur.Name = "Rdo_Blur";
+            this.Rdo_Blur.Size = new System.Drawing.Size(43, 17);
+            this.Rdo_Blur.TabIndex = 2;
+            this.Rdo_Blur.TabStop = true;
+            this.Rdo_Blur.Text = "Blur";
+            this.Rdo_Blur.UseVisualStyleBackColor = true;
             // 
             // radioButton2
             // 
@@ -622,7 +618,7 @@ namespace Photo_Editor
             // pictureBox4
             // 
             this.pictureBox4.Image = global::Photo_Editor.Properties.Resources.icons8_sem_imagem_80;
-            this.pictureBox4.Location = new System.Drawing.Point(259, 59);
+            this.pictureBox4.Location = new System.Drawing.Point(260, 36);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(85, 86);
             this.pictureBox4.TabIndex = 5;
@@ -759,9 +755,9 @@ namespace Photo_Editor
             // pictureBox6
             // 
             this.pictureBox6.Image = global::Photo_Editor.Properties.Resources.icons8_diagrama_de_venn_50;
-            this.pictureBox6.Location = new System.Drawing.Point(244, 42);
+            this.pictureBox6.Location = new System.Drawing.Point(246, 36);
             this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(74, 57);
+            this.pictureBox6.Size = new System.Drawing.Size(85, 86);
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox6.TabIndex = 74;
             this.pictureBox6.TabStop = false;
@@ -981,7 +977,7 @@ namespace Photo_Editor
         private System.Windows.Forms.PictureBox Pcb_03;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.RadioButton radioButton4;
-        private System.Windows.Forms.RadioButton radioButton3;
+        private System.Windows.Forms.RadioButton Rdo_Blur;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.Label Lbl_Imagem01;
@@ -1023,18 +1019,17 @@ namespace Photo_Editor
         private ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown Num_UpDown_Mult;
         private System.Windows.Forms.RadioButton Rdo_Multiplicacao;
         private System.Windows.Forms.ComboBox Cmb_Bordas;
-        private ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown kryptonNumericUpDown7;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown kryptonNumericUpDown6;
-        private ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown kryptonNumericUpDown5;
-        private ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown kryptonNumericUpDown4;
-        private ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown kryptonNumericUpDown3;
+        private ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown Num_UpDown_Alta;
+        private System.Windows.Forms.CheckBox Chkb_Blur;
+        private ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown Num_UpDown_Blur;
+        private ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown Num_UpDown_Laplace;
         private System.Windows.Forms.RadioButton radioButton8;
-        private System.Windows.Forms.RadioButton radioButton7;
+        private System.Windows.Forms.RadioButton Rdo_Laplace;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.ComponentModel.BackgroundWorker Thread_Booleana;
         private System.ComponentModel.BackgroundWorker Thread_Filtros;
+        private System.Windows.Forms.ComboBox Cmb_Linhas;
     }
 }
 

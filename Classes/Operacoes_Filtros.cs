@@ -12,6 +12,23 @@ namespace Photo_Editor.Classes
     {
         static double Raiz = Math.Sqrt(2);
 
+        public static double[,] LinhaHorizontal = new double[,] { { -1, -1, -1 },
+                                                           {  2,  2,  2 },
+                                                           { -1, -1, -1 } };
+
+        public static double[,] LinhaVertical = new double[,] { { -1,  2, -1 },
+                                                         { -1,  2, -1 },
+                                                         { -1,  2, -1 } };
+
+        public static double[,] LinhaDiagonalSuperior = new double[,] { { -1, -1,  2 },
+                                                            { -1,  2, -1 },
+                                                            {  2, -1, -1 } };
+
+        public static double[,] LinhaDiagonalInferior = new double[,] { {  2, -1, -1 },
+                                                            { -1,  2, -1 },
+                                                            { -1, -1,  2 }};
+
+
         public static double[,] RobertsVertical = new double[,]   { { 0,  0, -1 },
                                                              { 0,  1,  0 },
                                                              { 0,  0,  0 }};
@@ -43,6 +60,53 @@ namespace Photo_Editor.Classes
         public static  double[,] FreiChenHorizontal = new double[,] {{-1, -Raiz, -1 },
                                                              { 0,  0,  0 },
                                                              { 1,  Raiz, -1 }};
+
+        public static double[,] Laplaciano_3 = new double[,] { {  0, -1,  0 },
+                                                        { -1,  4, -1 },
+                                                        {  0, -1,  0 } };
+
+        public static double[,] Laplaciano_5 = new double[,] { { -1, -1, -1, -1, -1 },
+                                                        { -1, -1, -1, -1, -1 },
+                                                        { -1, -1, 24, -1, -1 },
+                                                        { -1, -1, -1, -1, -1 },
+                                                        { -1, -1, -1, -1, -1 }};
+
+        public static double[,] Laplaciano_9 = new double[,] { { -1, -1, -1, -1, -1, -1, -1, -1, -1 },
+                                                        { -1, -1, -1, -1, -1, -1, -1, -1, -1 },
+                                                        { -1, -1, -1, -1, -1, -1, -1, -1, -1 },
+                                                        { -1, -1, -1,  8,  8,  8, -1, -1, -1 },
+                                                        { -1, -1, -1,  8,  8,  8, -1, -1, -1 },
+                                                        { -1, -1, -1,  8,  8,  8, -1, -1, -1 },
+                                                        { -1, -1, -1, -1, -1, -1, -1, -1, -1 },
+                                                        { -1, -1, -1, -1, -1, -1, -1, -1, -1 },
+                                                        { -1, -1, -1, -1, -1, -1, -1, -1, -1 }};
+
+
+        public static double[,] Blur3_1 = new double[,] {  { 1, 1, 1 },
+                                                    { 1, 1, 1 },
+                                                    { 1, 1, 1 } };
+
+        public static double[,] Blur3_d = new double[,] {  { 1, 2, 1 },
+                                                    { 2, 4, 2 },
+                                                    { 1, 2, 1 } };
+
+        public static double[,] Blur5_1 = new double[,] {  { 1, 1, 1, 1, 1},
+                                                    { 1, 1, 1, 1, 1},
+                                                    { 1, 1, 1, 1, 1},
+                                                    { 1, 1, 1, 1, 1},
+                                                    { 1, 1, 1, 1, 1}};
+
+        public static double[,] Blur7_1 = new double[,] {  { 1, 1, 1, 1, 1, 1, 1},
+                                                    { 1, 1, 1, 1, 1, 1, 1},
+                                                    { 1, 1, 1, 1, 1, 1, 1},
+                                                    { 1, 1, 1, 1, 1, 1, 1},
+                                                    { 1, 1, 1, 1, 1, 1, 1},
+                                                    { 1, 1, 1, 1, 1, 1, 1},
+                                                    { 1, 1, 1, 1, 1, 1, 1}};
+
+        public static double[,] PassaAlta3_1 = new double[,] { { -1, -1, -1 },
+                                                        { -1,  8, -1 },
+                                                        { -1, -1, -1 }};
 
         public static Bitmap Colocar_Filtro(Image Imagem01, Filtro_Paramentros Parametros)
         {

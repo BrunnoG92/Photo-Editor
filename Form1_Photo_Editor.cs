@@ -20,6 +20,10 @@ namespace Photo_Editor
         public static int CorrecaoSelecionado;
         public static int Imagem_Constante;
         public int Borda_Selecionada;
+        public int Linha_Selecionada;
+        public int Laplaciano;
+        public int BlurValor;
+        int PassaAltaValor;
 
 
         public Form1_Photo_Editor()
@@ -257,16 +261,17 @@ namespace Photo_Editor
         {
             MessageBox.Show("Filtro Aplicado com sucesso", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-          
+
         private void Thread_Filtros_DoWork(object sender, DoWorkEventArgs e)
         {
-          
+            // APLICAÇÃO DE FILTROS DE BORDAS
+
             if (Borda_Selecionada == 0)
             {
                 Thread_Filtros.ReportProgress(10);
                 Filtro_Paramentros Parametros_Filtros = new Filtro_Paramentros(3, Operacoes_Filtros.RobertsVertical, 1);
                 Pcb_03.Image = Operacoes_Filtros.Colocar_Filtro(Pcb_01.Image, Parametros_Filtros);
-                
+
             }
             else if (Borda_Selecionada == 1)
             {
@@ -324,11 +329,127 @@ namespace Photo_Editor
                 Filtro_Paramentros Parametros_Filtros = new Filtro_Paramentros(3, Operacoes_Filtros.FreiChenHorizontal, mod);
                 Pcb_03.Image = Operacoes_Filtros.Colocar_Filtro(Pcb_01.Image, Parametros_Filtros);
             }
+            //
+            // APLICAÇÃO DE FILTROS DE LINHAS
+            //
+            if (Linha_Selecionada == 0)
+            {
+                Thread_Filtros.ReportProgress(10);
+                Filtro_Paramentros parametrosDoFiltro = new Filtro_Paramentros(3, Operacoes_Filtros.LinhaHorizontal, 1);
+                Pcb_03.Image = Operacoes_Filtros.Colocar_Filtro(Pcb_01.Image, parametrosDoFiltro);
+            }
+            else if (Linha_Selecionada == 1)
+            {
+                Thread_Filtros.ReportProgress(20);
+                Filtro_Paramentros parametrosDoFiltro = new Filtro_Paramentros(3, Operacoes_Filtros.LinhaVertical, 1);
+                Pcb_03.Image = Operacoes_Filtros.Colocar_Filtro(Pcb_01.Image, parametrosDoFiltro);
+            }
+            else if (Linha_Selecionada == 2)
+            {
+                Thread_Filtros.ReportProgress(30);
+                Filtro_Paramentros parametrosDoFiltro = new Filtro_Paramentros(3, Operacoes_Filtros.LinhaDiagonalSuperior, 1);
+                Pcb_03.Image = Operacoes_Filtros.Colocar_Filtro(Pcb_01.Image, parametrosDoFiltro);
+            }
+            else if (Linha_Selecionada == 3)
+            {
+                Thread_Filtros.ReportProgress(40);
+                Filtro_Paramentros parametrosDoFiltro = new Filtro_Paramentros(3, Operacoes_Filtros.LinhaDiagonalInferior, 1);
+                Pcb_03.Image = Operacoes_Filtros.Colocar_Filtro(Pcb_01.Image, parametrosDoFiltro);
+            }
+
+            // APLICAÇÃO DE FILTROS LAPLACIANO
+            if (Rdo_Laplace.Checked == true)
+            {
+                if (Laplaciano == 3)
+                {
+                    Thread_Filtros.ReportProgress(10);
+                    Filtro_Paramentros parametrosDoFiltro = new Filtro_Paramentros((int)Laplaciano, Operacoes_Filtros.Laplaciano_3, 1);
+                    Pcb_03.Image = Operacoes_Filtros.Colocar_Filtro(Pcb_01.Image, parametrosDoFiltro);
+                }
+                else if (Laplaciano == 5)
+                {
+                    Thread_Filtros.ReportProgress(20);
+                    Filtro_Paramentros parametrosDoFiltro = new Filtro_Paramentros((int)Laplaciano, Operacoes_Filtros.Laplaciano_5, 1);
+                    Pcb_03.Image = Operacoes_Filtros.Colocar_Filtro(Pcb_01.Image, parametrosDoFiltro);
+                }
+                else if (Laplaciano == 9)
+                {
+                    Thread_Filtros.ReportProgress(30);
+                    Filtro_Paramentros parametrosDoFiltro = new Filtro_Paramentros((int)Laplaciano, Operacoes_Filtros.Laplaciano_9, 1);
+                    Pcb_03.Image = Operacoes_Filtros.Colocar_Filtro(Pcb_01.Image, parametrosDoFiltro);
+                }
+                if (Laplaciano != 3 || Laplaciano != 5 || Laplaciano != 9)
+                {
+                    Thread_Filtros.ReportProgress(40);
+                    MessageBox.Show("O Numero Inserido não é válido. Para Lapaciano as entradas devem ser: 3, 5 ou 9", "Número Inválido", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+           
+            // APLICAÇÃO DE FILTROS BLUR
+
+            if (Chkb_Blur.Checked == true)
+            {
+
+                if (BlurValor == 3)
+                {
+                    Thread_Filtros.ReportProgress(10);
+
+                    float mod = 16;
+                    mod = 1 / mod;
+                    Filtro_Paramentros parametrosDoFiltro = new Filtro_Paramentros(3, Operacoes_Filtros.Blur3_d, mod);
+                    Pcb_03.Image = Operacoes_Filtros.Colocar_Filtro(Pcb_01.Image, parametrosDoFiltro);
+                }
+            }
+            else
+            {
+                if (BlurValor == 3)
+                {
+                    Thread_Filtros.ReportProgress(10);
+                    float mod = (float)BlurValor * (float)BlurValor;
+                    mod = 1 / mod;
+                    Filtro_Paramentros parametrosDoFiltro = new Filtro_Paramentros((int)BlurValor, Operacoes_Filtros.Blur3_1, mod);
+                    Pcb_03.Image = Operacoes_Filtros.Colocar_Filtro(Pcb_01.Image, parametrosDoFiltro);
+                }
+                else if (BlurValor == 5)
+                {
+                    Thread_Filtros.ReportProgress(10);
+                    float mod = (float)BlurValor * (float)BlurValor;
+                    mod = 1 / mod;
+                    Filtro_Paramentros parametrosDoFiltro = new Filtro_Paramentros((int)BlurValor, Operacoes_Filtros.Blur5_1, mod);
+                    Pcb_03.Image = Operacoes_Filtros.Colocar_Filtro(Pcb_01.Image, parametrosDoFiltro);
+                }
+                else if (BlurValor == 7)
+                {
+                    Thread_Filtros.ReportProgress(10);
+                    float mod = (float)BlurValor * (float)BlurValor;
+                    mod = 1 / mod;
+                    Filtro_Paramentros parametrosDoFiltro = new Filtro_Paramentros((int)BlurValor, Operacoes_Filtros.Blur7_1, mod);
+                    Pcb_03.Image = Operacoes_Filtros.Colocar_Filtro(Pcb_01.Image, parametrosDoFiltro);
+                }
+                else
+                {
+                    MessageBox.Show("O Numero Inserido não é válido. Para Blur as entradas devem ser: 3, 5 ou 7", "Número Inválido", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+            }
+            // APLICAÇÃO DE FILTROS PASSA ALTA
+            if (PassaAltaValor == 3)
+            {   
+                 Thread_Filtros.ReportProgress(10);
+                float mod = (float)PassaAltaValor * (float)PassaAltaValor;
+                mod = 1 / mod;
+                Filtro_Paramentros parametrosDoFiltro = new Filtro_Paramentros((int)PassaAltaValor, Operacoes_Filtros.PassaAlta3_1, mod);
+                Pcb_03.Image = Operacoes_Filtros.Colocar_Filtro(Pcb_01.Image, parametrosDoFiltro);
+            }
         }
 
         private void Btn_Aplicar_Filtro_Click(object sender, EventArgs e)
         {
             Borda_Selecionada = Cmb_Bordas.SelectedIndex;
+            Linha_Selecionada = Cmb_Linhas.SelectedIndex;
+            Laplaciano = (int)Num_UpDown_Laplace.Value;
+            BlurValor = (int)Num_UpDown_Blur.Value;
+            PassaAltaValor = (int)Num_UpDown_Alta.Value;
             Thread_Filtros.RunWorkerAsync();
         }
 
