@@ -72,8 +72,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Drag Control.cs" />
+    <Compile Include="Classes\Filtro_Paramentros.cs" />
     <Compile Include="Classes\Operacoes_Aritmeticas.cs" />
     <Compile Include="Classes\Operacoes_Booleanas.cs" />
+    <Compile Include="Classes\Operacoes_Filtros.cs" />
     <Compile Include="Form1_Photo_Editor.cs">
       <SubType>Form</SubType>
     </Compile>

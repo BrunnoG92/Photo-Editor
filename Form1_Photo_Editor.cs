@@ -255,5 +255,66 @@ namespace Photo_Editor
         {
             MessageBox.Show("Filtro Aplicado com sucesso", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+          
+        private void Thread_Filtros_DoWork(object sender, DoWorkEventArgs e)
+        {   
+            
+            if (Cmb_Bordas.SelectedIndex == 0)
+            {
+               
+                Filtro_Paramentros Parametros_Filtros = new Filtro_Paramentros(3, Operacoes_Filtros.RobertsVertical, 1);
+                Pcb_03.Image = Operacoes_Filtros.Colocar_Filtro(Pcb_01.Image, Parametros_Filtros);
+            }
+            else if (Cmb_Bordas.SelectedIndex == 1)
+            {
+               
+                Filtro_Paramentros Parametros_Filtros = new Filtro_Paramentros(3, Operacoes_Filtros.RobertsHorizontal, 1);
+                Pcb_03.Image = Operacoes_Filtros.Colocar_Filtro(Pcb_01.Image, Parametros_Filtros);
+            }
+            else if (Cmb_Bordas.SelectedIndex == 2)
+            {
+                float mod = 4;
+                mod = 1 / mod;
+                Filtro_Paramentros Parametros_Filtros = new Filtro_Paramentros(3, Operacoes_Filtros.SobelVertical, mod);
+                Pcb_03.Image = Operacoes_Filtros.Colocar_Filtro(Pcb_01.Image, Parametros_Filtros);
+            }
+            else if (Cmb_Bordas.SelectedIndex == 3)
+            {
+                float mod = 4;
+                mod = 1 / mod;
+                Filtro_Paramentros Parametros_Filtros = new Filtro_Paramentros(3, Operacoes_Filtros.SobelHorizontal, mod);
+                Pcb_03.Image = Operacoes_Filtros.Colocar_Filtro(Pcb_01.Image, Parametros_Filtros);
+            }
+            else if (Cmb_Bordas.SelectedIndex == 4)
+            {
+                float mod = 3;
+                mod = 1 / mod;
+                Filtro_Paramentros Parametros_Filtros = new Filtro_Paramentros(3, Operacoes_Filtros.PrewittVertical, mod);
+                Pcb_03.Image = Operacoes_Filtros.Colocar_Filtro(Pcb_01.Image, Parametros_Filtros);
+            }
+            else if (Cmb_Bordas.SelectedIndex == 5)
+            {
+                float mod = 3;
+                mod = 1 / mod;
+                Filtro_Paramentros Parametros_Filtros = new Filtro_Paramentros(3, Operacoes_Filtros.PrewittHorizontal, mod);
+                Pcb_03.Image = Operacoes_Filtros.Colocar_Filtro(Pcb_01.Image, Parametros_Filtros);
+            }
+            else if (Cmb_Bordas.SelectedIndex == 6)
+            {
+                double raiz = Math.Sqrt(2);
+                float mod = 2 + (float)raiz;
+                mod = 1 / mod;
+                Filtro_Paramentros Parametros_Filtros = new Filtro_Paramentros(3, Operacoes_Filtros.FreiChenVertical, mod);
+                Pcb_03.Image = Operacoes_Filtros.Colocar_Filtro(Pcb_01.Image, Parametros_Filtros);
+            }
+            else if (Cmb_Bordas.SelectedIndex == 7)
+            {
+                double raiz = Math.Sqrt(2);
+                float mod = 2 + (float)raiz;
+                mod = 1 / mod;
+                Filtro_Paramentros Parametros_Filtros = new Filtro_Paramentros(3, Operacoes_Filtros.FreiChenHorizontal, mod);
+                Pcb_03.Image = Operacoes_Filtros.Colocar_Filtro(Pcb_01.Image, Parametros_Filtros);
+            }
+        }
     }
 }

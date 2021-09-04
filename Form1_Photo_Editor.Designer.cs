@@ -34,7 +34,7 @@ namespace Photo_Editor
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.Cmbb_Correcao = new System.Windows.Forms.ComboBox();
             this.Cmbb_Imagem_Constante = new System.Windows.Forms.ComboBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.Cmb_Bordas = new System.Windows.Forms.ComboBox();
             this.Grp_B_Filtros = new System.Windows.Forms.GroupBox();
             this.kryptonNumericUpDown7 = new ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
@@ -91,6 +91,7 @@ namespace Photo_Editor
             this.Pcb_01 = new System.Windows.Forms.PictureBox();
             this.Thread_Aritmetica = new System.ComponentModel.BackgroundWorker();
             this.Thread_Booleana = new System.ComponentModel.BackgroundWorker();
+            this.Thread_Filtros = new System.ComponentModel.BackgroundWorker();
             this.Grp_B_Filtros.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.Grp_B_Arit.SuspendLayout();
@@ -157,11 +158,11 @@ namespace Photo_Editor
             this.toolTip1.SetToolTip(this.Cmbb_Imagem_Constante, "Seleciona se a operação será feita em constante ou entre imagens");
             this.Cmbb_Imagem_Constante.SelectedIndexChanged += new System.EventHandler(this.Cmbb_Imagem_Constante_SelectedIndexChanged);
             // 
-            // comboBox1
+            // Cmb_Bordas
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.Cmb_Bordas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Cmb_Bordas.FormattingEnabled = true;
+            this.Cmb_Bordas.Items.AddRange(new object[] {
             "Roberts Vertical",
             "Roberts Horizontal",
             "Sobel Vertical",
@@ -170,18 +171,18 @@ namespace Photo_Editor
             "Prewitt Horizontal",
             "Frei-ChenVertical",
             "Frei-Chen Hotizontal"});
-            this.comboBox1.Location = new System.Drawing.Point(30, 101);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(120, 21);
-            this.comboBox1.TabIndex = 84;
-            this.toolTip1.SetToolTip(this.comboBox1, "Seleciona a máscara do filtro");
+            this.Cmb_Bordas.Location = new System.Drawing.Point(30, 101);
+            this.Cmb_Bordas.Name = "Cmb_Bordas";
+            this.Cmb_Bordas.Size = new System.Drawing.Size(120, 21);
+            this.Cmb_Bordas.TabIndex = 84;
+            this.toolTip1.SetToolTip(this.Cmb_Bordas, "Seleciona a máscara do filtro");
             // 
             // Grp_B_Filtros
             // 
             this.Grp_B_Filtros.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Grp_B_Filtros.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
-            this.Grp_B_Filtros.Controls.Add(this.comboBox1);
+            this.Grp_B_Filtros.Controls.Add(this.Cmb_Bordas);
             this.Grp_B_Filtros.Controls.Add(this.kryptonNumericUpDown7);
             this.Grp_B_Filtros.Controls.Add(this.checkBox1);
             this.Grp_B_Filtros.Controls.Add(this.kryptonNumericUpDown6);
@@ -927,6 +928,10 @@ namespace Photo_Editor
             this.Thread_Booleana.DoWork += new System.ComponentModel.DoWorkEventHandler(this.Thread_Booleana_DoWork);
             this.Thread_Booleana.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.Thread_Booleana_RunWorkerCompleted);
             // 
+            // Thread_Filtros
+            // 
+            this.Thread_Filtros.DoWork += new System.ComponentModel.DoWorkEventHandler(this.Thread_Filtros_DoWork);
+            // 
             // Form1_Photo_Editor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1013,7 +1018,7 @@ namespace Photo_Editor
         private System.Windows.Forms.RadioButton Rdo_Divisao;
         private ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown Num_UpDown_Mult;
         private System.Windows.Forms.RadioButton Rdo_Multiplicacao;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox Cmb_Bordas;
         private ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown kryptonNumericUpDown7;
         private System.Windows.Forms.CheckBox checkBox1;
         private ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown kryptonNumericUpDown6;
@@ -1025,6 +1030,7 @@ namespace Photo_Editor
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.ComponentModel.BackgroundWorker Thread_Booleana;
+        private System.ComponentModel.BackgroundWorker Thread_Filtros;
     }
 }
 
