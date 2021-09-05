@@ -33,6 +33,8 @@ namespace Photo_Editor
         {
             InitializeComponent();
             Pcb04_Carregando.Visible = false;
+            Cmbb_Correcao.SelectedIndex = 0;
+            Cmbb_Imagem_Constante.SelectedIndex = 1;
 
         }
         private void Cmbb_Correcao_SelectedIndexChanged(object sender, EventArgs e)

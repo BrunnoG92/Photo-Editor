@@ -255,13 +255,6 @@ namespace Photo_Editor.Classes
         }
 
 
-
-
-
-
-
-
-
         // Função para o calculo da soma da imagem
         public static int Calcula_Soma(int Cor, int Tipo_Correcao, int Maior, int Menor)
         {
@@ -788,13 +781,6 @@ namespace Photo_Editor.Classes
 
             }
         }
-
-
-
-
-
-
-
 
         public static Bitmap Negativo(Bitmap Imagem)
         {
