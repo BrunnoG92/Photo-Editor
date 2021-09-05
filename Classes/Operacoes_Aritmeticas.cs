@@ -11,8 +11,8 @@ namespace Photo_Editor.Classes
 {
     class Operacoes_Aritmeticas
     {
-       
-        // Funções para calculo dos valores de Pixel. 03 Sobrecargas
+
+        // Funções para calculo dos valores de Pixel. 02 Sobrecargas
         private static void Maior_Menor_Pixel(Bitmap Imagem01_Temp, Bitmap Imagem02_Temp, int Tipo_Operacao, ref int Maior, ref int Menor)
         {
             // Sobrecarga 1 - Operação com 2 imagens
@@ -253,42 +253,14 @@ namespace Photo_Editor.Classes
 
 
         }
-        private static void Maior_Menor_Pixel(Bitmap bitmaptemp, int Tipo_Operacao, ref int Maior, ref int Menor)
-        {
-            Color cor;
-            int r, g, b;
 
-            cor = bitmaptemp.GetPixel(0, 0);
-            Maior = cor.R;
-            Menor = cor.R;
+       
 
-            if (Tipo_Operacao == 5)
-            {
-                for (int x = 0; x < bitmaptemp.Width; x++)
-                {
-                    for (int y = 0; y < bitmaptemp.Height; y++)
-                    {
-                        cor = bitmaptemp.GetPixel(x, y);
-                        r = cor.R;
-                        g = cor.G;
-                        b = cor.B;
 
-                        if (r > Maior)
-                            Maior = r;
-                        else if (g > Maior)
-                            Maior = g;
-                        else if (b > Maior)
-                            Maior = b;
-                        else if (r < Menor)
-                            Menor = r;
-                        else if (g < Menor)
-                            Menor = g;
-                        else if (b < Menor)
-                            Menor = b;
-                    }
-                }
-            }
-        }
+
+
+
+
 
         // Função para o calculo da soma da imagem
         public static int Calcula_Soma(int Cor, int Tipo_Correcao, int Maior, int Menor)
@@ -329,7 +301,7 @@ namespace Photo_Editor.Classes
             Bitmap Imagem01_Temp = new Bitmap(image1);
             Bitmap Imagem02_Temp = new Bitmap(image2);
 
-            Color cor1, cor2, color;
+            Color Cor_Imagem01, Cor_Imagem02, Cor_Final;
             int r, g, b, Maior = 0, Menor = 0;
 
             //VERIFICA O TIPO DE CORREÇÃO SELECIONADO. A CORREÇÃO 1 (NORMALIZAÇÃO) EXIGE QUE OS VALORES MAIOR E MENOR DOS PIXEIS SEJAM JA ENCONTRADOS PREVIAMENTE, O QUE É FEITO AQUI
@@ -351,16 +323,16 @@ namespace Photo_Editor.Classes
                 {
                     for (int y = 0; y < Imagem1.Height; y++)
                     {
-                        cor1 = Imagem01_Temp.GetPixel(x, y);
-                        cor2 = Imagem02_Temp.GetPixel(x, y);
+                        Cor_Imagem01 = Imagem01_Temp.GetPixel(x, y);
+                        Cor_Imagem02 = Imagem02_Temp.GetPixel(x, y);
 
-                        r = Calcula_Soma(cor1.R + cor2.R, Tipo_Correcao, Maior, Menor);
-                        g = Calcula_Soma(cor1.G + cor2.G, Tipo_Correcao, Maior, Menor);
-                        b = Calcula_Soma(cor1.B + cor2.B, Tipo_Correcao, Maior, Menor);
+                        r = Calcula_Soma(Cor_Imagem01.R + Cor_Imagem02.R, Tipo_Correcao, Maior, Menor);
+                        g = Calcula_Soma(Cor_Imagem01.G + Cor_Imagem02.G, Tipo_Correcao, Maior, Menor);
+                        b = Calcula_Soma(Cor_Imagem01.B + Cor_Imagem02.B, Tipo_Correcao, Maior, Menor);
 
-                        color = Color.FromArgb(cor1.A, r, g, b);
+                        Cor_Final = Color.FromArgb(Cor_Imagem01.A, r, g, b);
 
-                        fastImagem1.SetPixel(x, y, color);
+                        fastImagem1.SetPixel(x, y, Cor_Final);
                     }
                 }
             }
@@ -371,16 +343,16 @@ namespace Photo_Editor.Classes
                 {
                     for (int y = 0; y < Imagem1.Height; y++)
                     {
-                        cor1 = Imagem01_Temp.GetPixel(x, y);
-                        cor2 = Imagem02_Temp.GetPixel(x, y);
+                        Cor_Imagem01 = Imagem01_Temp.GetPixel(x, y);
+                        Cor_Imagem02 = Imagem02_Temp.GetPixel(x, y);
 
-                        r = Calcula_Soma(cor1.R + valorConstante, Tipo_Correcao, Maior, Menor);
-                        g = Calcula_Soma(cor1.G + valorConstante, Tipo_Correcao, Maior, Menor);
-                        b = Calcula_Soma(cor1.B + valorConstante, Tipo_Correcao, Maior, Menor);
+                        r = Calcula_Soma(Cor_Imagem01.R + valorConstante, Tipo_Correcao, Maior, Menor);
+                        g = Calcula_Soma(Cor_Imagem01.G + valorConstante, Tipo_Correcao, Maior, Menor);
+                        b = Calcula_Soma(Cor_Imagem01.B + valorConstante, Tipo_Correcao, Maior, Menor);
 
-                        color = Color.FromArgb(cor1.A, r, g, b);
+                        Cor_Final = Color.FromArgb(Cor_Imagem01.A, r, g, b);
 
-                        fastImagem1.SetPixel(x, y, color);
+                        fastImagem1.SetPixel(x, y, Cor_Final);
                     }
                 }
             }
@@ -563,8 +535,8 @@ namespace Photo_Editor.Classes
             Bitmap Imagem01_Temp = new Bitmap(Imagem01);
             Bitmap Imagem02_Temp = new Bitmap(Imagem02);
 
-            Color cor1, cor2, color;
-            int r, g, b, max = 0, min = 0;
+            Color Cor_Imagem01, cor2, color;
+            int r, g, b, Maior = 0, Menor = 0;
 
             //VERIFICA O TIPO DE CORREÇÃO SELECIONADO. A CORREÇÃO 1 (NORMALIZAÇÃO) EXIGE QUE OS VALORES MAIOR E MENOR DOS PIXEIS SEJAM JA ENCONTRADOS PREVIAMENTE, O QUE É FEITO AQUI
 
@@ -572,11 +544,11 @@ namespace Photo_Editor.Classes
             {
                 if (Imagem_Constante == 0) // entre imagens
                 {
-                    Maior_Menor_Pixel(Imagem01_Temp, Imagem02_Temp, 2, ref max, ref min);//METODO PARA ENCONTRAR O VALOR MAIOR E MENOR PIXEL EM OPERAÇÕES COM DUAS IMAGENS
+                    Maior_Menor_Pixel(Imagem01_Temp, Imagem02_Temp, 2, ref Maior, ref Menor);//METODO PARA ENCONTRAR O VALOR MAIOR E MENOR PIXEL EM OPERAÇÕES COM DUAS IMAGENS
 
                 }
                 else
-                    Maior_Menor_Pixel(Imagem01_Temp, Valor_Constante, 3, ref max, ref min); ;//METODO PARA ENCONTRAR O VALOR MAIOR E MENOR PIXEL EM OPERAÇÕES COM VALORES CONSTANTES
+                    Maior_Menor_Pixel(Imagem01_Temp, Valor_Constante, 3, ref Maior, ref Menor); ;//METODO PARA ENCONTRAR O VALOR MAIOR E MENOR PIXEL EM OPERAÇÕES COM VALORES CONSTANTES
             }
 
             fastImagem1.Lock();
@@ -587,13 +559,13 @@ namespace Photo_Editor.Classes
                 {
                     for (int y = 0; y < Imagem1.Height; y++)
                     {
-                        cor1 = Imagem01_Temp.GetPixel(x, y);
+                        Cor_Imagem01 = Imagem01_Temp.GetPixel(x, y);
 
-                        r = Calcula_Multi_Constante(cor1.R, Valor_Constante, TipoCorrecao, max, min);
-                        g = Calcula_Multi_Constante(cor1.G, Valor_Constante, TipoCorrecao, max, min);
-                        b = Calcula_Multi_Constante(cor1.B, Valor_Constante, TipoCorrecao, max, min);
+                        r = Calcula_Multi_Constante(Cor_Imagem01.R, Valor_Constante, TipoCorrecao, Maior, Menor);
+                        g = Calcula_Multi_Constante(Cor_Imagem01.G, Valor_Constante, TipoCorrecao, Maior, Menor);
+                        b = Calcula_Multi_Constante(Cor_Imagem01.B, Valor_Constante, TipoCorrecao, Maior, Menor);
 
-                        color = Color.FromArgb(cor1.A, r, g, b);
+                        color = Color.FromArgb(Cor_Imagem01.A, r, g, b);
 
                         fastImagem1.SetPixel(x, y, color);
                     }
@@ -605,14 +577,14 @@ namespace Photo_Editor.Classes
                 {
                     for (int y = 0; y < Imagem1.Height; y++)
                     {
-                        cor1 = Imagem01_Temp.GetPixel(x, y);
+                        Cor_Imagem01 = Imagem01_Temp.GetPixel(x, y);
                         cor2 = Imagem02_Temp.GetPixel(x, y);
 
-                        r = Calcula_Multi_Imagens(cor1.R, cor2.R, TipoCorrecao, max, min);
-                        g = Calcula_Multi_Imagens(cor1.G, cor2.G, TipoCorrecao, max, min);
-                        b = Calcula_Multi_Imagens(cor1.B, cor2.B, TipoCorrecao, max, min);
+                        r = Calcula_Multi_Imagens(Cor_Imagem01.R, cor2.R, TipoCorrecao, Maior, Menor);
+                        g = Calcula_Multi_Imagens(Cor_Imagem01.G, cor2.G, TipoCorrecao, Maior, Menor);
+                        b = Calcula_Multi_Imagens(Cor_Imagem01.B, cor2.B, TipoCorrecao, Maior, Menor);
 
-                        color = Color.FromArgb(cor1.A, r, g, b);
+                        color = Color.FromArgb(Cor_Imagem01.A, r, g, b);
 
                         fastImagem1.SetPixel(x, y, color);
                     }
@@ -775,7 +747,7 @@ namespace Photo_Editor.Classes
 
         }
 
-        public static Bitmap ConverteCinza(Bitmap Imagem)
+        public static Bitmap Converte_Cinza_Media(Bitmap Imagem)
         {
             int x, y;
             using (var fastBitmap = Imagem.FastLock())
@@ -784,15 +756,42 @@ namespace Photo_Editor.Classes
                 {
                     for (y = 0; y < Imagem.Height; y++)
                     {
-                        Color CorPixel = fastBitmap.GetPixel(x, y);
-                        Color NovaCor = Color.FromArgb(CorPixel.R, CorPixel.R, CorPixel.R);
-                        fastBitmap.SetPixel(x, y, NovaCor);
+                        Color corPixel = fastBitmap.GetPixel(x, y); //a variável corPixel fica responsável por receber os dados das cores de cada pixel
+                        Color filtroAplicado = Color.FromArgb(((corPixel.R + corPixel.G + corPixel.B) / 3),
+                            ((corPixel.R + corPixel.G + corPixel.B) / 3), ((corPixel.R + corPixel.G + corPixel.B) / 3)); //a variável filtro aplicado recebe a média das cores, o que resulta no filtro cinza
+                        fastBitmap.SetPixel(x, y, filtroAplicado); //aqui a escala de cinza é aplicada ao pixel
 
                     }
                 }
             }
             return Imagem;
         }
+        public static Bitmap ConverteCinzaCoeficientes(Bitmap Imagem)
+        {
+          
+            
+
+
+            int x, y;
+            using (var fastBitmap = Imagem.FastLock())
+            {
+                for (x = 0; x < Imagem.Width; x++)
+                {
+                    for (y = 0; y < Imagem.Height; y++)
+                    {
+                        Color corPixel = fastBitmap.GetPixel(x, y); //a variável corPixel fica responsável por receber os dados das cores de cada pixel
+                        Color Escala_Cinza = Color.FromArgb((int)((corPixel.R + corPixel.G + corPixel.B) * Form1_Photo_Editor.Cinza_R),
+                            (int)((corPixel.R + corPixel.G + corPixel.B) * Form1_Photo_Editor.Cinza_G), (int)((corPixel.R + corPixel.G + corPixel.B) * Form1_Photo_Editor.Cinza_B)); //a variável filtro aplicado recebe a média das cores, o que resulta no filtro cinza
+
+
+                        fastBitmap.SetPixel(x, y, Escala_Cinza); //aqui a escala de cinza é aplicada ao pixel
+
+                    }
+                }
+            }
+            return Imagem;
+        }
+
 
         public static Bitmap Negativo(Bitmap Imagem)
         {
@@ -803,6 +802,12 @@ namespace Photo_Editor.Classes
                     for (y = 0; y < Imagem.Height; y++)
                     {
                         Color CorPixel = fastBitmap.GetPixel(x, y);
+                        int NovoA = CorPixel.A;
+                        int NovoR = CorPixel.R;
+                        int NovoG = CorPixel.G;
+                        int NovoB = CorPixel.B;
+
+
                         Color NovaCor = Color.FromArgb(255 - CorPixel.R, 255 - CorPixel.G, 255 - CorPixel.B);
                         fastBitmap.SetPixel(x, y, NovaCor);
                     }

@@ -25,6 +25,7 @@ namespace Photo_Editor
         public int Laplaciano;
         public int BlurValor;
         int PassaAltaValor;
+        public static float  Cinza_R, Cinza_G, Cinza_B;
 
 
         public Form1_Photo_Editor()
@@ -121,7 +122,7 @@ namespace Photo_Editor
             if (Rdo_Cinza.Checked)
             {
                 Bitmap ImagemCinza = new Bitmap(Pcb_01.Image);
-                Operacoes_Aritmeticas.ConverteCinza(ImagemCinza);
+                Operacoes_Aritmeticas.Converte_Cinza_Media(ImagemCinza);
                 Pcb_03.Image = ImagemCinza;
             }
             else if (Rdo_Negativo.Checked == true)
@@ -129,6 +130,12 @@ namespace Photo_Editor
                 Bitmap Imagem_Negativo = new Bitmap(Pcb_01.Image);
                 Operacoes_Aritmeticas.Negativo(Imagem_Negativo);
                 Pcb_03.Image = Imagem_Negativo;
+            }
+            else if (Rdo_Cinza_Co.Checked == true)
+            {
+                Bitmap ImagemCinzaCo = new Bitmap(Pcb_01.Image);
+                Operacoes_Aritmeticas.ConverteCinzaCoeficientes(ImagemCinzaCo);
+                Pcb_03.Image = ImagemCinzaCo;
             }
 
             else if (Rdo_PretoBranco.Checked == true)
@@ -200,6 +207,9 @@ namespace Photo_Editor
         private void Btn_Aplicar_Ar_Click(object sender, EventArgs e)
         {   // botão aplicar aritmetica chama a thread que faz os calculos aritméticos 
             Operacao_Selecionada = Cmbb_Operacoes.SelectedIndex;
+            Cinza_R = (float)Num_UpDown_Cinza_R.Value;
+            Cinza_G = (float)Num_UpDown_Cinza_G.Value;
+            Cinza_B = (float)Num_UpDown_Cinza_B.Value;
             Thread_Aritmetica.RunWorkerAsync();
             Btn_Aplicar_Ar.Enabled = false;
             Btn_Aplica_Bool.Enabled = false;
@@ -211,6 +221,9 @@ namespace Photo_Editor
             Btn_Aplicar_Ar.Enabled = true;
             Btn_Aplica_Bool.Enabled = true;
             Btn_Aplicar_Filtro.Enabled = true;
+            Rdo_Negativo.Checked = false;
+            Rdo_Cinza.Checked = false;
+            Rdo_PretoBranco.Checked = false;
             MessageBox.Show("Filtro aplicado com sucesso", "Finalizado", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
@@ -372,6 +385,7 @@ namespace Photo_Editor
             {
                 if (Laplaciano == 3)
                 {
+                    
                     Thread_Filtros.ReportProgress(10);
                     Filtro_Paramentros parametrosDoFiltro = new Filtro_Paramentros((int)Laplaciano, Operacoes_Filtros.Laplaciano_3, 1);
                     Pcb_03.Image = Operacoes_Filtros.Colocar_Filtro(Pcb_01.Image, parametrosDoFiltro);
@@ -388,7 +402,7 @@ namespace Photo_Editor
                     Filtro_Paramentros parametrosDoFiltro = new Filtro_Paramentros((int)Laplaciano, Operacoes_Filtros.Laplaciano_9, 1);
                     Pcb_03.Image = Operacoes_Filtros.Colocar_Filtro(Pcb_01.Image, parametrosDoFiltro);
                 }
-                if (Laplaciano != 3 || Laplaciano != 5 || Laplaciano != 9)
+               else
                 {
                     Thread_Filtros.ReportProgress(40);
                     MessageBox.Show("O Numero Inserido não é válido. Para Lapaciano as entradas devem ser: 3, 5 ou 9", "Número Inválido", MessageBoxButtons.OK, MessageBoxIcon.Error);
