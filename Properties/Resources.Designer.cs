@@ -93,6 +93,16 @@ namespace Photo_Editor.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap loading_buffering {
+            get {
+                object obj = ResourceManager.GetObject("loading_buffering", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap noun_edit_photo_3029740 {
             get {
                 object obj = ResourceManager.GetObject("noun_edit photo_3029740", resourceCulture);

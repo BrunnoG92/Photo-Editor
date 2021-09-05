@@ -124,5 +124,8 @@
   <ItemGroup>
     <None Include="Resources\icons8-diagrama-de-venn-50.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\loading-buffering.gif" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

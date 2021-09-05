@@ -254,7 +254,7 @@ namespace Photo_Editor.Classes
 
         }
 
-       
+
 
 
 
@@ -766,31 +766,34 @@ namespace Photo_Editor.Classes
             }
             return Imagem;
         }
-        public static Bitmap ConverteCinzaCoeficientes(Bitmap Imagem)
+        public static Bitmap EscalaDeCinsaCoeficienteFx(Bitmap Imagem01, decimal Cinza_R, decimal Cinza_G, decimal Cinza_B)
         {
-          
-            
-
-
             int x, y;
-            using (var fastBitmap = Imagem.FastLock())
+            using (var fastBitmap = Imagem01.FastLock())
             {
-                for (x = 0; x < Imagem.Width; x++)
+                for (x = 0; x < Imagem01.Width; x++)
                 {
-                    for (y = 0; y < Imagem.Height; y++)
+                    for (y = 0; y < Imagem01.Height; y++)
                     {
-                        Color corPixel = fastBitmap.GetPixel(x, y); //a variável corPixel fica responsável por receber os dados das cores de cada pixel
-                        Color Escala_Cinza = Color.FromArgb((int)((corPixel.R + corPixel.G + corPixel.B) * Form1_Photo_Editor.Cinza_R),
-                            (int)((corPixel.R + corPixel.G + corPixel.B) * Form1_Photo_Editor.Cinza_G), (int)((corPixel.R + corPixel.G + corPixel.B) * Form1_Photo_Editor.Cinza_B)); //a variável filtro aplicado recebe a média das cores, o que resulta no filtro cinza
-
-
-                        fastBitmap.SetPixel(x, y, Escala_Cinza); //aqui a escala de cinza é aplicada ao pixel
+                        Color corPixel = fastBitmap.GetPixel(x, y);
+                        decimal R = ((corPixel.R + corPixel.G + corPixel.B)) * (Cinza_R / 100);
+                        decimal G = ((corPixel.R + corPixel.G + corPixel.B)) * (Cinza_G / 100);
+                        decimal B = ((corPixel.R + corPixel.G + corPixel.B)) * (Cinza_B / 100);
+                        Color CinzaCo = Color.FromArgb(255, Truncar_0_ou_255((double)R), Truncar_0_ou_255((double)G), Truncar_0_ou_255((double)B));
+                        fastBitmap.SetPixel(x, y, CinzaCo);
 
                     }
                 }
+                return Imagem01;
+
             }
-            return Imagem;
         }
+
+
+
+
+
+
 
 
         public static Bitmap Negativo(Bitmap Imagem)
