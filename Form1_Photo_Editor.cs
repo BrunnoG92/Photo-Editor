@@ -35,6 +35,7 @@ namespace Photo_Editor
             Pcb04_Carregando.Visible = false;
             Cmbb_Correcao.SelectedIndex = 0;
             Cmbb_Imagem_Constante.SelectedIndex = 1;
+            Rdo_Nenhum.Checked = true;
 
         }
         private void Cmbb_Correcao_SelectedIndexChanged(object sender, EventArgs e)
@@ -60,13 +61,6 @@ namespace Photo_Editor
             {
                 Imagem_Constante = 1;  //1 - Constante
             }
-        }
-
-        private void Form1_Photo_Editor_Load(object sender, EventArgs e)
-        {
-
-
-
         }
 
         private void Form1_Photo_Editor_MouseDown(object sender, MouseEventArgs e)
@@ -549,7 +543,7 @@ namespace Photo_Editor
                 {
                     if (BlurValor == 3)
                     {
-                       
+                        
                         float mod = (float)BlurValor * (float)BlurValor;
                         mod = 1 / mod;
                         Filtro_Paramentros parametrosDoFiltro = new Filtro_Paramentros((int)BlurValor, Operacoes_Filtros.Blur3_1, mod);
@@ -557,7 +551,7 @@ namespace Photo_Editor
                     }
                     else if (BlurValor == 5)
                     {
-                       
+                        Thread_Filtros.ReportProgress(20);
                         float mod = (float)BlurValor * (float)BlurValor;
                         mod = 1 / mod;
                         Filtro_Paramentros parametrosDoFiltro = new Filtro_Paramentros((int)BlurValor, Operacoes_Filtros.Blur5_1, mod);
@@ -565,7 +559,7 @@ namespace Photo_Editor
                     }
                     else if (BlurValor == 7)
                     {
-                        
+                        Thread_Filtros.ReportProgress(50);
                         float mod = (float)BlurValor * (float)BlurValor;
                         mod = 1 / mod;
                         Filtro_Paramentros parametrosDoFiltro = new Filtro_Paramentros((int)BlurValor, Operacoes_Filtros.Blur7_1, mod);
