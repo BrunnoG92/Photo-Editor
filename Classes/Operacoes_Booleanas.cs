@@ -110,7 +110,5 @@ namespace Photo_Editor.Classes
 
     }
 
-
-
 }
 

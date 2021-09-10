@@ -53,11 +53,11 @@ namespace Photo_Editor.Classes
                                                              { 0,  0,  0 },
                                                              { 1,  1, -1 }};
 
-        public static  double[,] FreiChenVertical = new double[,]  { { 1,  0, -1 },
+        public static double[,] FreiChenVertical = new double[,]  { { 1,  0, -1 },
                                                              { Raiz,  0, -Raiz },
                                                              { 1,  0, -1 } };
 
-        public static  double[,] FreiChenHorizontal = new double[,] {{-1, -Raiz, -1 },
+        public static double[,] FreiChenHorizontal = new double[,] {{-1, -Raiz, -1 },
                                                              { 0,  0,  0 },
                                                              { 1,  Raiz, -1 }};
 
@@ -82,21 +82,21 @@ namespace Photo_Editor.Classes
                                                         { -1, -1, -1, -1, -1, -1, -1, -1, -1 }};
 
 
-        public static double[,] Blur3_1 = new double[,] {  { 1, 1, 1 },
+        public static double[,] Suavi_Media_3_P_1 = new double[,] {  { 1, 1, 1 },
                                                     { 1, 1, 1 },
                                                     { 1, 1, 1 } };
 
-        public static double[,] Blur3_d = new double[,] {  { 1, 2, 1 },
+        public static double[,] Suavi_Media_3_P_D = new double[,] {  { 1, 2, 1 },
                                                     { 2, 4, 2 },
                                                     { 1, 2, 1 } };
 
-        public static double[,] Blur5_1 = new double[,] {  { 1, 1, 1, 1, 1},
+        public static double[,] Sauvi_Media_5_P_1 = new double[,] {  { 1, 1, 1, 1, 1},
                                                     { 1, 1, 1, 1, 1},
                                                     { 1, 1, 1, 1, 1},
                                                     { 1, 1, 1, 1, 1},
                                                     { 1, 1, 1, 1, 1}};
 
-        public static double[,] Blur7_1 = new double[,] {  { 1, 1, 1, 1, 1, 1, 1},
+        public static double[,] Suavi_Media_7_1 = new double[,] {  { 1, 1, 1, 1, 1, 1, 1},
                                                     { 1, 1, 1, 1, 1, 1, 1},
                                                     { 1, 1, 1, 1, 1, 1, 1},
                                                     { 1, 1, 1, 1, 1, 1, 1},
@@ -104,11 +104,33 @@ namespace Photo_Editor.Classes
                                                     { 1, 1, 1, 1, 1, 1, 1},
                                                     { 1, 1, 1, 1, 1, 1, 1}};
 
+
+        public static double[,] Suavi_Mediana_3_3 = new double[,]   {{ 1, 1, 1 },
+                                                                     { 1, 1, 1 },
+                                                                     { 1, 1, 1 } };
+
+        public static double[,] Suavi_Mediana_5_5 = new double[,]   { { 1, 1, 1, 1, 1 },
+                                                                     { 1, 1, 1, 1, 1 },
+                                                                     { 1, 1, 1, 1, 1 },
+                                                                     { 1, 1, 1, 1, 1 },
+                                                                     { 1, 1, 1, 1, 1 } };
+
+
+        public static double[,] Suavi_Mediana_7_7 = new double[,]   { { 1, 1, 1, 1, 1, 1, 1 },
+                                                                     { 1, 1, 1, 1, 1, 1, 1 },
+                                                                     { 1, 1, 1, 1, 1, 1, 1 },
+                                                                     { 1, 1, 1, 1, 1, 1, 1 },
+                                                                     { 1, 1, 1, 1, 1, 1, 1 },
+                                                                     { 1, 1, 1, 1, 1, 1, 1 },
+                                                                     { 1, 1, 1, 1, 1, 1, 1 } };
+
         public static double[,] PassaAlta3_1 = new double[,] { { -1, -1, -1 },
                                                         { -1,  8, -1 },
                                                         { -1, -1, -1 }};
 
-        public static Bitmap Colocar_Filtro(Image Imagem01, Filtro_Paramentros Parametros)
+
+
+        public static Bitmap Colocar_Filtro(Image Imagem01, Filtro_Paramentros Parametros) //Duas sobrecarda. Coloca Filtro Media e Mediana
         {
             Bitmap Imagem1 = new Bitmap(Imagem01);
             FastBitmap FastImagem01 = new FastBitmap(Imagem1);
@@ -166,73 +188,61 @@ namespace Photo_Editor.Classes
             return Imagem1;
         }
 
-        public static Bitmap Coloca_Filtro_Mediana(Image Imagem01, int Tamanho_Filtro)
+        public static Bitmap Colocar_Filtro(Image Imagem01, int Tamanho, double[,] Mascara, double Filtro_Mod)
         {
             Bitmap Imagem1 = new Bitmap(Imagem01);
-            FastBitmap Imagem_Fast = new FastBitmap(Imagem1);
-
-            Bitmap Imagem_Temp = new Bitmap(Imagem01);
-
-            //---------------------------------------------------------
-
-            int centroMask = (Tamanho_Filtro - 1) / 2;
-
-            Color corAux = Imagem_Temp.GetPixel(0, 0);
-
-            int[] Vetor = new int[Tamanho_Filtro];
-
-            int Maior = corAux.R, Menor = corAux.R, aux;
-
-            Imagem_Fast.Lock();
-
-            for (int yImg = 0; yImg < Imagem01.Height; yImg++)
+            FastBitmap FastImagem01 = new FastBitmap(Imagem1);
+            Bitmap bitmapAux1 = new Bitmap(Imagem01);
+            FastImagem01.Lock();
+            int CentroMascara = (Tamanho - 1) / 2;
+            Color Cor_Original = bitmapAux1.GetPixel(0, 0);
+            int maiorPix = Cor_Original.R;
+            int menorPix = Cor_Original.R;
+            int auxvetor;
+            int[] vetor = new int[Tamanho];
+            for (int imagemY = 0; imagemY < Imagem01.Height; imagemY++)
             {
-                for (int xImg = 0; xImg < Imagem01.Width; xImg++)
+                for (int imagemX = 0; imagemX < Imagem01.Width; imagemX++)
                 {
-
-                    for (int yFiltro = 0; yFiltro < Tamanho_Filtro; yFiltro++)
+                    for (int filtroY = 0; filtroY < Tamanho; filtroY++)
                     {
-                        for (int xFiltro = 0; xFiltro < Tamanho_Filtro; xFiltro++)
+                        for (int filtroX = 0; filtroX < Tamanho; filtroX++)
                         {
-                            int xFiltroNovo = xFiltro - centroMask;
-                            int yFiltroNovo = yFiltro - centroMask;
-
-                            int xFiltroSobreImagem = xImg + xFiltroNovo;
-                            int yFiltroSobreImagem = yImg + yFiltroNovo;
-
-                            if (xFiltroSobreImagem >= 0 && xFiltroSobreImagem < Imagem_Temp.Width &&
-                                yFiltroSobreImagem >= 0 && yFiltroSobreImagem < Imagem_Temp.Height)
+                            int filtroNovoX = filtroX - CentroMascara;
+                            int filtroNovoY = filtroY - CentroMascara;
+                            int filtroImagemX = imagemX + filtroNovoX;
+                            int filtroImagemY = imagemY + filtroNovoY;
+                            if (filtroImagemX >= 0 && filtroImagemX < bitmapAux1.Width && filtroImagemY >= 0 && filtroImagemY < bitmapAux1.Height)
                             {
-                                Color corOriginal = Imagem_Temp.GetPixel(xFiltroSobreImagem, yFiltroSobreImagem);
-                                Vetor[xFiltro] = corOriginal.R;
+                                Color corOriginal1 = bitmapAux1.GetPixel(filtroImagemX, filtroImagemY);
+                                vetor[filtroX] = corOriginal1.R;
                             }
                         }
                     }
 
-                    for (int i = 0; i < Vetor.Length; i++)
+                    for (int i = 0; i < vetor.Length; i++)
                     {
-                        for (int j = i + 1; j < Vetor.Length; j++)
+                        for (int j = 0; j < vetor.Length; j++)
                         {
-                            if (Vetor[j] < Vetor[i])
+                            if (vetor[j] < vetor[i])
                             {
-                                aux = Vetor[i];
-                                Vetor[i] = Vetor[j];
-                                Vetor[j] = aux;
+                                auxvetor = vetor[i];
+                                vetor[i] = vetor[j];
+                                vetor[j] = auxvetor;
                             }
                         }
                     }
 
-                    Color corNovoPixel = Color.FromArgb(255, Trunca_0_255(Vetor[(Vetor.Length / 2) + 1]), Trunca_0_255(Vetor[(Vetor.Length / 2) + 1]), Trunca_0_255(Vetor[(Vetor.Length / 2) + 1]));
-                    Imagem_Fast.SetPixel(xImg, yImg, corNovoPixel);
+
+                    Color corNovoPixel = Color.FromArgb(255, Trunca_0_255(vetor[(vetor.Length / 2) + 1]), Trunca_0_255(vetor[(vetor.Length / 2) + 1]), Trunca_0_255(vetor[(vetor.Length / 2) + 1]));
+                    FastImagem01.SetPixel(imagemX, imagemY, corNovoPixel);
                 }
             }
 
-            Imagem_Temp.Dispose();
-            Imagem_Fast.Unlock();
+            FastImagem01.Unlock();
 
             return Imagem1;
         }
-
         public static int Trunca_0_255(double cor)
         {
             if (cor > 255) return 255;

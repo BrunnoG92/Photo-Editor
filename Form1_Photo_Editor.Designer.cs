@@ -37,14 +37,17 @@ namespace Photo_Editor
             this.Cmbb_Correcao = new System.Windows.Forms.ComboBox();
             this.Cmbb_Imagem_Constante = new System.Windows.Forms.ComboBox();
             this.Cmbb_Operacoes = new System.Windows.Forms.ComboBox();
+            this.Rdo_Bordas = new System.Windows.Forms.RadioButton();
             this.Thread_Aritmetica = new System.ComponentModel.BackgroundWorker();
             this.Thread_Booleana = new System.ComponentModel.BackgroundWorker();
             this.Thread_Filtros = new System.ComponentModel.BackgroundWorker();
             this.Grp_B_Filtros = new System.Windows.Forms.GroupBox();
+            this.Num_UpDown_Mediana = new ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown();
+            this.Rdo_Suav_Mediana = new System.Windows.Forms.RadioButton();
             this.Btn_Salva_Filtro = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.Num_UpDown_Alta = new ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown();
             this.Chkb_Blur_Pesos = new System.Windows.Forms.CheckBox();
-            this.Num_UpDown_Blur = new ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown();
+            this.Num_UpDown_M = new ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown();
             this.Num_UpDown_Laplace = new ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown();
             this.Rdo_PassaAlta = new System.Windows.Forms.RadioButton();
             this.Rdo_Laplace = new System.Windows.Forms.RadioButton();
@@ -52,8 +55,7 @@ namespace Photo_Editor
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.Rdo_Linhas = new System.Windows.Forms.RadioButton();
-            this.Rdo_Blur = new System.Windows.Forms.RadioButton();
-            this.Rdo_Bordas = new System.Windows.Forms.RadioButton();
+            this.Rdo_Suav_M = new System.Windows.Forms.RadioButton();
             this.Rdo_Nenhum = new System.Windows.Forms.RadioButton();
             this.Lbl_Imagem01 = new System.Windows.Forms.Label();
             this.Grp_B_Bool = new System.Windows.Forms.GroupBox();
@@ -212,6 +214,19 @@ namespace Photo_Editor
             this.toolTip1.SetToolTip(this.Cmbb_Operacoes, "Seleciona a operação a ser realizada");
             this.Cmbb_Operacoes.Click += new System.EventHandler(this.Cmbb_Operacoes_Click);
             // 
+            // Rdo_Bordas
+            // 
+            this.Rdo_Bordas.AutoSize = true;
+            this.Rdo_Bordas.ForeColor = System.Drawing.Color.White;
+            this.Rdo_Bordas.Location = new System.Drawing.Point(26, 78);
+            this.Rdo_Bordas.Name = "Rdo_Bordas";
+            this.Rdo_Bordas.Size = new System.Drawing.Size(123, 17);
+            this.Rdo_Bordas.TabIndex = 1;
+            this.Rdo_Bordas.TabStop = true;
+            this.Rdo_Bordas.Text = "Detecção de Bordas";
+            this.toolTip1.SetToolTip(this.Rdo_Bordas, "Seleciona o tipo de detecção de bordas");
+            this.Rdo_Bordas.UseVisualStyleBackColor = true;
+            // 
             // Thread_Aritmetica
             // 
             this.Thread_Aritmetica.WorkerReportsProgress = true;
@@ -236,12 +251,14 @@ namespace Photo_Editor
             // Grp_B_Filtros
             // 
             this.Grp_B_Filtros.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
+            this.Grp_B_Filtros.Controls.Add(this.Num_UpDown_Mediana);
+            this.Grp_B_Filtros.Controls.Add(this.Rdo_Suav_Mediana);
             this.Grp_B_Filtros.Controls.Add(this.Btn_Salva_Filtro);
             this.Grp_B_Filtros.Controls.Add(this.Cmb_Linhas);
             this.Grp_B_Filtros.Controls.Add(this.Cmb_Bordas);
             this.Grp_B_Filtros.Controls.Add(this.Num_UpDown_Alta);
             this.Grp_B_Filtros.Controls.Add(this.Chkb_Blur_Pesos);
-            this.Grp_B_Filtros.Controls.Add(this.Num_UpDown_Blur);
+            this.Grp_B_Filtros.Controls.Add(this.Num_UpDown_M);
             this.Grp_B_Filtros.Controls.Add(this.Num_UpDown_Laplace);
             this.Grp_B_Filtros.Controls.Add(this.Rdo_PassaAlta);
             this.Grp_B_Filtros.Controls.Add(this.Rdo_Laplace);
@@ -249,7 +266,7 @@ namespace Photo_Editor
             this.Grp_B_Filtros.Controls.Add(this.pictureBox5);
             this.Grp_B_Filtros.Controls.Add(this.label1);
             this.Grp_B_Filtros.Controls.Add(this.Rdo_Linhas);
-            this.Grp_B_Filtros.Controls.Add(this.Rdo_Blur);
+            this.Grp_B_Filtros.Controls.Add(this.Rdo_Suav_M);
             this.Grp_B_Filtros.Controls.Add(this.Rdo_Bordas);
             this.Grp_B_Filtros.Controls.Add(this.Rdo_Nenhum);
             this.Grp_B_Filtros.ForeColor = System.Drawing.Color.White;
@@ -260,6 +277,39 @@ namespace Photo_Editor
             this.Grp_B_Filtros.TabStop = false;
             this.Grp_B_Filtros.Text = "Filtros";
             this.Grp_B_Filtros.Leave += new System.EventHandler(this.Grp_B_Filtros_Leave);
+            // 
+            // Num_UpDown_Mediana
+            // 
+            this.Num_UpDown_Mediana.Location = new System.Drawing.Point(162, 252);
+            this.Num_UpDown_Mediana.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.Num_UpDown_Mediana.Name = "Num_UpDown_Mediana";
+            this.Num_UpDown_Mediana.Size = new System.Drawing.Size(51, 19);
+            this.Num_UpDown_Mediana.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
+            this.Num_UpDown_Mediana.StateCommon.Content.Color1 = System.Drawing.Color.White;
+            this.Num_UpDown_Mediana.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Num_UpDown_Mediana.TabIndex = 99;
+            this.Num_UpDown_Mediana.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Num_UpDown_Mediana.Value = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+            // 
+            // Rdo_Suav_Mediana
+            // 
+            this.Rdo_Suav_Mediana.AutoSize = true;
+            this.Rdo_Suav_Mediana.ForeColor = System.Drawing.Color.White;
+            this.Rdo_Suav_Mediana.Location = new System.Drawing.Point(31, 252);
+            this.Rdo_Suav_Mediana.Name = "Rdo_Suav_Mediana";
+            this.Rdo_Suav_Mediana.Size = new System.Drawing.Size(125, 17);
+            this.Rdo_Suav_Mediana.TabIndex = 98;
+            this.Rdo_Suav_Mediana.TabStop = true;
+            this.Rdo_Suav_Mediana.Text = "Suavização Mediana";
+            this.Rdo_Suav_Mediana.UseVisualStyleBackColor = true;
             // 
             // Btn_Salva_Filtro
             // 
@@ -279,7 +329,7 @@ namespace Photo_Editor
             // Num_UpDown_Alta
             // 
             this.Num_UpDown_Alta.Enabled = false;
-            this.Num_UpDown_Alta.Location = new System.Drawing.Point(157, 285);
+            this.Num_UpDown_Alta.Location = new System.Drawing.Point(162, 287);
             this.Num_UpDown_Alta.Maximum = new decimal(new int[] {
             255,
             0,
@@ -301,29 +351,31 @@ namespace Photo_Editor
             // Chkb_Blur_Pesos
             // 
             this.Chkb_Blur_Pesos.AutoSize = true;
-            this.Chkb_Blur_Pesos.Location = new System.Drawing.Point(44, 258);
+            this.Chkb_Blur_Pesos.Location = new System.Drawing.Point(38, 229);
             this.Chkb_Blur_Pesos.Name = "Chkb_Blur_Pesos";
             this.Chkb_Blur_Pesos.Size = new System.Drawing.Size(106, 17);
             this.Chkb_Blur_Pesos.TabIndex = 88;
             this.Chkb_Blur_Pesos.Text = "Pesos Diferentes";
             this.Chkb_Blur_Pesos.UseVisualStyleBackColor = true;
+            this.Chkb_Blur_Pesos.CheckedChanged += new System.EventHandler(this.Chkb_Blur_Pesos_CheckedChanged);
             // 
-            // Num_UpDown_Blur
+            // Num_UpDown_M
             // 
-            this.Num_UpDown_Blur.Location = new System.Drawing.Point(157, 224);
-            this.Num_UpDown_Blur.Maximum = new decimal(new int[] {
+            this.Num_UpDown_M.Enabled = false;
+            this.Num_UpDown_M.Location = new System.Drawing.Point(162, 206);
+            this.Num_UpDown_M.Maximum = new decimal(new int[] {
             255,
             0,
             0,
             0});
-            this.Num_UpDown_Blur.Name = "Num_UpDown_Blur";
-            this.Num_UpDown_Blur.Size = new System.Drawing.Size(51, 19);
-            this.Num_UpDown_Blur.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
-            this.Num_UpDown_Blur.StateCommon.Content.Color1 = System.Drawing.Color.White;
-            this.Num_UpDown_Blur.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Num_UpDown_Blur.TabIndex = 87;
-            this.Num_UpDown_Blur.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.Num_UpDown_Blur.Value = new decimal(new int[] {
+            this.Num_UpDown_M.Name = "Num_UpDown_M";
+            this.Num_UpDown_M.Size = new System.Drawing.Size(51, 19);
+            this.Num_UpDown_M.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
+            this.Num_UpDown_M.StateCommon.Content.Color1 = System.Drawing.Color.White;
+            this.Num_UpDown_M.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Num_UpDown_M.TabIndex = 87;
+            this.Num_UpDown_M.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Num_UpDown_M.Value = new decimal(new int[] {
             3,
             0,
             0,
@@ -331,7 +383,7 @@ namespace Photo_Editor
             // 
             // Num_UpDown_Laplace
             // 
-            this.Num_UpDown_Laplace.Location = new System.Drawing.Point(157, 186);
+            this.Num_UpDown_Laplace.Location = new System.Drawing.Point(162, 178);
             this.Num_UpDown_Laplace.Maximum = new decimal(new int[] {
             255,
             0,
@@ -366,7 +418,7 @@ namespace Photo_Editor
             // 
             this.Rdo_Laplace.AutoSize = true;
             this.Rdo_Laplace.ForeColor = System.Drawing.Color.White;
-            this.Rdo_Laplace.Location = new System.Drawing.Point(30, 189);
+            this.Rdo_Laplace.Location = new System.Drawing.Point(29, 178);
             this.Rdo_Laplace.Name = "Rdo_Laplace";
             this.Rdo_Laplace.Size = new System.Drawing.Size(77, 17);
             this.Rdo_Laplace.TabIndex = 76;
@@ -425,29 +477,17 @@ namespace Photo_Editor
             this.Rdo_Linhas.Text = "Detecção de Linhas";
             this.Rdo_Linhas.UseVisualStyleBackColor = true;
             // 
-            // Rdo_Blur
+            // Rdo_Suav_M
             // 
-            this.Rdo_Blur.AutoSize = true;
-            this.Rdo_Blur.ForeColor = System.Drawing.Color.White;
-            this.Rdo_Blur.Location = new System.Drawing.Point(30, 226);
-            this.Rdo_Blur.Name = "Rdo_Blur";
-            this.Rdo_Blur.Size = new System.Drawing.Size(43, 17);
-            this.Rdo_Blur.TabIndex = 2;
-            this.Rdo_Blur.TabStop = true;
-            this.Rdo_Blur.Text = "Blur";
-            this.Rdo_Blur.UseVisualStyleBackColor = true;
-            // 
-            // Rdo_Bordas
-            // 
-            this.Rdo_Bordas.AutoSize = true;
-            this.Rdo_Bordas.ForeColor = System.Drawing.Color.White;
-            this.Rdo_Bordas.Location = new System.Drawing.Point(26, 78);
-            this.Rdo_Bordas.Name = "Rdo_Bordas";
-            this.Rdo_Bordas.Size = new System.Drawing.Size(123, 17);
-            this.Rdo_Bordas.TabIndex = 1;
-            this.Rdo_Bordas.TabStop = true;
-            this.Rdo_Bordas.Text = "Detecção de Bordas";
-            this.Rdo_Bordas.UseVisualStyleBackColor = true;
+            this.Rdo_Suav_M.AutoSize = true;
+            this.Rdo_Suav_M.ForeColor = System.Drawing.Color.White;
+            this.Rdo_Suav_M.Location = new System.Drawing.Point(30, 206);
+            this.Rdo_Suav_M.Name = "Rdo_Suav_M";
+            this.Rdo_Suav_M.Size = new System.Drawing.Size(113, 17);
+            this.Rdo_Suav_M.TabIndex = 2;
+            this.Rdo_Suav_M.TabStop = true;
+            this.Rdo_Suav_M.Text = "Suavização Media";
+            this.Rdo_Suav_M.UseVisualStyleBackColor = true;
             // 
             // Rdo_Nenhum
             // 
@@ -1062,7 +1102,7 @@ namespace Photo_Editor
         private System.Windows.Forms.ComboBox Cmb_Bordas;
         private ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown Num_UpDown_Alta;
         private System.Windows.Forms.CheckBox Chkb_Blur_Pesos;
-        private ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown Num_UpDown_Blur;
+        private ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown Num_UpDown_M;
         private ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown Num_UpDown_Laplace;
         private System.Windows.Forms.RadioButton Rdo_PassaAlta;
         private System.Windows.Forms.RadioButton Rdo_Laplace;
@@ -1070,7 +1110,7 @@ namespace Photo_Editor
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.RadioButton Rdo_Linhas;
-        private System.Windows.Forms.RadioButton Rdo_Blur;
+        private System.Windows.Forms.RadioButton Rdo_Suav_M;
         private System.Windows.Forms.RadioButton Rdo_Bordas;
         private System.Windows.Forms.RadioButton Rdo_Nenhum;
         private System.Windows.Forms.Label Lbl_Imagem01;
@@ -1114,6 +1154,8 @@ namespace Photo_Editor
         private ComponentFactory.Krypton.Toolkit.KryptonButton Btn_Salva_Filtro;
         private ComponentFactory.Krypton.Toolkit.KryptonButton Btn_Salva_Booleano;
         private System.Windows.Forms.PictureBox Pcb04_Carregando;
+        private ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown Num_UpDown_Mediana;
+        private System.Windows.Forms.RadioButton Rdo_Suav_Mediana;
     }
 }
 

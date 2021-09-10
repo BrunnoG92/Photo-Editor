@@ -769,9 +769,9 @@ namespace Photo_Editor.Classes
                     for (y = 0; y < Imagem01.Height; y++)
                     {
                         Color corPixel = fastBitmap.GetPixel(x, y);
-                        decimal R = ((corPixel.R + corPixel.G + corPixel.B)) * (Cinza_R / 100);
-                        decimal G = ((corPixel.R + corPixel.G + corPixel.B)) * (Cinza_G / 100);
-                        decimal B = ((corPixel.R + corPixel.G + corPixel.B)) * (Cinza_B / 100);
+                        decimal R = ((corPixel.R + corPixel.G + corPixel.B)) * (Cinza_R );
+                        decimal G = ((corPixel.R + corPixel.G + corPixel.B)) * (Cinza_G);
+                        decimal B = ((corPixel.R + corPixel.G + corPixel.B)) * (Cinza_B) ;
                         Color CinzaCo = Color.FromArgb(255, Truncar_0_ou_255((double)R), Truncar_0_ou_255((double)G), Truncar_0_ou_255((double)B));
                         fastBitmap.SetPixel(x, y, CinzaCo);
 

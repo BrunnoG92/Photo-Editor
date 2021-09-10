@@ -23,7 +23,8 @@ namespace Photo_Editor
         public int Borda_Selecionada;
         public int Linha_Selecionada;
         public int Laplaciano;
-        public int BlurValor;
+        public int MediaValorFiltro;
+        public int MedianaValorFiltro;
         int PassaAltaValor;
         bool Sucesso_A, SucessoB, SucessoF;
         public static decimal Cinza_R, Cinza_G, Cinza_B;
@@ -116,7 +117,7 @@ namespace Photo_Editor
         private void Thread_Aritmetica_DoWork(object sender, DoWorkEventArgs e)
         {
             // Chama a função de Escala de cinza na classe Operacoes_Aritmeticas 
-           
+
             if (Rdo_Cinza.Checked)
             {
                 Bitmap ImagemCinza = new Bitmap(Pcb_01.Image);
@@ -340,7 +341,7 @@ namespace Photo_Editor
 
         private void Thread_Booleana_DoWork(object sender, DoWorkEventArgs e)
         {
-            
+
             if (Rdo_AND.Checked == true)
             {
                 Pcb_03.Image = Operacoes_Booleanas.ConverteParaAND(Pcb_01.Image, Pcb_02.Image);
@@ -374,7 +375,7 @@ namespace Photo_Editor
         }
         private void Btn_Aplica_Bool_Click(object sender, EventArgs e)
         {
-            if(Pcb_01.Image != null && Pcb_02.Image != null) // SE OPERAÇÃO ENTRE IMAGENS COM DUAS IMAGENS VALIDAS
+            if (Pcb_01.Image != null && Pcb_02.Image != null) // SE OPERAÇÃO ENTRE IMAGENS COM DUAS IMAGENS VALIDAS
             {
                 Thread_Booleana.RunWorkerAsync();
             }
@@ -386,12 +387,12 @@ namespace Photo_Editor
 
         }
 
-        
+
 
         private void Thread_Filtros_DoWork(object sender, DoWorkEventArgs e)
         {
             // APLICAÇÃO DE FILTROS DE BORDAS
-           
+
             if (Rdo_Bordas.Checked == true)
             {
                 if (Borda_Selecionada == 0)
@@ -521,58 +522,85 @@ namespace Photo_Editor
                 }
             }
 
-            // APLICAÇÃO DE FILTROS BLUR
-            if (Rdo_Blur.Checked == true)
-              
+            // APLICAÇÃO DE FILTROS SAUVE MEDIA
+            if (Rdo_Suav_M.Checked == true)
+
             {
                 if (Chkb_Blur_Pesos.Checked == false)
                 {
 
-                    if (BlurValor == 3)
+                    if (MediaValorFiltro == 3)
                     {
 
                         Thread_Filtros.ReportProgress(10);
                         float mod = 16;
                         mod = 1 / mod;
-                        Filtro_Paramentros parametrosDoFiltro = new Filtro_Paramentros(3, Operacoes_Filtros.Blur3_d, mod);
-                       
+                        Filtro_Paramentros parametrosDoFiltro = new Filtro_Paramentros(3, Operacoes_Filtros.Suavi_Media_3_P_D, mod);
                         Pcb_03.Image = Operacoes_Filtros.Colocar_Filtro(Pcb_01.Image, parametrosDoFiltro);
                     }
                 }
 
+
+                if (MediaValorFiltro == 3)
                 {
-                    if (BlurValor == 3)
-                    {
-                        
-                        float mod = (float)BlurValor * (float)BlurValor;
-                        mod = 1 / mod;
-                        Filtro_Paramentros parametrosDoFiltro = new Filtro_Paramentros((int)BlurValor, Operacoes_Filtros.Blur3_1, mod);
-                        Pcb_03.Image = Operacoes_Filtros.Colocar_Filtro(Pcb_01.Image, parametrosDoFiltro);
-                    }
-                    else if (BlurValor == 5)
-                    {
-                        Thread_Filtros.ReportProgress(20);
-                        float mod = (float)BlurValor * (float)BlurValor;
-                        mod = 1 / mod;
-                        Filtro_Paramentros parametrosDoFiltro = new Filtro_Paramentros((int)BlurValor, Operacoes_Filtros.Blur5_1, mod);
-                        Pcb_03.Image = Operacoes_Filtros.Colocar_Filtro(Pcb_01.Image, parametrosDoFiltro);
-                    }
-                    else if (BlurValor == 7)
-                    {
-                        Thread_Filtros.ReportProgress(50);
-                        float mod = (float)BlurValor * (float)BlurValor;
-                        mod = 1 / mod;
-                        Filtro_Paramentros parametrosDoFiltro = new Filtro_Paramentros((int)BlurValor, Operacoes_Filtros.Blur7_1, mod);
-                        Pcb_03.Image = Operacoes_Filtros.Colocar_Filtro(Pcb_01.Image, parametrosDoFiltro);
-                    }
-                    else
-                    {
-                        MessageBox.Show("O Numero Inserido não é válido. Para Blur as entradas devem ser: 3, 5 ou 7", "Número Inválido", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+
+                    float mod = (float)MediaValorFiltro * (float)MediaValorFiltro;
+                    mod = 1 / mod;
+                    Filtro_Paramentros parametrosDoFiltro = new Filtro_Paramentros((int)MediaValorFiltro, Operacoes_Filtros.Suavi_Media_3_P_1, mod);
+                    Pcb_03.Image = Operacoes_Filtros.Colocar_Filtro(Pcb_01.Image, parametrosDoFiltro);
                 }
+                else if (MediaValorFiltro == 5)
+                {
+                    Thread_Filtros.ReportProgress(20);
+                    float mod = (float)MediaValorFiltro * (float)MediaValorFiltro;
+                    mod = 1 / mod;
+                    Filtro_Paramentros parametrosDoFiltro = new Filtro_Paramentros((int)MediaValorFiltro, Operacoes_Filtros.Sauvi_Media_5_P_1, mod);
+                    Pcb_03.Image = Operacoes_Filtros.Colocar_Filtro(Pcb_01.Image, parametrosDoFiltro);
+                }
+                else if (MediaValorFiltro == 7)
+                {
+                    Thread_Filtros.ReportProgress(50);
+                    float mod = (float)MediaValorFiltro * (float)MediaValorFiltro;
+                    mod = 1 / mod;
+                    Filtro_Paramentros parametrosDoFiltro = new Filtro_Paramentros((int)MediaValorFiltro, Operacoes_Filtros.Suavi_Media_7_1, mod);
+                    Pcb_03.Image = Operacoes_Filtros.Colocar_Filtro(Pcb_01.Image, parametrosDoFiltro);
+                }
+                else
+                {
+                    MessageBox.Show("O Numero Inserido não é válido. Para MEDIA as entradas devem ser: 3, 5 ou 7", "Número Inválido", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
             }
 
-
+            // APLICAÇÃO DE FILTROS SAUVE MEDIANA
+            if (Rdo_Suav_Mediana.Checked == true)
+            {
+                if (Num_UpDown_Mediana.Value == 3)
+                {
+                    double mod = 1.0 / 9.0;
+                    Thread_Filtros.ReportProgress(10);
+                  
+                    Pcb_03.Image = Operacoes_Filtros.Colocar_Filtro(Pcb_01.Image, 3, Operacoes_Filtros.Suavi_Mediana_3_3, mod);
+                }
+                else if (Num_UpDown_Mediana.Value == 5)
+                {
+                    double mod = 1.0 / 25.0;
+                    Thread_Filtros.ReportProgress(10);
+                    
+                    Pcb_03.Image = Operacoes_Filtros.Colocar_Filtro(Pcb_01.Image, 5, Operacoes_Filtros.Suavi_Mediana_3_3, mod);
+                }
+                else if (Num_UpDown_Mediana.Value == 7)
+                {
+                    double mod = 1.0 / 49.0;
+                    Thread_Filtros.ReportProgress(10);
+                    
+                    Pcb_03.Image = Operacoes_Filtros.Colocar_Filtro(Pcb_01.Image, 7, Operacoes_Filtros.Suavi_Mediana_3_3, mod);
+                }
+                else
+                {
+                    MessageBox.Show("O Numero Inserido não é válido. Para MEDIANA as entradas devem ser: 3, 5 ou 7", "Número Inválido", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
 
             // APLICAÇÃO DE FILTROS PASSA ALTA
             if (Rdo_PassaAlta.Checked == true)
@@ -618,7 +646,8 @@ namespace Photo_Editor
                 Borda_Selecionada = Cmb_Bordas.SelectedIndex;
                 Linha_Selecionada = Cmb_Linhas.SelectedIndex;
                 Laplaciano = (int)Num_UpDown_Laplace.Value;
-                BlurValor = (int)Num_UpDown_Blur.Value;
+                MediaValorFiltro = (int)Num_UpDown_M.Value;
+                MedianaValorFiltro = (int)Num_UpDown_Mediana.Value;
                 PassaAltaValor = (int)Num_UpDown_Alta.Value;
                 Thread_Filtros.RunWorkerAsync();
             }
@@ -651,10 +680,25 @@ namespace Photo_Editor
             Rdo_Nenhum.Checked = false;
             Rdo_Linhas.Checked = false;
             Rdo_Laplace.Checked = false;
-            Rdo_Blur.Checked = false;
+            Rdo_Suav_M.Checked = false;
             Chkb_Blur_Pesos.Checked = false;
             Rdo_PassaAlta.Checked = false;
         }
+
+        private void Chkb_Blur_Pesos_CheckedChanged(object sender, EventArgs e)
+        {   
+            // HABILITO/ DESABILITO O NUMUPBOX PESOS
+            if (Chkb_Blur_Pesos.Checked == true)
+            {
+                Num_UpDown_M.Enabled = true;
+            }
+            else
+            {
+                Num_UpDown_M.Enabled = false;
+            }
+           
+        }
+       
 
         private void Grp_B_Bool_Leave(object sender, EventArgs e)
         {
@@ -673,7 +717,7 @@ namespace Photo_Editor
             Rdo_PretoBranco.Checked = false;
         }
 
-      
+
 
         private void Btn_Salva_Filtro_Click(object sender, EventArgs e)
         {
@@ -689,6 +733,7 @@ namespace Photo_Editor
                         string Borda = "Detecção de bordas ";
                         string Tipo = $"{this.Cmb_Bordas.GetItemText(this.Cmb_Bordas.SelectedItem)}";
                         Salva_Foto.FileName = Borda + Tipo;
+
                     }
                 }
                 else if (Rdo_Linhas.Checked == true)
@@ -705,7 +750,7 @@ namespace Photo_Editor
                 {
                     Salva_Foto.FileName = "Filtro Laplace.png";
                 }
-                else if (Rdo_Blur.Checked == true)
+                else if (Rdo_Suav_M.Checked == true)
                 {
                     Salva_Foto.FileName = "Filtro Blur.png";
                 }
@@ -790,6 +835,6 @@ namespace Photo_Editor
 
         }
 
-       
+
     }
 }
