@@ -268,9 +268,7 @@ namespace Photo_Editor
             Btn_Aplicar_Ar.Enabled = true;
             Btn_Aplica_Bool.Enabled = true;
             Btn_Aplicar_Filtro.Enabled = true;
-            Rdo_Negativo.Checked = false;
-            Rdo_Cinza.Checked = false;
-            Rdo_PretoBranco.Checked = false;
+           
             if (Pcb_03.Image != null)
             {
                 Sucesso_A = true;
@@ -302,7 +300,7 @@ namespace Photo_Editor
                 {
                     Salva_Foto.FileName = "Escala Preto e Branco.png";
                 }
-                else if (Cmbb_Operacoes.ContainsFocus == false) // PEGO O NOME DA OPÇÃO SELECIONADA NA COMBO BOX QUANDO ESTE PERDE O FOCO
+                else if (Cmbb_Operacoes.ContainsFocus == false ) // PEGO O NOME DA OPÇÃO SELECIONADA NA COMBO BOX QUANDO ESTE PERDE O FOCO
                 {
                     string Tipo = $"{this.Cmbb_Imagem_Constante.GetItemText(this.Cmbb_Imagem_Constante.SelectedItem)}";
                     string Operacao = $"{this.Cmbb_Operacoes.GetItemText(this.Cmbb_Operacoes.SelectedItem)}";
@@ -336,6 +334,9 @@ namespace Photo_Editor
                 MessageBox.Show("Você deve aplicar um filtro aritmético antes de salvar", "Erro ao salvar", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
+            Rdo_Negativo.Checked = false;
+            Rdo_Cinza.Checked = false;
+            Rdo_PretoBranco.Checked = false;
 
         }
 
