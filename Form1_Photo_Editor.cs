@@ -629,7 +629,9 @@ namespace Photo_Editor
         {
             Pcb04_Carregando.Visible = false;
             Btn_Aplicar_Filtro.Enabled = true;
-            Chkb_Blur_Pesos.Checked = false;
+            Rdo_Suav_M.Checked = false;
+            Rdo_Suav_Mediana.Checked = false;
+
             if (Pcb_03.Image != null)
             {
                 SucessoF = true;
@@ -683,6 +685,7 @@ namespace Photo_Editor
             Rdo_Suav_M.Checked = false;
             Chkb_Blur_Pesos.Checked = false;
             Rdo_PassaAlta.Checked = false;
+            Rdo_Suav_Mediana.Checked = false;
         }
 
         private void Chkb_Blur_Pesos_CheckedChanged(object sender, EventArgs e)
