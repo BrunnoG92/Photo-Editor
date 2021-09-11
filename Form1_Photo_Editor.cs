@@ -702,7 +702,16 @@ namespace Photo_Editor
             }
            
         }
-       
+
+        private void Cmbb_Operacoes_TabIndexChanged(object sender, EventArgs e)
+        {
+            MessageBox.Show("Nre");
+        }
+
+        private void Cmbb_Operacoes_Validated(object sender, EventArgs e)
+        {
+            MessageBox.Show("Ola");
+        }
 
         private void Grp_B_Bool_Leave(object sender, EventArgs e)
         {
