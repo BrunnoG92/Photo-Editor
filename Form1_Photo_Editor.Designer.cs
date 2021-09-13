@@ -175,8 +175,8 @@ namespace Photo_Editor
             this.Cmbb_Correcao.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Cmbb_Correcao.FormattingEnabled = true;
             this.Cmbb_Correcao.Items.AddRange(new object[] {
-            "Truncar 0 - 255",
-            "Média"});
+            "Trucamento",
+            "Conversão"});
             this.Cmbb_Correcao.Location = new System.Drawing.Point(132, 43);
             this.Cmbb_Correcao.Name = "Cmbb_Correcao";
             this.Cmbb_Correcao.Size = new System.Drawing.Size(107, 21);

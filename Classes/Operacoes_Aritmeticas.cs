@@ -270,7 +270,7 @@ namespace Photo_Editor.Classes
 
                 return Cor;
             }
-            //CORREÇÃO "1" SERÁ FEITA A NORMALIZAÇÃO DOS PIXELS
+            //CORREÇÃO "1" SERÁ FEITA A CONVERSÃO  DOS PIXELS
             else
             {
                 Diferenca_Maior_Menor = (Maior - Menor);
@@ -297,7 +297,7 @@ namespace Photo_Editor.Classes
             Color Cor_Imagem01, Cor_Imagem02, Cor_Final;
             int r, g, b, Maior = 0, Menor = 0;
 
-            //VERIFICA O TIPO DE CORREÇÃO SELECIONADO. A CORREÇÃO 1 (NORMALIZAÇÃO) EXIGE QUE OS VALORES MAIOR E MENOR DOS PIXEIS SEJAM JA ENCONTRADOS PREVIAMENTE, O QUE É FEITO AQUI
+            //VERIFICA O TIPO DE CORREÇÃO SELECIONADO. A CORREÇÃO 1 (CONVERSÃO) PRECISA QUE OS VALORES MAIOR E MENOR DOS PIXEIS SEJAM JA ENCONTRADOS PREVIAMENTE, O QUE É FEITO AQUI
             if (Tipo_Correcao == 1)
             {
                 if (Imagem_Constante == 0)
@@ -372,7 +372,7 @@ namespace Photo_Editor.Classes
 
                 return cor;
             }
-            //CORREÇÃO "1" SERÁ FEITA A NORMALIZAÇÃO DOS PIXELS
+            //CORREÇÃO "1" SERÁ FEITA A CONVERSÃO  DOS PIXELS
             else
             {
                 Diferenca_Maior_Menor = (max - min);
@@ -397,8 +397,8 @@ namespace Photo_Editor.Classes
             Color Cor_Imagem01, Cor_Imagem02, Cor_Final;
             int r, g, b, max = 0, min = 0;
 
-            //VERIFICA O TIPO DE CORREÇÃO SELECIONADO. A CORREÇÃO 1 (NORMALIZAÇÃO) EXIGE QUE OS VALORES MAIOR E MENOR DOS PIXEIS SEJAM JA ENCONTRADOS PREVIAMENTE, O QUE É FEITO AQUI
-            if (TipoCorrecao == 1) // Se tipo de correção for normalização / Média
+            //VERIFICA O TIPO DE CORREÇÃO SELECIONADO. A CORREÇÃO 1 (CONVERSÃO) PRECISA QUE OS VALORES MAIOR E MENOR DOS PIXEIS SEJAM JA ENCONTRADOS PREVIAMENTE, O QUE É FEITO AQUI
+            if (TipoCorrecao == 1) // Se tipo de correção for CONVERSÃO  / Média
             {
                 if (Imagem_Constante == 0) // Se subtração entre imagens
                 {
@@ -477,7 +477,7 @@ namespace Photo_Editor.Classes
 
                 return Convert.ToInt32(Resultado_Const);
             }
-            //CORREÇÃO "1" SERÁ FEITA A NORMALIZAÇÃO DOS PIXELS
+            //CORREÇÃO "1" SERÁ FEITA A CONVERSÃO  DOS PIXELS
             else
             {
                 Valor_Mult = Cor_Imagem * (1 + Multiplica_Valor * 0.01f);
@@ -506,7 +506,7 @@ namespace Photo_Editor.Classes
 
                 return Convert.ToInt32(Valor_Mult_Trunca);
             }
-            //CORREÇÃO "1" SERÁ FEITA A NORMALIZAÇÃO DOS PIXELS
+            //CORREÇÃO "1" SERÁ FEITA A CONVERSÃO  DOS PIXELS
             else
             {
                 Valor_Mult_Norma = Cor_Imagem01 * Cor_Imagem02;
@@ -531,9 +531,9 @@ namespace Photo_Editor.Classes
             Color Cor_Imagem01, cor2, color;
             int r, g, b, Maior = 0, Menor = 0;
 
-            //VERIFICA O TIPO DE CORREÇÃO SELECIONADO. A CORREÇÃO 1 (NORMALIZAÇÃO) EXIGE QUE OS VALORES MAIOR E MENOR DOS PIXEIS SEJAM JA ENCONTRADOS PREVIAMENTE, O QUE É FEITO AQUI
+            //VERIFICA O TIPO DE CORREÇÃO SELECIONADO. A CORREÇÃO 1 (CONVERSÃO) PRECISA QUE OS VALORES MAIOR E MENOR DOS PIXEIS SEJAM JA ENCONTRADOS PREVIAMENTE, O QUE É FEITO AQUI
 
-            if (TipoCorrecao == 1) // Normalização / Média
+            if (TipoCorrecao == 1) // CONVERSÃO  / Média
             {
                 if (Imagem_Constante == 0) // entre imagens
                 {
@@ -609,7 +609,7 @@ namespace Photo_Editor.Classes
                 return Convert.ToInt32(Resultado_Constante);
             }
             else
-            //CORREÇÃO "1" INDICA NORMALIZAÇÃO
+            //CORREÇÃO "1" INDICA CONVERSÃO 
             {
                 Valor_Div = Cor_Imagem * (Divide_Valor * 0.01f);
                 Diferenca_Maior_menor = (Maior - Menor);
@@ -648,7 +648,7 @@ namespace Photo_Editor.Classes
 
                 return Convert.ToInt32(Divisao_Trunca);
             }
-            //CORREÇÃO "1" SERÁ FEITA A NORMALIZAÇÃO DOS PIXELS
+            //CORREÇÃO "1" SERÁ FEITA A CONVERSÃO  DOS PIXELS
             else
             {
                 Divisao_Normal = Divide_Cor_Imagem01 / Divide_Cor_Imagem02;
@@ -679,7 +679,7 @@ namespace Photo_Editor.Classes
             Color Cor_Imagem01, Cor_Imagem02, Cor_Final;
             int r, g, b, Maior = 0, Menor = 0;
 
-            //VERIFICA O TIPO DE CORREÇÃO SELECIONADO. A CORREÇÃO 1 (NORMALIZAÇÃO) EXIGE QUE OS VALORES MAIOR E MENOR DOS PIXEIS SEJAM JA ENCONTRADOS PREVIAMENTE, O QUE É FEITO AQUI
+            //VERIFICA O TIPO DE CORREÇÃO SELECIONADO. A CORREÇÃO 1 (CONVERSÃO) PRECISA QUE OS VALORES MAIOR E MENOR DOS PIXEIS SEJAM JA ENCONTRADOS PREVIAMENTE, O QUE É FEITO AQUI
             if (TipoCorrecao == 1)
             {
                 if (Imagem_Constante == 0)

@@ -47,7 +47,7 @@ namespace Photo_Editor
             }
             else
             {
-                CorrecaoSelecionado = 1; // Normalização/Média
+                CorrecaoSelecionado = 1; // Conversão
             }
         }
         private void Cmbb_Imagem_Constante_SelectedIndexChanged(object sender, EventArgs e)
